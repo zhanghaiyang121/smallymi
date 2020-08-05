@@ -20,12 +20,12 @@
   margin-bottom: 50rpx;
 }
 .list_box{
-  position: relative;
+  /* position: relative;
   padding-left: 40rpx;
   border-left:4rpx dashed rgb(60,176,113);
   margin-top: 30rpx;
   padding-top: 1rpx;
-  padding-bottom: 1rpx;
+  padding-bottom: 1rpx; */
 }
 .list .list_box:last-child{
   border-left-color: #fff;

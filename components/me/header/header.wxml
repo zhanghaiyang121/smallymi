@@ -8,11 +8,14 @@
     <view class="avatar_box">
       <button class="left"  open-type="getUserInfo"   bindgetuserinfo="getUserInfo">
           <view class="avatar">
-            <!-- <image class="avatarimage" src="../../../images/family-head.png"></image> -->
-            <image class="avatarimage" src="{{userInfo.avatarUrl}}"></image>
+            <image wx:if="{{!hasUserInfo}}" class="avatarimage" src="../../../images/family-head.png"></image>
+            <image wx:else class="avatarimage" src="{{userInfo.avatarUrl}}"></image>
           </view>
-          <view class="name">
+          <view wx:if="{{hasUserInfo}}" class="name">
             {{userInfo.nickName}}
+          </view>
+          <view wx:else class="name">
+            点击登录
           </view>
       </button>
     </view>

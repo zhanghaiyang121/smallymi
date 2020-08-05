@@ -1,11 +1,15 @@
 <!--components/home/card/card.wxml-->
 <view class="card">
   <view class="left">
-    {{name}}
+    {{card.name}}
   </view>
   <view class="right">
-    <view class="num">计量: {{num}}</view>
-    <view class="fee">{{fee==0?"免费":fee}}</view>
-    <view class="btn" bind:tap="updateChildRecord">预约</view>
+    <view class="num">计量: {{card.num}}</view>
+    <view class="fee">{{card.cost==0?"免费":fee}}</view>
+    <view wx:if="{{card.status==0}}" class="btn">可预约</view>
+    <view wx:if="{{card.status==10}}" class="btn">已申请</view>
+    <view wx:if="{{card.status==20}}" class="btn">预约完成</view>
+    <view wx:if="{{card.status==30}}" class="btn">完成</view>
+    <view wx:if="{{card.status==-1}}" class="btn">不可预约</view>
   </view>
 </view>

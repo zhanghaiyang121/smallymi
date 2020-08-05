@@ -12,11 +12,11 @@
             <cover-image src="../../../images/baby-head.png"></cover-image>
           </view>
           <view class="name">
-            王浩伟
+            {{child.name}}
           </view>
-          <view class="age">
+          <!-- <view class="age">
             6个月
-          </view>
+          </view> -->
       </view>
       <view class="right">
           <view class="right_avatar">

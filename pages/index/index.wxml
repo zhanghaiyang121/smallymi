@@ -1,19 +1,15 @@
 <!--index.wxml-->
 <view class="page home">
   <view class="header">
-    <v-header/>
+    <v-header child="{{child}}"/>
   </view>
   <view class="list">
   <view class="news_card_box">
      <v-newsCard list="{{list}}"/>
   </view>
   <view class="list_box age0"  wx:for="{{cards}}" wx:key="item">
-    <view class="point_box">
-      <v-point age="{{agelist[item.age]}}" isShow="{{currentage==item.age?true:false}}"/>
-    </view>
-    <view wx:for="{{item.list}}" wx:key="card" wx:for-item="card">
-      <v-card vid="{{card.id}}" num="{{card.num}}" fee="{{card.cost}}" type="{{card.type}}" name="{{card.name}}"/>
-    </view>
+      <v-card card="{{item}}" />
+    
   </view>
   </view>
 </view>

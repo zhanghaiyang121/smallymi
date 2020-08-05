@@ -16,7 +16,8 @@ Component({
       type:String,
       value:""
     },
-    age:String
+    age:String,
+    child:Object
   },
 
   /**
@@ -30,6 +31,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
-   
+    selectBaby(){
+      //选择儿童
+      wx.setStorageSync('childinfo',this.data.child)
+      wx.switchTab({
+        url: '/pages/index/index'
+      })
+      console.log(this.data.child)
+    }
   }
 })

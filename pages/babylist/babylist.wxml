@@ -11,7 +11,7 @@
   </view>
   <view class="child_list" >
     <block  wx:for="{{childlist}}" wx:key="item">
-        <baby-card name="{{item.name}}" age="6个月零2天"/>
+        <baby-card child="{{item}}" age="6个月零2天"/>
     </block>
    
   </view>
