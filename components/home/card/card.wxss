@@ -1,0 +1,38 @@
+/* components/home/card/card.wxss */
+.card{
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
+  border-radius: 10rpx;
+  padding: 40rpx 20rpx;
+  font-size: 12px;
+  margin:20rpx 0;
+}
+.left{
+  align-self: center;
+}
+.right{
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-self: center;
+}
+.num{
+  color: rgb(60,176,113);
+  margin-right: 20rpx;
+  align-self: center;
+}
+
+.fee{
+  margin-right: 40rpx;
+  align-self: center;
+}
+
+.btn{
+  background: rgb(60,176,113);
+  border-radius: 10rpx;
+  padding: 5rpx 20rpx;
+  color: #fff;
+  font-size: 12px;
+}

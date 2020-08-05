@@ -1,0 +1,61 @@
+/* components/home/header/header.wxss */
+.header{
+  height:300rpx;
+  position: relative;
+}
+.content{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.avatar_box{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+.left{
+  display: flex;
+  align-items: center;
+  color: #fff;
+  margin-left: 20rpx;
+}
+.avatar{
+  height: 60rpx;
+  width: 60rpx;
+}
+.name{
+  margin:0 20rpx;
+}
+.right{
+  display: flex;
+  align-items: center;
+  color: #fff;
+  margin-right: 20rpx;
+}
+.right_avatar{
+  height: 40rpx;
+  width: 40rpx;
+}
+.text{
+  font-size: 24rpx;
+  margin-left:20rpx;
+}
+.sjx{
+  width: 0;
+  height: 0;
+  border: 10rpx solid;
+  border-color:#fff transparent transparent ;
+  position: absolute;
+  right: -30rpx;
+  top: 20rpx;
+}
+.title{
+  margin-left:20rpx;
+  margin-bottom: 50rpx;
+  display: inline-block;
+  position: relative;
+  font-size: 28rpx;
+  color: #fff;
+  font-weight: bold;
+}

@@ -1,0 +1,14 @@
+/* pages/me/me.wxss */
+.menu_list{
+  padding: 0 30rpx;
+  background: #fff;
+}
+.list_box{
+  background: rgb(238,238,238);
+  height: calc(100vh - 300rpx);
+}
+.help{
+  background: #fff;
+  padding: 0 30rpx;
+  margin-top: 20rpx;
+}

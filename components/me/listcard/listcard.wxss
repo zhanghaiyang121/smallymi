@@ -1,0 +1,23 @@
+/* components/me/listcard/listcard.wxss */
+.list_card{
+  padding: 30rpx 0;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.name{
+  font-size: 28rpx;
+  margin-left: 10rpx;
+}
+.arrow{
+  width: 14rpx;
+  height: 27rpx;
+  position: absolute;
+  right: 0rpx;
+  top: 36rpx;
+}

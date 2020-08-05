@@ -1,0 +1,37 @@
+/**index.wxss**/
+.home{
+  height: 100vh;
+  width: 100%;
+}
+.header{
+  top: 0;
+  width: 100%;
+  z-index: 10;
+
+}
+.list{
+  height: calc(100vh - 300rpx);
+  overflow: auto;
+  position: relative;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+.news_card_box{
+  margin-bottom: 50rpx;
+}
+.list_box{
+  position: relative;
+  padding-left: 40rpx;
+  border-left:4rpx dashed rgb(60,176,113);
+  margin-top: 30rpx;
+  padding-top: 1rpx;
+  padding-bottom: 1rpx;
+}
+.list .list_box:last-child{
+  border-left-color: #fff;
+}
+.point_box{
+  position: absolute;
+  left: -12rpx;
+  top: -54rpx;
+}

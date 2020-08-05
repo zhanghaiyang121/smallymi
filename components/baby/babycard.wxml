@@ -1,0 +1,9 @@
+<!--components/me/listcard/listcard.wxml-->
+<view class="list_card">
+  <image class="image" src="{{imageurl}}"/>
+  <view>
+    <view class="name">{{name}}</view>
+    <view class="age">{{age}}</view>
+  </view>
+   <image class="arrow" src="../../images/arrow-icon.png"/>
+</view>

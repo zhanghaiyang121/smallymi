@@ -1,0 +1,46 @@
+/* components/home/header/header.wxss */
+.header{
+  height:300rpx;
+  position: relative;
+}
+.content{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.hospital{
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20rpx;
+}
+.avatar_box{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+.avatar{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.avatarimage{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.left{
+  display: flex;
+  align-items: center;
+  color: #fff;
+  margin-left: 20rpx;
+  background: none;
+}
+
+.name{
+  margin:0 20rpx;
+}
+
+

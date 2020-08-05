@@ -1,0 +1,11 @@
+<!--components/home/card/card.wxml-->
+<view class="card">
+  <view class="left">
+    {{name}}
+  </view>
+  <view class="right">
+    <view class="num">计量: {{num}}</view>
+    <view class="fee">{{fee==0?"免费":fee}}</view>
+    <view class="btn" bind:tap="updateChildRecord">预约</view>
+  </view>
+</view>

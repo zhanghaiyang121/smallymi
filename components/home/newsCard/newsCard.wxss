@@ -1,0 +1,31 @@
+/* components/home/newsCard/newsCard.wxss */
+.newscard{
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
+  border-radius: 10rpx;
+  padding: 40rpx 20rpx;
+}
+.news_card_item{
+
+}
+.num{
+  text-align: center;
+  font-weight: bold;
+}
+.numcolor1{
+  color: rgb(0,159,116);
+}
+.numcolor2{
+  color:rgb(253,197,0)
+}
+.numcolor3{
+  color: rgb(254,126,0);
+}
+.numcolor4{
+  color: rgb(156,156,156);
+}
+.name{
+  text-align: center;
+  font-size: 32rpx;
+}

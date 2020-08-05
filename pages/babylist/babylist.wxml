@@ -1,0 +1,20 @@
+<!--components/home/header/header.wxml-->
+<view>
+  <view class="header">
+    <image src="../../images/baobao_page.png" style="width:750rpx;height:300rpx"/>
+    <view class="content">
+      <view class="hospital">
+        <view class="title" >宝宝列表</view>
+        <image class="arrow" src="../../images/arrow-icon.png"/>
+      </view>
+    </view>
+  </view>
+  <view class="child_list" >
+    <block  wx:for="{{childlist}}" wx:key="item">
+        <baby-card name="{{item.name}}" age="6个月零2天"/>
+    </block>
+   
+  </view>
+  <view class="btn" bind:tap="addBabyInfo">+新增宝宝</view>
+</view>
+

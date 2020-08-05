@@ -1,0 +1,6 @@
+<!--components/me/listcard/listcard.wxml-->
+<view class="list_card" bindtap="topage">
+  <image class="image" src="{{imageurl}}"/>
+  <text class="name">{{name}}</text>
+  <image class="arrow" src="../../../images/arrow-icon.png"/>
+</view>

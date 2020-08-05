@@ -1,0 +1,8 @@
+<!--components/home/point/point.wxml-->
+<view class="point">
+  <view class="circle">
+    <view class="{{isShow?'incircle':''}}">
+    </view>
+  </view>
+  <text class="text">{{age}}</text>
+</view>

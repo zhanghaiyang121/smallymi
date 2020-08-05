@@ -1,0 +1,31 @@
+<!--components/home/header/header.wxml-->
+<view class="header">
+  <image src="../../../images/timg.png" style="width:750rpx;height:300rpx"/>
+  <view class="content">
+    <view class="hospital">
+      <view class="title">疫苗服务·北京朝阳医院 <view class="sjx"></view></view>
+     
+    </view>
+    <view class="avatar_box">
+      <view class="left">
+          <view class="avatar">
+            <cover-image src="../../../images/baby-head.png"></cover-image>
+          </view>
+          <view class="name">
+            王浩伟
+          </view>
+          <view class="age">
+            6个月
+          </view>
+      </view>
+      <view class="right">
+          <view class="right_avatar">
+            <cover-image src="../../../images/baby-icon.png"></cover-image>
+          </view>
+          <view bindtap="goChildpage" class="text">
+            切换儿童
+          </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,20 @@
+<!--components/home/header/header.wxml-->
+<view class="header">
+  <image src="../../../images/timg.png" style="width:750rpx;height:300rpx"/>
+  <view class="content">
+    <view class="hospital">
+      <view class="title">个人中心</view>
+    </view>
+    <view class="avatar_box">
+      <button class="left"  open-type="getUserInfo"   bindgetuserinfo="getUserInfo">
+          <view class="avatar">
+            <!-- <image class="avatarimage" src="../../../images/family-head.png"></image> -->
+            <image class="avatarimage" src="{{userInfo.avatarUrl}}"></image>
+          </view>
+          <view class="name">
+            {{userInfo.nickName}}
+          </view>
+      </button>
+    </view>
+  </view>
+</view>

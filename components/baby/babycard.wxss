@@ -1,0 +1,32 @@
+/* components/me/listcard/listcard.wxss */
+.list_card{
+  padding: 30rpx 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
+  border-radius: 10rpx;
+  margin-bottom: 30rpx;
+}
+.arrow{
+  width: 14rpx;
+  height: 27rpx;
+  position: absolute;
+  right:20rpx;
+  top: 60rpx;
+}
+.image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-left:20rpx;
+  margin-right: 20rpx;
+}
+.name{
+  font-size: 32rpx;
+  margin-left: 10rpx;
+}
+.age{
+  font-size: 24rpx;
+  margin-left: 10rpx;
+}
