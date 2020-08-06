@@ -1,0 +1,36 @@
+.header{
+  height:300rpx;
+  position: relative;
+}
+.content{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+.title{
+  color: #fff;
+  font-weight: bolder;
+  font-size: 40rpx;
+  text-align: center;
+  margin-bottom: 90rpx;
+}
+.btn {
+  padding: 20rpx 0;
+  font-size: 30rpx;
+
+  color: #fff;
+
+  margin: 0 auto;
+  width: 500rpx;
+  margin-bottom: 60rpx;
+  margin-top: 60rpx;
+  border-radius: 60rpx;
+
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
+
+  text-align: center;
+  background: rgb(30,204,117);
+}

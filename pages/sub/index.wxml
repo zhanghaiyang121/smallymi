@@ -1,0 +1,10 @@
+<!--pages/question/question.wxml-->
+<view class="header">
+    <image src="../../images/baobao_page.png" style="width:750rpx;height:300rpx"/>
+    <view class="content">
+      <view class="hospital">
+        <view class="title" >预约</view>
+      </view>
+    </view>
+</view>
+ <view class="save btn" catchtap="subscribe">确认</view>

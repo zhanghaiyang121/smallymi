@@ -8,7 +8,7 @@
       <v-newsCard list="{{list}}"/>
     </view>
     <view class="list_box age0"  wx:for="{{cards}}" wx:key="item">
-        <v-card card="{{item}}" />
+        <v-card card="{{item}}" child="{{childlist}}" parent="{{parent}}"/>
     </view>
   </view>
   <v-tabbar/>

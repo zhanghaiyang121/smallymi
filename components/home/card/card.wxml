@@ -6,7 +6,7 @@
   <view class="right">
     <view class="num">计量: {{card.num}}</view>
     <view class="fee">{{card.cost==0?"免费":fee}}</view>
-    <view wx:if="{{card.status==0}}" class="btn">可预约</view>
+    <view wx:if="{{card.status==0}}" class="btn" bindtap="subscribe">可预约</view>
     <view wx:if="{{card.status==10}}" class="btn">已申请</view>
     <view wx:if="{{card.status==20}}" class="btn">预约完成</view>
     <view wx:if="{{card.status==30}}" class="btn">完成</view>

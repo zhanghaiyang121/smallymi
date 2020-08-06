@@ -40,8 +40,9 @@ Page({
     ],
     userInfo:null,
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-    
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    childlist:null,
+    parent:null
   },
   onShow: function () {
     console.log(222)
@@ -71,6 +72,8 @@ Page({
         })
       }
     })
+    this.getchild()
+    this.getparents()
   },
   getChildInfo(){
     let that=this
@@ -90,6 +93,45 @@ Page({
         // 渲染默认列表
         console.log("渲染默认疫苗列表")
         that.fetchList()
+      }
+    })
+    this.getparents()
+    this.getchild()
+  },
+  getparents(){
+      let that=this
+      wx.request({
+        url: 'http://121.199.7.204:8085/app1/getAdultByOpenid',
+        header:{
+          "Content-Type":"application/x-www-form-urlencoded;"
+        },
+        data:{
+          openId:1
+        },
+        method:"POST",
+        success(res){
+          console.log(res)
+          that.setData({
+            parent:res.data.data
+          })
+        }
+      })
+  },
+  getchild(){
+    let that=this
+    wx.request({
+      url: 'http://121.199.7.204:8085/app1/getChildByOpenId',
+      header:{
+        "Content-Type":"application/x-www-form-urlencoded;"
+      },
+      data:{
+        openId:1
+      },
+      method:"POST",
+      success(res){
+        that.setData({
+          childlist:res.data.data
+        })
       }
     })
   },
