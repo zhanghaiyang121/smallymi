@@ -3,7 +3,7 @@
    <image src="../../images/baobao_page.png" style="width:750rpx;height:300rpx"/>
    <view class="content">
    <view class="hospital">
-      <view class="title" >用户信息</view>
+      <view class="title" >投诉建议</view>
    </view>
    </view>
 </view>
