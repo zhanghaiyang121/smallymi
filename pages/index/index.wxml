@@ -4,12 +4,13 @@
     <v-header child="{{child}}"/>
   </view>
   <view class="list">
-  <view class="news_card_box">
-     <v-newsCard list="{{list}}"/>
+    <view class="news_card_box">
+      <v-newsCard list="{{list}}"/>
+    </view>
+    <view class="list_box age0"  wx:for="{{cards}}" wx:key="item">
+        <v-card card="{{item}}" />
+    </view>
   </view>
-  <view class="list_box age0"  wx:for="{{cards}}" wx:key="item">
-      <v-card card="{{item}}" />
+  <v-tabbar/>
     
-  </view>
-  </view>
 </view>

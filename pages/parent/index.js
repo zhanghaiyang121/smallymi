@@ -5,19 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    childlist:[]
+    parent:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.fetchBabylist()
+    
   },
   fetchBabylist(){
+    console.log(222222222222)
     let that=this
     wx.request({
-      url: 'http://121.199.7.204:8085/app1/getChildByOpenId',
+      url: 'http://121.199.7.204:8085/app1/getAdultByOpenid',
       header:{
         "Content-Type":"application/x-www-form-urlencoded;"
       },
@@ -26,28 +27,36 @@ Page({
       },
       method:"POST",
       success(res){
+        console.log(res)
         that.setData({
-          childlist:res.data.data
+          parent:res.data.data
         })
       }
     })
   },
-  addBabyInfo(){
-    wx.reLaunch({
-      url: '/pages/addbaby/index',
+  fetchBabylist(){
+    let that=this
+    wx.request({
+      url: 'http://121.199.7.204:8085/app1/getAdultByOpenid',
+      header:{
+        "Content-Type":"application/x-www-form-urlencoded;"
+      },
+      data:{
+        openId:1
+      },
+      method:"POST",
+      success(res){
+        console.log(res)
+        that.setData({
+          parent:res.data.data
+        })
+      }
     })
-    // wx.request({
-    //   url: 'http://121.199.7.204:8085/app1/updateChild',
-    //   header:{
-    //     "Content-Type":"application/json"
-    //   },
-    //   data:{
-    //     name:"wangwei"
-    //   },
-    //   method:"POST",
-    //   success(res){
-    //   }
-    // })
+  },
+  addParentInfo(){
+    wx.navigateTo({
+      url: "/pages/addUser/index",
+    })
   },
 
   /**
@@ -61,7 +70,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.fetchBabylist()
   },
 
   /**
@@ -71,12 +80,6 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作

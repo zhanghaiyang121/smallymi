@@ -1,0 +1,101 @@
+<!--pages/parent/parent.wxml-->
+<view class="parent">
+    <view class="header">
+        <image src="../../images/baobao_page.png" style="width:750rpx;height:300rpx"/>
+        <view class="content">
+        <view class="hospital">
+            <view class="title" >用户信息</view>
+        </view>
+        </view>
+    </view>
+    <view class="parent-item flex level">
+        <view class="flex-l">头像</view>
+        <view class="flex-r flex end">
+            <view class="face">
+                <image src="{{userInfo.avatarUrl}}"></image>
+            </view>
+            <!-- <image class="arrow" src="../../images/arrow-icon.png"></image> -->
+        </view>
+    </view>
+    <view class="parent-other">
+        <view class="parent-other-item flex level">
+            <view class="flex-l">姓名</view>
+            <view class="flex-r">
+                <input placeholder-class="placeholderStyle" maxlength="10"  bindinput="bindName" value="{{name}}" placeholder="请输入姓名" />
+            </view>
+        </view>
+        <view class="parent-other-item flex level">
+            <view class="flex-l">电话</view>
+            <view class="flex-r">
+                <input placeholder-class="placeholderStyle" value="{{mobile}}" bindinput="bindmobile" maxlength="11" placeholder="请输入电话" />
+            </view>
+        </view>
+        <view class="parent-other-item flex level">
+            <view class="flex-l">性别</view>
+            <view class="flex-r">
+                <radio-group class="radio-group" bindchange="radioChange">
+                    <radio class="radio" wx:for="{{sexArr}}" wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+                        <text>{{item.name}}</text>
+                    </radio>
+                </radio-group>
+            </view>
+        </view>
+        <view class="parent-other-item flex level">
+            <view class="flex-l">身份证号</view>
+            <view class="flex-r">
+                <input placeholder-class="placeholderStyle" bindinput="bindCard"  maxlength="18" value="{{idCard}}" placeholder="请输入身份证号" />
+            </view>
+        </view>
+        <view class="parent-other-item flex level">
+            <view class="flex-l">所属市</view>
+            <view class="flex-r">
+                <picker  bindchange="bindCityChange" value="{{cityindex}}" range="{{cityarry}}" class="provide-mode" placeholder="请输选择所属市">
+                    <view class="picker">
+                        <text class="tips" wx:if="{{city == null}}">请选择省市区</text>
+                        <text class="tips" wx:else>{{city}}</text>
+                    </view>
+                  </picker>
+            </view>
+        </view>
+        <view class="parent-other-item flex level">
+            <view class="flex-l">所属地区</view>
+            <view class="flex-r">
+                <picker  bindchange="bindAreaChange" value="{{areaindex}}" range="{{arealist}}" class="provide-mode" >
+                    <view class="picker">
+                        <text class="tips" wx:if="{{area == null}}">请选择所属地区</text>
+                        <text class="tips" wx:else>{{area}}</text>
+                    </view>
+                  </picker>
+            </view>
+        </view>
+        <view class="parent-other-item flex level">
+            <view class="flex-l">所属居委会</view>
+            <view class="flex-r">
+                <picker  bindchange="bindCommitChange" value="{{commiIndex}}" range="{{commitarry}}" class="provide-mode">
+                    <view class="picker">
+                        <text class="tips" wx:if="{{committee == null}}">请选择所属居委会</text>
+                        <text class="tips" wx:else>{{committee}}</text>
+                    </view>
+                  </picker>
+            </view>
+        </view>
+        <view class="parent-other-item flex level">
+            <view class="flex-l">所属街道</view>
+            <view class="flex-r">
+                <picker  bindchange="bindStreetChange" value="{{streetindex}}" range="{{streetlist}}" class="provide-mode">
+                    <view class="picker">
+                        <text class="tips" wx:if="{{street == null}}">请选择所属街道</text>
+                        <text class="tips" wx:else>{{street}}</text>
+                    </view>
+                  </picker>
+            </view>
+        </view>
+        <view class="parent-other-item flex level">
+            <view class="flex-l">家庭住址</view>
+            <view class="flex-r">
+                <input placeholder-class="placeholderStyle" bindinput="bindAddress" value="{{address}}" placeholder="请输入家庭住址" />
+            </view>
+        </view>
+    </view>
+    <view class="save btn" catchtap="saveDetail">确认</view>
+</view>

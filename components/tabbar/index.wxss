@@ -1,0 +1,6 @@
+
+.tabbar{
+   height:100rpx;
+   display: flex;
+   justify-content: space-around;
+}

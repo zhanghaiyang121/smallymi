@@ -1,53 +1,18 @@
-// pages/babylist/babylist.js
+// pages/option/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    childlist:[]
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.fetchBabylist()
-  },
-  fetchBabylist(){
-    let that=this
-    wx.request({
-      url: 'http://121.199.7.204:8085/app1/getChildByOpenId',
-      header:{
-        "Content-Type":"application/x-www-form-urlencoded;"
-      },
-      data:{
-        openId:1
-      },
-      method:"POST",
-      success(res){
-        that.setData({
-          childlist:res.data.data
-        })
-      }
-    })
-  },
-  addBabyInfo(){
-    wx.reLaunch({
-      url: '/pages/addbaby/index',
-    })
-    // wx.request({
-    //   url: 'http://121.199.7.204:8085/app1/updateChild',
-    //   header:{
-    //     "Content-Type":"application/json"
-    //   },
-    //   data:{
-    //     name:"wangwei"
-    //   },
-    //   method:"POST",
-    //   success(res){
-    //   }
-    // })
+
   },
 
   /**

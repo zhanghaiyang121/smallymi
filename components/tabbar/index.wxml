@@ -1,0 +1,19 @@
+<!--components/tabbar/index.wxml-->
+<view class="tabbar">
+   <view bindtap="topage" data-pageurl="/pages/index/index">
+      <view>
+          首页
+      </view>
+   </view>
+   <view bindtap="topage" data-pageurl="/pages/news/news">
+      <view>
+            健康资讯
+      </view>
+   </view>
+   <view bindtap="topage" data-pageurl="/pages/me/me">
+      <view>
+           个人中心
+      </view>
+   </view>
+</view>
+  

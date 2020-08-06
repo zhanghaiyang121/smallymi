@@ -3,6 +3,7 @@
     "v-header":"/components/home/header/header",
     "v-card":"/components/home/card/card",
     "v-newsCard":"/components/home/newsCard/newsCard",
-    "v-point":"/components/home/point/point"
+    "v-point":"/components/home/point/point",
+    "v-tabbar":"/components/tabbar/index"
   }
 }

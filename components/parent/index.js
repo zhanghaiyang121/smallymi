@@ -17,7 +17,7 @@ Component({
       value:""
     },
     age:String,
-    child:Object
+    parent:Object
   },
 
   /**
@@ -34,8 +34,7 @@ Component({
     selectBaby(){
       //选择儿童
       wx.setStorageSync('childinfo',this.data.child)
-    
-      wx.reLaunch({
+      wx.switchTab({
         url: '/pages/index/index'
       })
       console.log(this.data.child)

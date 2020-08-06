@@ -1,0 +1,31 @@
+<!--pages/parent/parent.wxml-->
+<view class="parent">
+    <view class="header">
+        <image src="../../images/baobao_page.png" style="width:750rpx;height:300rpx"/>
+        <view class="content">
+        <view class="hospital">
+            <view class="title" >用户信息</view>
+        </view>
+        </view>
+    </view>
+   
+    <view class="parent-other-item flex level">
+        <view class="flex-l">姓名</view>
+        <view class="flex-r">
+            <input placeholder-class="placeholderStyle" maxlength="10"  bindinput="bindName" value="{{name}}" placeholder="请输入姓名" />
+        </view>
+    </view>
+    
+    <view class="parent-other-item flex level">
+        <view class="flex-l">性别</view>
+        <view class="flex-r">
+            <radio-group class="radio-group" bindchange="radioChange">
+                <radio class="radio" wx:for="{{sexArr}}" wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+                    <text>{{item.name}}</text>
+                </radio>
+            </radio-group>
+        </view>
+    </view>
+       
+    <view class="save btn" catchtap="saveDetail">确认</view>
+</view>
