@@ -4,12 +4,12 @@
         <image src="../../images/baobao_page.png" style="width:750rpx;height:300rpx"/>
         <view class="content">
         <view class="hospital">
-            <view class="title" >用户信息</view>
+            <view class="title" >添加儿童</view>
         </view>
         </view>
     </view>
-   
-    <view class="parent-other-item flex level">
+   <view class="box">
+     <view class="parent-other-item flex level">
         <view class="flex-l">姓名</view>
         <view class="flex-r">
             <input placeholder-class="placeholderStyle" maxlength="10"  bindinput="bindName" value="{{name}}" placeholder="请输入姓名" />
@@ -26,6 +26,9 @@
             </radio-group>
         </view>
     </view>
+   </view>
+     
+   
        
-    <view class="save btn" catchtap="saveDetail">确认</view>
+    <view class="save btn" catchtap="addBabyInfo">确认</view>
 </view>

@@ -125,3 +125,6 @@ page {
   text-align: center;
   margin-bottom: 90rpx;
 }
+.box{
+  padding: 0 40rpx;
+}

@@ -32,12 +32,7 @@ Component({
    */
   methods: {
     selectBaby(){
-      //选择儿童
-      wx.setStorageSync('childinfo',this.data.child)
-      wx.switchTab({
-        url: '/pages/index/index'
-      })
-      console.log(this.data.child)
+      
     }
   }
 })

@@ -15,6 +15,10 @@ Component({
     pageurl:{
       type:String,
       value:""
+    },
+    isbtn:{
+      type:Boolean,
+      value:false
     }
   },
 

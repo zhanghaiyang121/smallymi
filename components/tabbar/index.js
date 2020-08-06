@@ -4,7 +4,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    activeindex:{
+      type:Number,
+      value:0
+    }
   },
 
   /**

@@ -92,7 +92,9 @@ Page({
         data:data,
         method:"POST",
         success(res){
-          
+          wx.reLaunch({
+            url: '/pages/parent/index',
+          })
           
         }
       })

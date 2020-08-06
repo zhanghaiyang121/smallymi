@@ -1,4 +1,15 @@
-<!--pages/option/index.wxml-->
-<text>
-建议表单
-</text>
+<!--pages/feedback/feedback.wxml-->
+<view class="header">
+   <image src="../../images/baobao_page.png" style="width:750rpx;height:300rpx"/>
+   <view class="content">
+   <view class="hospital">
+      <view class="title" >用户信息</view>
+   </view>
+   </view>
+</view>
+<view class="feeback">
+    <form bindsubmit="bindFormSubmit">
+    <textarea class="area" placeholder-class="placeholderStyle" name="textarea" placeholder="您的参与将帮助我们改进产品及服务，如果您对预约接种有更好的建议和意见，或者对我们的服务有不满意的地方，欢迎您的批评指正。" auto-focus />
+   <button class="btn" form-type="submit"> 提交 </button>
+    </form>
+</view>

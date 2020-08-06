@@ -1,19 +1,31 @@
 <!--components/tabbar/index.wxml-->
 <view class="tabbar">
-   <view bindtap="topage" data-pageurl="/pages/index/index">
-      <view>
-          首页
+   <view class="tabitem" bindtap="topage" data-pageurl="/pages/index/index">
+      <view class="imgbox" wx:if="{{activeindex!=0}}">
+         <image class="image" src="../../images/index-normal.png"/>
       </view>
+      <view class="imgbox" wx:if="{{activeindex==0}}">
+         <image class="image" src="../../images/index-select.png"/>
+      </view>
+      <view class="text">首页</view>
    </view>
-   <view bindtap="topage" data-pageurl="/pages/news/news">
-      <view>
-            健康资讯
+   <view class="tabitem" bindtap="topage" data-pageurl="/pages/news/news">
+      <view class="imgbox" wx:if="{{activeindex!=1}}">
+         <image class="image" src="../../images/news-normal.png"/>
       </view>
+       <view class="imgbox" wx:if="{{activeindex==1}}">
+         <image class="image" src="../../images/news-select.png"/>
+      </view>
+      <view class="text">健康咨询</view>
    </view>
-   <view bindtap="topage" data-pageurl="/pages/me/me">
-      <view>
-           个人中心
+   <view class="tabitem" bindtap="topage" data-pageurl="/pages/me/me">
+      <view class="imgbox" wx:if="{{activeindex!=2}}">
+         <image class="image" src="../../images/user-normal.png"/>
       </view>
+       <view class="imgbox" wx:if="{{activeindex==2}}">
+         <image class="image" src="../../images/user-select.png"/>
+      </view>
+      <view class="text">个人中心</view>
    </view>
 </view>
   

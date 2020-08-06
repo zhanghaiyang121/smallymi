@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "me-header":"/components/me/header/header",
-    "me-card":"/components/me/listcard/listcard"
+    "me-card":"/components/me/listcard/listcard",
+    "v-tabbar":"/components/tabbar/index"
   }
 }
