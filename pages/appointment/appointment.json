@@ -1,0 +1,13 @@
+{
+  "disableScroll": true,
+  "usingComponents": {
+    "mp-tabs": "/components/common/tabs/tabs",
+    "mp-tapbar": "/components/common/tabbar/tabbar"
+
+  },
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "疫苗预约",
+  "backgroundColor": "#ffffff",
+  "backgroundTextStyle": "dark"
+}

@@ -1,0 +1,71 @@
+<view class="page" data-weui-theme="{{theme}}">
+<view class="header">
+  成人疫苗
+</view>
+<mp-tabs 
+  tabs="{{tabs}}" 
+  activeTab="{{activeTab}}" 
+  swiperClass="weui-tabs-swiper"
+  bindtabclick="onTabClick"
+  bindchange="onChange"
+  activeClass="tab-bar-title__selected"
+  
+>
+  <block wx:for="{{tabs}}" wx:key="index">
+    <view class="tab-content" data-set="{{item}}" slot="tab-content-{{index}}" bind:tap="handleClick" >
+      <view class="description">
+        <view class="desc-title">HPV疫苗</view>
+        <view>
+          <text>宫颈癌发病原因：是由于HPV持续感染导致的病变</text>
+          <text>接种HPV疫苗是预防宫颈癌的有效手段</text>
+          <text>早接种早保护，性生活之前接种效果最佳</text>
+        </view>
+      </view>
+      <view class="appointment-list">
+        <view class="card">
+          <view>
+             <button class="mini-btn self-fee"   size="mini">自费</button>
+          </view>
+          <view class="more">
+             <view class="title">PHV4价</view> 
+             <view class="desc">预防宫颈癌</view>
+          </view>
+          <view>计量：1  </view>
+          <view>¥200</view>
+          <view>
+            <button class="mini-btn" type="primary" size="mini">预约</button>
+          </view>
+        </view>
+         <view class="card">
+          <view>
+             <button class="mini-btn self-fee"   size="mini">自费</button>
+          </view>
+          <view class="more">
+             <view class="title">PHV4价</view> 
+             <view class="desc">预防宫颈癌</view>
+          </view>
+          <view>计量：1  </view>
+          <view>¥200</view>
+          <view>
+            <button class="mini-btn" type="primary" size="mini">预约</button>
+          </view>
+        </view>
+         <view class="card">
+          <view>
+             <button class="mini-btn self-fee"   size="mini">自费</button>
+          </view>
+          <view class="more">
+             <view class="title">PHV4价</view> 
+             <view class="desc">预防宫颈癌</view>
+          </view>
+          <view>计量：1  </view>
+          <view>¥200</view>
+          <view>
+            <button class="mini-btn" type="primary" size="mini">预约</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</mp-tabs>
+</view>

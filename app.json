@@ -4,8 +4,10 @@
     "pages/babylist/babylist",
     "pages/logs/logs",
     "pages/news/news",
-    "pages/me/me"
-    
+    "pages/me/me",
+    "pages/appointment/appointment",
+    "pages/vaccine/vaccine"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -25,6 +27,12 @@
       {
         "pagePath": "pages/news/news",
         "text": "健康资讯",
+        "iconPath": "./images/news-normal.png",
+        "selectedIconPath": "./images/news-select.png"
+      },
+      {
+        "pagePath": "pages/appointment/appointment",
+        "text": "疫苗预约",
         "iconPath": "./images/news-normal.png",
         "selectedIconPath": "./images/news-select.png"
       },
