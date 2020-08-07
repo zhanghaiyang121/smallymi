@@ -5,6 +5,8 @@
     "pages/logs/logs",
     "pages/news/news",
     "pages/me/me",
+    "pages/appointment/appointment",
+    "pages/vaccine/vaccine",
     "pages/addUser/index",
     "pages/parent/index",
     "pages/option/index",
@@ -18,6 +20,5 @@
     "navigationStyle": "custom",
     "navigationBarTextStyle": "black"
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

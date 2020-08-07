@@ -9,7 +9,7 @@
       </view>
       <view class="text">宝宝疫苗</view>
    </view>
-   <view class="tabitem" bindtap="topage" data-pageurl="/pages/person/index">
+   <view class="tabitem" bindtap="topage" data-pageurl="/pages/appointment/appointment">
       <view class="imgbox" wx:if="{{activeindex!=1}}">
          <image class="image" src="../../images/person-normal.png"/>
       </view>
