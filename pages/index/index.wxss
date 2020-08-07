@@ -35,3 +35,29 @@
   left: -12rpx;
   top: -54rpx;
 }
+.mark {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height:100%;
+  background: rgba(0,0,0,.5);
+}
+.change-child {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 642rpx;
+  border-radius: 10rpx;
+  padding-left: 24rpx;
+  padding-right: 24rpx;
+}
+.change-child-item {
+  border-bottom: 1rpx solid #eeeeee;
+  padding-top: 28rpx;
+  padding-bottom: 28rpx;
+}
+.change-child-item:last-child {
+  border-bottom: none;
+}

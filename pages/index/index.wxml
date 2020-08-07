@@ -1,14 +1,27 @@
 <!--index.wxml-->
 <view class="page home">
   <view class="header">
-    <v-header hospital="{{hospital}}" child="{{child}}"/>
+    <v-header bindselecChild="SelectChild" hospital="{{hospital}}" child="{{child}}"/>
   </view>
   <view class="list">
     <view class="news_card_box">
       <v-newsCard list="{{list}}"/>
     </view>
     <view class="list_box age0"  wx:for="{{cards}}" wx:key="item">
-        <v-card card="{{item}}" child="{{childlist}}" parent="{{parent}}"/>
+        <v-point age="{{item.age}}" isShow="{{item.key==0}}"/>
+        <view class="cardlist">
+          <block wx:for="{{item.list}}" >
+            <v-card card="{{item}}" child="{{childlist}}" parent="{{parent}}"/>
+          </block>
+        </view>
+    </view>
+  </view>
+  <view class="mark" wx:if="{{isShow}}" catchtap="cancelMark"></view>
+  <view class="change-child" wx:if="{{isShow}}">
+    <view class="child_list" >
+      <block  wx:for="{{childlist}}" wx:key="item">
+          <s-card bindchangechild="changechild" child="{{item}}" age="6个月零2天"/>
+      </block>
     </view>
   </view>
   <v-tabbar/>

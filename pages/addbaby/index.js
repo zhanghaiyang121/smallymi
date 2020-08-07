@@ -5,8 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    sexArr: [{"name": "男", "value": 1, "checked": false},{"name": "女", "value": 2, "checked": false}],
-    sex:null,
+    sexArr: [{"name": "男", "value": 1, "checked": false},{"name": "女", "value": 2, "checked": true}],
+    sex:2,
     name:"",
     birthday:null,
     idCard:null,
@@ -33,17 +33,6 @@ Page({
       success(res){
         console.log(res)
          let parent=res.data.data
-         let arr=that.data.sexArr
-         if(parent.sex==1){
-          arr[0].checked=true
-          arr[1].checked=false
-         }else{
-          arr[0].checked=false
-          arr[1].checked=true
-         }
-         that.setData({
-          sexArr:arr
-        })
          that.setData({
           pid:parent.id
          })
@@ -113,7 +102,16 @@ Page({
     let isaddchild=wx.getStorageSync('isaddchild')
     let date=child.birthday.split(" ")
     console.log(date)
+    let arr=this.data.sexArr
     if(!isaddchild){
+      console.log(child.sex)
+      if(child.sex==1){
+        arr[0].checked=true
+        arr[1].checked=false
+      }else{
+        arr[0].checked=false
+        arr[1].checked=true
+      }
       this.setData({
         name:child.name,
         birthday:date[0],
@@ -121,14 +119,17 @@ Page({
         sex:child.sex,
         pid:child.pid,
         cid:child.cid,
-        isaddchild:isaddchild
+        isaddchild:isaddchild,
+        sexArr:arr
       })
     }else{
+      arr[0].checked=false
+      arr[1].checked=true
       this.setData({
         name:null,
         birthday:null,
         idCard:null,
-        sex:null,
+        sex:2,
         pid:null,
         isaddchild:isaddchild
       })

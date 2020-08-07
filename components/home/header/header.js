@@ -23,9 +23,10 @@ Component({
    */
   methods: {
     goChildpage(){
-      wx.navigateTo({
-        url: "/pages/babylist/babylist",
-      })
+      // wx.navigateTo({
+      //   url: "/pages/babylist/babylist",
+      // })
+      this.triggerEvent('selecChild')
     }
   }
 })
