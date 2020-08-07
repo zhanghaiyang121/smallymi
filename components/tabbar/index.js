@@ -22,7 +22,6 @@ Component({
    */
   methods: {
     topage(e){
-      console.log(e)
       let url=e.currentTarget.dataset.pageurl
       
       wx.navigateTo({

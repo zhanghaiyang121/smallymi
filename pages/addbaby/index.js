@@ -31,7 +31,6 @@ Page({
       },
       method:"POST",
       success(res){
-        console.log(res)
          let parent=res.data.data
          that.setData({
           pid:parent.id
@@ -67,12 +66,10 @@ Page({
       pid:that.data.pid,
       birthday:birthday
     }
-    console.log(that.data.isaddchild)
     if(!that.data.isaddchild){
       data.id=that.data.cid
     }else{
       delete data.cid
-      console.log(data)
     }
     
     wx.request({
@@ -91,7 +88,6 @@ Page({
   },
   //性别选择
   radioChange(e) {
-    console.log(e)
     let sex = e.detail.value
     this.setData({
       sex
@@ -101,10 +97,8 @@ Page({
     let child=wx.getStorageSync('childinfo')
     let isaddchild=wx.getStorageSync('isaddchild')
     let date=child.birthday.split(" ")
-    console.log(date)
     let arr=this.data.sexArr
     if(!isaddchild){
-      console.log(child.sex)
       if(child.sex==1){
         arr[0].checked=true
         arr[1].checked=false

@@ -25,11 +25,9 @@ Page({
       },
       method:"POST",
       success(res){
-        console.log(res)
         that.setData({
           records:res.data.data.records
         })
-        console.log(that.data.records)
       }
     })
   },

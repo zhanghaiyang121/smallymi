@@ -47,7 +47,6 @@ Page({
     hospital:null
   },
   onShow: function () {
-    console.log(222)
     let that=this
     // wx.clearStorage()
     let openid=wx.getStorageSync('openid')
@@ -77,7 +76,6 @@ Page({
   },
   fetchHospital(code){
     let that=this
-    console.log("333333333333333333")
     wx.request({
       url: 'https://vaccing.51vipsh.com/app1/getHospitalList',
       header:{
@@ -88,7 +86,6 @@ Page({
       },
       method:"POST",
       success(res){
-        console.log(res)
         that.setData({
           hospital:res.data.data
         })
@@ -111,7 +108,6 @@ Page({
         },
         method:"POST",
         success(res){
-          console.log(res)
           that.setData({
             parent:res.data.data
           })
@@ -136,6 +132,8 @@ Page({
       method:"POST",
       success(res){
         // that.dealCarsList(res.data.data)
+        console.log("获取默认疫苗列表")
+        console.log(res.data.data)
         let ymilist=res.data.data
         ymilist.forEach(item=>{
           if(item.num>0){
@@ -164,7 +162,6 @@ Page({
             if(item.time<12){
               age=month+"个月"
             }
-            console.log(age)
             finalarr.push({
               age:age,
               key:item.time,
@@ -179,7 +176,6 @@ Page({
         that.setData({
           cards:finalarr
         })
-        console.log(finalarr)
       }
     })
     
@@ -219,6 +215,8 @@ Page({
       method:"POST",
       success(res){
         //获取默认列表和已注入疫苗做对比
+        console.log("获取儿童注射疫苗列表")
+        console.log(that.data.child.area_code)
         let childYmilist=res.data.data
         wx.request({
           url: 'https://vaccing.51vipsh.com/app1/vaccineList',
@@ -231,6 +229,7 @@ Page({
           },
           method:"POST",
           success(data){
+            console.log(data.data.data)
             // that.dealCarsList(res.data.data)
             let ymilist=data.data.data
             ymilist.forEach(item=>{
@@ -238,7 +237,6 @@ Page({
                 if(citem.vid==item.id){
                   if(item.status!=1){
                     item.status=citem.status
-                    console.log(item)
                   }
                 }else{
                   if(item.num>0){
@@ -268,7 +266,6 @@ Page({
                 if(item.time<12){
                   age=month+"个月"
                 }
-                console.log(age)
                 finalarr.push({
                   age:age,
                   key:item.time,
@@ -276,7 +273,6 @@ Page({
                 })
               }
             })
-            console.log(finalarr)
             ymilist.forEach(item=>{
               let index=yimarr.indexOf(item.time)
               finalarr[index].list.push(item)
@@ -284,7 +280,6 @@ Page({
             that.setData({
               cards:finalarr
             })
-            console.log(finalarr)
            
           }
         })

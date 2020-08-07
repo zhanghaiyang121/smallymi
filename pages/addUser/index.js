@@ -105,6 +105,9 @@ Page({
   getparents(){
     let that=this
     let openid=wx.getStorageSync('openid')
+    setTimeout(()=>{
+    },1000)
+    
     if(!openid){
       return
     }
@@ -118,7 +121,6 @@ Page({
       },
       method:"POST",
       success(res){
-        console.log(res)
          let parent=res.data.data
          let arr=that.data.sexArr
          if(parent.sex==1){
@@ -155,7 +157,6 @@ Page({
   },
   //性别选择
   radioChange(e) {
-    console.log(e)
     let sex = e.detail.value
     this.setData({
       sex
@@ -190,7 +191,6 @@ Page({
       }
       
     })
-    console.log(arealist)
     this.setData({
       arealist,
       sarealist
@@ -218,7 +218,6 @@ Page({
     })
   },
   bindCommitChange(e){
-    console.log(e)
     let committeeCode
     let committee=this.data.commitarry[e.detail.value]
     this.data.scommitarry.forEach(item=>{
@@ -228,14 +227,12 @@ Page({
         this.getStreetCodeList(committeeCode)
       }
     })
-    console.log(committee)
     this.setData({
       committee,
       committeeCode
     })
   },
   bindStreetChange(e){
-    console.log(e)
     let streetCode
     let street=this.data.streetlist[e.detail.value]
     this.data.sstreetlist.forEach(item=>{
@@ -243,7 +240,6 @@ Page({
         streetCode=item.t_code
       }
     })
-    console.log(street)
     this.setData({
       street,
       streetCode
@@ -263,7 +259,6 @@ Page({
       }
       
     })
-    console.log(streetlist)
     this.setData({
       streetlist,
       sstreetlist
@@ -286,7 +281,6 @@ Page({
     })
   },
   bindAreaChange(e){
-    console.log(e)
     let areaCode
     let area=this.data.arealist[e.detail.value]
     this.data.sarealist.forEach(item=>{
@@ -295,14 +289,12 @@ Page({
         this.getstreetCodeList(areaCode)
       }
     })
-    console.log(area)
     this.setData({
       area,
       areaCode
     })
   },
   bindCityChange(e){
-    console.log(e)
     let cityCode
     let city=this.data.cityarry[e.detail.value]
     this.data.scityarry.forEach(item=>{
@@ -312,7 +304,6 @@ Page({
         this.getareaCodeList(cityCode)
       }
     })
-    console.log(city)
     this.setData({
       city,
       cityCode
@@ -340,14 +331,12 @@ addParentInfo(){
    })
  },
  bindPickerChange: function (e) {
-  console.log('picker发送选择改变，携带值为', e.detail.value)
   this.setData({
     index: e.detail.value
   })
 },
 //选择省市区
 bindRegionChange: function (e) {
-  console.log(e.detail.value)
   this.setData({
     region: e.detail.value,
     isSel: true

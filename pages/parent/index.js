@@ -27,7 +27,6 @@ Page({
       },
       method:"POST",
       success(res){
-        console.log(res)
         that.setData({
           parent:res.data.data
         })

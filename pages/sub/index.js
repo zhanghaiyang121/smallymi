@@ -17,7 +17,6 @@ Page({
   //预约
   subscribe(){
     let that=this
-    console.log(that.data.vid)
     wx.request({
       url: 'http://121.199.7.204:8085/app1/updateChildRecord',
       header:{
@@ -32,7 +31,6 @@ Page({
       },
       method:"POST",
       success(res){
-        console.log(res)
       }
     })
   },

@@ -38,7 +38,6 @@ Component({
       wx.reLaunch({
         url: '/pages/addbaby/index'
       })
-      console.log(this.data.child)
     }
   }
 })

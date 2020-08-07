@@ -22,7 +22,6 @@ Component({
    */
   ready(){
     const app=getApp()
-    console.log(app.globalData)
     wx.getUserInfo({
       success: res => {
         this.setData({

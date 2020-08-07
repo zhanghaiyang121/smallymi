@@ -34,17 +34,14 @@ Component({
    */
   methods: {
     topage(){
-      console.log(this.data.pageurl)
       if(this.data.pageurl===""){
         return
       }else if(this.data.pageurl=='sub'){
         wx.requestSubscribeMessage({
           tmplIds:["0Z3KusrNbNado4gVoFYUF11NAR-hUgHc9pY87HPz_3I","OEFJGcXbyzaABtwBhn0aWbI3BIILC9ikziK2HeRMqaE"],
           success:res=>{
-            console.log(res)
           },
           fail:err=>{
-            console.log(err)
           }
         })
       }else{
