@@ -26,8 +26,25 @@
             </radio-group>
         </view>
     </view>
+
+    <view class="parent-other-item flex level">
+        <view class="flex-l">时间选择器</view>
+        <view class="flex-r">
+            <picker mode="date" value="{{birthday}}"  bindchange="bindTimeChange">
+                <view class="picker">
+                当前选择: {{birthday}}
+                </view>
+            </picker>
+        </view>
+    </view>
+     <view class="parent-other-item flex level">
+        <view class="flex-l">身份证号</view>
+        <view class="flex-r">
+            <input placeholder-class="placeholderStyle"  bindinput="bindidCard" value="{{idCard}}" placeholder="请输入身份证号" />
+        </view>
+    </view>
    </view>
-     
+   
    
        
     <view class="save btn" catchtap="addBabyInfo">确认</view>

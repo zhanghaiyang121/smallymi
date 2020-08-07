@@ -4,7 +4,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-      child:Object
+      child:Object,
+      hospital:Object
   },
 
   /**
@@ -12,6 +13,9 @@ Component({
    */
   data: {
 
+  },
+  ready(){
+    
   },
 
   /**

@@ -10,7 +10,8 @@
     "pages/option/index",
     "pages/question/index",
     "pages/addbaby/index",
-    "pages/sub/index"
+    "pages/sub/index",
+    "pages/message/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

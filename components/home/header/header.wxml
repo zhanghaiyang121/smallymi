@@ -3,7 +3,7 @@
   <image src="../../../images/timg.png" style="width:750rpx;height:300rpx"/>
   <view class="content">
     <view class="hospital">
-      <view class="title">疫苗服务·北京朝阳医院 <view class="sjx"></view></view>
+      <view class="title">疫苗服务·{{hospital.username}}</view>
      
     </view>
     <view class="avatar_box">

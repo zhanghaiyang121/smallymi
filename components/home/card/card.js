@@ -31,35 +31,36 @@ Component({
     subscribe(){
       //先判断用户是否登录
       var openid = wx.getStorageSync('openid')
-        if(!openid){
-          wx.showToast({
-            title: '请前往登录',
-            icon: 'none',
-            duration: 2000
-          })
-        }
-        //在判断用户是否有监护人
-        if(!this.data.parent){
-          wx.showToast({
-            title: '请添加监护人',
-            icon: 'none',
-            duration: 2000
-          })
-          return
-        }
-        //在判断是否有儿童
-        if(!this.data.child){
-          wx.showToast({
-            title: '请添加儿童',
-            icon: 'none',
-            duration: 2000
-          })
-          return
-        }
+      if(!openid){
+        wx.showToast({
+          title: '请前往登录',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+      //在判断用户是否有监护人
+      if(!this.data.parent){
+        wx.showToast({
+          title: '请添加监护人',
+          icon: 'none',
+          duration: 2000
+        })
+        return
+      }
+      //在判断是否有儿童
+      if(!this.data.child){
+        wx.showToast({
+          title: '请选择儿童',
+          icon: 'none',
+          duration: 2000
+        })
+        return
+      }
+      //跳到预约页面
       wx.reLaunch({
         url: '/pages/sub/index',
       })
-      //跳到预约页面
+      
 
     },
   }

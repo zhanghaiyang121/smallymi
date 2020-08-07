@@ -1,0 +1,5 @@
+<view class="m_card">
+   <view class="title">{{message.title}}</view>
+   <view class="content">{{message.msg}}</view>
+</view>
+  

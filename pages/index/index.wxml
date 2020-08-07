@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="page home">
   <view class="header">
-    <v-header child="{{child}}"/>
+    <v-header hospital="{{hospital}}" child="{{child}}"/>
   </view>
   <view class="list">
     <view class="news_card_box">

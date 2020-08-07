@@ -25,7 +25,7 @@ Page({
     console.log(e)
     let that=this
    wx.request({
-     url: 'http://121.199.7.204:8085/app1/getMessageByPage',
+     url: 'http://121.199.7.204:8085/app1/saveAdvice',
      header:{
        "Content-Type":"application/json"
      },
