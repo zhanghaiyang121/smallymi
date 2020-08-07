@@ -9,8 +9,47 @@ Page({
     sex:null,
     name:"",
     birthday:null,
-    idCard:null
+    idCard:null,
+    pid:null,
+    cid:null,
+    isaddchild:false
 
+  },
+  getparents(){
+    let that=this
+    let openid=wx.getStorageSync('openid')
+    if(!openid){
+      return
+    }
+    wx.request({
+      url: 'http://121.199.7.204:8085/app1/getAdultByOpenid',
+      header:{
+        "Content-Type":"application/x-www-form-urlencoded;"
+      },
+      data:{
+        openId:openid
+      },
+      method:"POST",
+      success(res){
+        console.log(res)
+         let parent=res.data.data
+         let arr=that.data.sexArr
+         if(parent.sex==1){
+          arr[0].checked=true
+          arr[1].checked=false
+         }else{
+          arr[0].checked=false
+          arr[1].checked=true
+         }
+         that.setData({
+          sexArr:arr
+        })
+         that.setData({
+          pid:parent.id
+         })
+         
+      }
+    })
   },
   bindidCard(e){
     this.setData({
@@ -31,18 +70,28 @@ Page({
     let that=this
     let date=that.data.birthday
     let birthday=date+" "+"00:00:00"
+    let id=null
+    let data={
+      name:that.data.name,
+      idCard:that.data.idCard,
+      sex:that.data.sex,
+      pid:that.data.pid,
+      birthday:birthday
+    }
+    console.log(that.data.isaddchild)
+    if(!that.data.isaddchild){
+      data.id=that.data.cid
+    }else{
+      delete data.cid
+      console.log(data)
+    }
     
     wx.request({
-      url: 'http://121.199.7.204:8085/app1/updateChild',
+      url: 'https://vaccing.51vipsh.com/app1/updateChild',
       header:{
         "Content-Type":"application/json"
       },
-      data:{
-        id:1,
-        name:that.data.name,
-        // birthday:"2222222222",
-        idCard:that.data.idCard
-      },
+      data:data,
       method:"POST",
       success(res){
         wx.reLaunch({
@@ -58,6 +107,33 @@ Page({
     this.setData({
       sex
     })
+  },
+  getchildInfo(){
+    let child=wx.getStorageSync('childinfo')
+    let isaddchild=wx.getStorageSync('isaddchild')
+    let date=child.birthday.split(" ")
+    console.log(date)
+    if(!isaddchild){
+      this.setData({
+        name:child.name,
+        birthday:date[0],
+        idCard:child.idCard,
+        sex:child.sex,
+        pid:child.pid,
+        cid:child.cid,
+        isaddchild:isaddchild
+      })
+    }else{
+      this.setData({
+        name:null,
+        birthday:null,
+        idCard:null,
+        sex:null,
+        pid:null,
+        isaddchild:isaddchild
+      })
+    }
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -77,6 +153,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      this.getparents()
+      this.getchildInfo()
   },
 })

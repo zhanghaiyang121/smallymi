@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "m-card":"/components/message/index"
+  }
 }

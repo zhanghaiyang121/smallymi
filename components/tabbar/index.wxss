@@ -5,6 +5,7 @@
    justify-content: space-around;
    background: #fff;
    padding-top: 20rpx;
+   box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
 }
 .image{
    width: 60rpx;

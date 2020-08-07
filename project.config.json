@@ -32,7 +32,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.12.0",
-	"appid": "wx0f8077be703d33b3",
+	"appid": "wxc5c8c73f4ce42d61",
 	"projectname": "small",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -76,6 +76,13 @@
 					"id": -1,
 					"name": "pages/parent/index",
 					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "获取消息",
+					"pathName": "pages/message/index",
 					"scene": null
 				}
 			]

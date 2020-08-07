@@ -59,9 +59,9 @@ Component({
     },
     getOpenid(userHead,userName,code){
       //模拟获取openid
-      wx.setStorageSync('openid',1)
+      
       wx.request({
-        url: 'http://121.199.7.204:8085/app/login',
+        url: 'https://vaccing.51vipsh.com/app/login',
         header:{
           "Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"
         },
@@ -72,7 +72,9 @@ Component({
         },
         method:"POST",
         success(res){
-          
+          //缓存监护人id
+          wx.setStorageSync('parentId',res.data.data.id)
+          wx.setStorageSync('openid',res.data.data.open_id)
         }
       })
     }

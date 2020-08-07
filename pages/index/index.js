@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+let config = require('../../utils/config.js')
 Page({
   data: {
     list:[
@@ -75,8 +75,9 @@ Page({
   },
   fetchHospital(code){
     let that=this
+    console.log("333333333333333333")
     wx.request({
-      url: 'http://121.199.7.204:8085/app1/getHospitalList',
+      url: 'https://vaccing.51vipsh.com/app1/getHospitalList',
       header:{
         "Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"
       },
@@ -150,7 +151,7 @@ Page({
   fetchChildList(){
     let that=this
     wx.request({
-      url: 'http://121.199.7.204:8085/app1/childRecordList',
+      url: 'https://vaccing.51vipsh.com/app1/childRecordList',
       header:{
         "Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"
       },

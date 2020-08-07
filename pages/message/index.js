@@ -5,9 +5,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    records:[]
   },
-
+  getmessage(){
+    let that=this
+    wx.request({
+      url: 'http://121.199.7.204:8085/app/getMessageByPage',
+      header:{
+        "Content-Type":"application/json"
+      },
+      data:{
+        pageNum:1,
+        pageSize:10,
+        provinceCode:1,
+        cityCode:1,
+        areaCode:1,
+        committeeCode:1,
+        streetCode:1
+      },
+      method:"POST",
+      success(res){
+        console.log(res)
+        that.setData({
+          records:res.data.data.records
+        })
+        console.log(that.data.records)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -19,7 +44,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.getmessage()
   },
 
   /**

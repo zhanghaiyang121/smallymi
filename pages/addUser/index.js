@@ -9,6 +9,7 @@ Page({
   
   
   data: {
+    wxuserInfo:null,
     sex:1,
     userInfo:null,
     name:"",
@@ -23,7 +24,7 @@ Page({
     committee:null,
     committeeCode:"",
     street:null,
-    sexArr: [{"name": "男", "value": 1, "checked": false},{"name": "女", "value": 2, "checked": false}],
+    sexArr: [{"name": "男", "value": 1, "checked": false},{"name": "女", "value": 2, "checked": true}],
     index: 0,
     region: ['广东省', '广州市', '海珠区'],
     customItem: '全部',
@@ -67,6 +68,7 @@ Page({
       return;
     }
     
+    let parentId=wx.getStorageSync('parentId')
     let data={
         name: this.data.name,
         mobile: this.data.mobile,
@@ -82,10 +84,11 @@ Page({
         street:this.data.street,
         committee:this.data.committee,
         committeeCode:this.data.committeeCode,
-        address: this.data.address
+        address: this.data.address,
+        id:parentId
       }
       wx.request({
-        url: 'http://121.199.7.204:8085/app1/updateAdult',
+        url: 'https://vaccing.51vipsh.com/app1/updateAdult',
         header:{
           "Content-Type":"application/json"
         },
@@ -93,11 +96,62 @@ Page({
         method:"POST",
         success(res){
           wx.reLaunch({
-            url: '/pages/parent/index',
+            url: '/pages/me/me',
           })
           
         }
       })
+  },
+  getparents(){
+    let that=this
+    let openid=wx.getStorageSync('openid')
+    if(!openid){
+      return
+    }
+    wx.request({
+      url: 'http://121.199.7.204:8085/app1/getAdultByOpenid',
+      header:{
+        "Content-Type":"application/x-www-form-urlencoded;"
+      },
+      data:{
+        openId:openid
+      },
+      method:"POST",
+      success(res){
+        console.log(res)
+         let parent=res.data.data
+         let arr=that.data.sexArr
+         if(parent.sex==1){
+          arr[0].checked=true
+          arr[1].checked=false
+         }else{
+          arr[0].checked=false
+          arr[1].checked=true
+         }
+         that.setData({
+          sexArr:arr
+        })
+         that.setData({
+          name: parent.name,
+          mobile: parent.mobile,
+          sex: parent.sex,
+          idCard: parent.idCard,
+          provinceCode:13,
+          province: "河北省",
+          cityCode:parent.cityCode,
+          city: parent.city,
+          areaCode:parent.areaCode,
+          area:parent.area,
+          streetCode:parent.streetCode,
+          street:parent.street,
+          committee:parent.committee,
+          committeeCode:parent.committeeCode,
+          address: parent.address,
+          id:parent.id
+         })
+         
+      }
+    })
   },
   //性别选择
   radioChange(e) {
@@ -305,11 +359,7 @@ bindRegionChange: function (e) {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let userInfo = wx.getStorageSync('userInfo')
-    this.setData({
-      userInfo: userInfo
-    })
-    this.getArealist()
+   
   },
   dealRegion(data){
     let totalrigion=data
@@ -356,6 +406,19 @@ bindRegionChange: function (e) {
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that=this
+    let userInfo = wx.getStorageSync('userInfo')
+    this.setData({
+      userInfo: userInfo
+    })
+    this.getArealist()
+    this.getparents()
+    wx.getUserInfo({
+      success:res=>{
+        that.setData({
+          wxuserInfo: res.userInfo
+        })
+      }
+    })
   },
 })

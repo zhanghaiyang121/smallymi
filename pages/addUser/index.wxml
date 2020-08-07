@@ -9,10 +9,9 @@
         </view>
     </view>
     <view class="parent-item flex level">
-        <view class="flex-l">头像</view>
         <view class="flex-r flex end">
             <view class="face">
-                <image src="{{userInfo.avatarUrl}}"></image>
+                <image class="img" src="{{wxuserInfo.avatarUrl}}"></image>
             </view>
             <!-- <image class="arrow" src="../../images/arrow-icon.png"></image> -->
         </view>

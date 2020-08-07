@@ -10,7 +10,7 @@
 
 }
 .list{
-  height: calc(100vh - 420rpx);
+  height: calc(100vh - 425rpx);
   overflow: auto;
   position: relative;
   box-sizing: border-box;

@@ -1,4 +1,6 @@
 <view>
-   
+   <block wx:for="{{records}}" wx:key="{{item}}">
+      <m-card message="{{item}}"/>
+   </block>
 </view>
   

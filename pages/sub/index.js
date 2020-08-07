@@ -25,7 +25,7 @@ Page({
       },
       data:{
         childId:1,
-        recordId:1,
+        recordId:0,
         times:"2020-02-16 17:30:32",
         vname:2,
         vid:1

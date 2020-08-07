@@ -2,7 +2,12 @@
 page {
   background: #f7f7f7;
 }
-
+.face{
+  border-radius: 50%;
+}
+.img{
+  border-radius: 50%;
+}
 .flex{
   display: flex;
   align-items: center;
