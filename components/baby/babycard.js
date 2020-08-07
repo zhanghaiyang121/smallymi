@@ -34,8 +34,9 @@ Component({
     selectBaby(){
       //选择儿童
       wx.setStorageSync('childinfo',this.data.child)
-      wx.switchTab({
-        url: '/pages/index/index'
+      wx.setStorageSync('isaddchild',false)
+      wx.reLaunch({
+        url: '/pages/addbaby/index'
       })
       console.log(this.data.child)
     }

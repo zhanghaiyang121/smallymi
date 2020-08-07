@@ -2,8 +2,7 @@
   "disableScroll": true,
   "usingComponents": {
     "mp-tabs": "/components/common/tabs/tabs",
-    "mp-tapbar": "/components/common/tabbar/tabbar"
-
+    "v-tabbar":"/components/tabbar/index"
   },
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",

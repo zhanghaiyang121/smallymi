@@ -11,7 +11,9 @@ Component({
     fee:String,
     type:String,
     name:String,
-    vid:Number
+    vid:Number,
+    child:Object,
+    parent:Object
   },
 
   /**
@@ -25,26 +27,41 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    updateChildRecord(){
-      let that=this
-      console.log(that.data.vid)
-      wx.request({
-        url: 'http://121.199.7.204:8085/app1/updateChildRecord',
-        header:{
-          "Content-Type":"multipart/form-data;"
-        },
-        data:{
-          childId:1,
-          recordId:1,
-          times:"2020-02-16 17:30:32",
-          vname:2,
-          vid:1
-        },
-        method:"POST",
-        success(res){
-          console.log(res)
-        }
+    //预约
+    subscribe(){
+      //先判断用户是否登录
+      var openid = wx.getStorageSync('openid')
+      if(!openid){
+        wx.showToast({
+          title: '请前往登录',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+      //在判断用户是否有监护人
+      if(!this.data.parent){
+        wx.showToast({
+          title: '请添加监护人',
+          icon: 'none',
+          duration: 2000
+        })
+        return
+      }
+      //在判断是否有儿童
+      if(!this.data.child){
+        wx.showToast({
+          title: '请选择儿童',
+          icon: 'none',
+          duration: 2000
+        })
+        return
+      }
+      //跳到预约页面
+      wx.reLaunch({
+        url: '/pages/sub/index',
       })
-    }
+      
+
+    },
   }
 })

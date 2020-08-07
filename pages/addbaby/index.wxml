@@ -1,0 +1,51 @@
+<!--pages/parent/parent.wxml-->
+<view class="parent">
+    <view class="header">
+        <image src="../../images/baobao_page.png" style="width:750rpx;height:300rpx"/>
+        <view class="content">
+        <view class="hospital">
+            <view class="title" >添加儿童</view>
+        </view>
+        </view>
+    </view>
+   <view class="box">
+     <view class="parent-other-item flex level">
+        <view class="flex-l">姓名</view>
+        <view class="flex-r">
+            <input placeholder-class="placeholderStyle" maxlength="10"  bindinput="bindName" value="{{name}}" placeholder="请输入姓名" />
+        </view>
+    </view>
+    
+    <view class="parent-other-item flex level">
+        <view class="flex-l">性别</view>
+        <view class="flex-r">
+            <radio-group class="radio-group" bindchange="radioChange">
+                <radio class="radio" wx:for="{{sexArr}}" wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+                    <text>{{item.name}}</text>
+                </radio>
+            </radio-group>
+        </view>
+    </view>
+
+    <view class="parent-other-item flex level">
+        <view class="flex-l">时间选择器</view>
+        <view class="flex-r">
+            <picker mode="date" value="{{birthday}}"  bindchange="bindTimeChange">
+                <view class="picker">
+                当前选择: {{birthday}}
+                </view>
+            </picker>
+        </view>
+    </view>
+     <view class="parent-other-item flex level">
+        <view class="flex-l">身份证号</view>
+        <view class="flex-r">
+            <input placeholder-class="placeholderStyle"  bindinput="bindidCard" value="{{idCard}}" placeholder="请输入身份证号" />
+        </view>
+    </view>
+   </view>
+   
+   
+       
+    <view class="save btn" catchtap="addBabyInfo">确认</view>
+</view>

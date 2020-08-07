@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "parent-card":"/components/parent/index"
+  }
+}

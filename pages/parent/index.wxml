@@ -1,0 +1,16 @@
+<!--components/home/header/header.wxml-->
+<view>
+  <view class="header">
+    <image src="../../images/baobao_page.png" style="width:750rpx;height:300rpx"/>
+    <view class="content">
+      <view class="hospital">
+        <view class="title" >监护人列表</view>
+        <image class="arrow" src="../../images/arrow-icon.png"/>
+      </view>
+    </view>
+  </view>
+  <view class="child_list" >
+      <parent-card parent="{{parent}}"/>
+  </view>
+  <view class="btn" bind:tap="addParentInfo">+添加监护人</view>
+</view>

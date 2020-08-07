@@ -1,0 +1,30 @@
+
+.tabbar{
+   height:100rpx;
+   display: flex;
+   justify-content: space-around;
+   background: #fff;
+   padding-top: 20rpx;
+   box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
+}
+.image{
+   width: 60rpx;
+   height: 60rpx;
+}
+.text{
+   font-size: 24rpx;
+   line-height: 24rpx;
+   height: 24rpx;
+   text-align: center;
+}
+.tabitem{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+.imgbox{
+   align-self: center;
+}
+.active{
+
+}

@@ -1,6 +1,11 @@
 <!--components/me/listcard/listcard.wxml-->
-<view class="list_card" bindtap="topage">
+<view class="list_card" bindtap="topage" wx:if="{{!isbtn}}">
   <image class="image" src="{{imageurl}}"/>
   <text class="name">{{name}}</text>
   <image class="arrow" src="../../../images/arrow-icon.png"/>
 </view>
+<button class="list_card list_btn" open-type="contact" bindcontact="handleContact" wx:else>
+  <image class="image" src="{{imageurl}}"/>
+  <text class="name">{{name}}</text>
+  <image class="arrow" src="../../../images/arrow-icon.png"/>
+</button>

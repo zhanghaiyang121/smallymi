@@ -1,9 +1,10 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+let config = require('../../utils/config.js')
 Page({
   data: {
+    isShow:false,
     list:[
       {
         index:1,
@@ -40,58 +41,82 @@ Page({
     ],
     userInfo:null,
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-    
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    childlist:null,
+    parent:null,
+    hospital:null
   },
   onShow: function () {
     console.log(222)
     let that=this
-    wx.getStorage({
-      key: 'openid',
-      success: function(res){
-        console.log(res)
-        // success
-        //说明已经受过权了，可以获取用户信息了
-        wx.getUserInfo({
-          success:res=>{
-            console.log(res)
-            const app=getApp()
-            app.userInfo=res.userInfo
-            that.getChildInfo()
-          }
+    // wx.clearStorage()
+    let openid=wx.getStorageSync('openid')
+    if(openid){
+      this.getparents()
+      this.fetchchildslist()
+      //判断缓存里是否有儿童信息
+      let childinfo=wx.getStorageSync('childinfo')
+      if(childinfo){
+        //如果有获取儿童对应的疫苗信息
+        that.setData({
+          child:childinfo
         })
-        console.log(1)
+        that.fetchHospital(childinfo.area_code)
+        that.fetchChildList()
+      }else{
+        // 渲染默认疫苗列表并获取默认区域的医院
+        that.fetchHospital(13)
+        that.fetchList()
+      }
+    }else{
+      //第一次登录或者缓存清空后第一次登录跳转到个人中心进行登录
+      wx.reLaunch({
+        url: '/pages/me/me'
+      })
+    }
+  },
+  fetchHospital(code){
+    let that=this
+    console.log("333333333333333333")
+    wx.request({
+      url: 'https://vaccing.51vipsh.com/app1/getHospitalList',
+      header:{
+        "Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"
       },
-      fail:(err)=>{
-        console.log(2)
-        //第一次登录，跳到登录页
-        console.log(wx)
-        wx.reLaunch({
-          url: '/pages/me/me'
+      data:{
+        parent_code :code
+      },
+      method:"POST",
+      success(res){
+        console.log(res)
+        that.setData({
+          hospital:res.data.data
         })
       }
     })
   },
-  getChildInfo(){
-    let that=this
-    wx.getStorage({
-      key: 'childinfo',
-      success: function(res){
-        // 获取儿童信息成功
-        that.setData({
-          child:res.data
-        })
-        // 渲染儿童列表
-        console.log("渲染儿童注射后的疫苗列表")
-        that.fetchChildList()
-      },
-      fail:err=>{
-        //第一次登录，跳到登录页
-        // 渲染默认列表
-        console.log("渲染默认疫苗列表")
-        that.fetchList()
+  getparents(){
+      let that=this
+      let openid=wx.getStorageSync('openid')
+      if(!openid){
+        return
       }
-    })
+      wx.request({
+        url: 'https://vaccing.51vipsh.com/app1/getAdultByOpenid',
+        header:{
+          "Content-Type":"application/x-www-form-urlencoded;"
+        },
+        data:{
+          openId:openid
+        },
+        method:"POST",
+        success(res){
+          console.log(res)
+          that.setData({
+            parent:res.data.data
+          })
+        }
+      })
   },
   dealCarsList(data){
     
@@ -100,7 +125,7 @@ Page({
   fetchList(){
     let that=this
     wx.request({
-      url: 'http://121.199.7.204:8085/app1/vaccineList',
+      url: 'https://vaccing.51vipsh.com/app1/vaccineList',
       header:{
         "Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"
       },
@@ -111,17 +136,80 @@ Page({
       method:"POST",
       success(res){
         // that.dealCarsList(res.data.data)
-        that.setData({
-          cards:res.data.data
+        let ymilist=res.data.data
+        ymilist.forEach(item=>{
+          if(item.num>0){
+            item.status=0
+          }else{
+            item.status=-1
+          }
         })
+
+        let yimarr=[]
+        let finalarr=[]
+        ymilist.forEach(item=>{
+          let flag=yimarr.includes(item.time)
+          if(!flag){
+            yimarr.push(item.time)
+            let month=(item.time)%12
+            let year=Math.floor((item.time)/12)
+            let age=year+"岁"
+            if(month!=0){
+              age+=month+"个月"
+            }
+            
+            if(item.time==0){
+              age="出生时"
+            }
+            if(item.time<12){
+              age=month+"个月"
+            }
+            console.log(age)
+            finalarr.push({
+              age:age,
+              key:item.time,
+              list:[]
+            })
+          }
+        })
+        ymilist.forEach(item=>{
+          let index=yimarr.indexOf(item.time)
+          finalarr[index].list.push(item)
+        })
+        that.setData({
+          cards:finalarr
+        })
+        console.log(finalarr)
       }
     })
     
   },
+  fetchchildslist(){
+    let that=this
+    let openid=wx.getStorageSync('openid')
+    this.setData({
+      openid
+    })
+    wx.request({
+      url: 'https://vaccing.51vipsh.com/app1/getChildByOpenId',
+      header:{
+        "Content-Type":"application/x-www-form-urlencoded;"
+      },
+      data:{
+        openId:openid
+      },
+      method:"POST",
+      success(res){
+        that.setData({
+          childlist:res.data.data
+        })
+      }
+    })
+  },
   fetchChildList(){
     let that=this
     wx.request({
-      url: 'http://121.199.7.204:8085/app1/childRecordList',
+      url: 'https://vaccing.51vipsh.com/app1/childRecordList',
       header:{
         "Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"
       },
@@ -133,12 +221,12 @@ Page({
         //获取默认列表和已注入疫苗做对比
         let childYmilist=res.data.data
         wx.request({
-          url: 'http://121.199.7.204:8085/app1/vaccineList',
+          url: 'https://vaccing.51vipsh.com/app1/vaccineList',
           header:{
             "Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"
           },
           data:{
-            area :1,
+            area :that.data.child.area_code,
             type :2
           },
           method:"POST",
@@ -161,10 +249,42 @@ Page({
                 }
               })
             })
-            console.log(ymilist)
-            that.setData({
-              cards:ymilist
+            let yimarr=[]
+            let finalarr=[]
+            ymilist.forEach(item=>{
+              let flag=yimarr.includes(item.time)
+              if(!flag){
+                yimarr.push(item.time)
+                let month=(item.time)%12
+                let year=Math.floor((item.time)/12)
+                let age=year+"岁"
+                if(month!=0){
+                  age+=month+"个月"
+                }
+                
+                if(item.time==0){
+                  age="出生时"
+                }
+                if(item.time<12){
+                  age=month+"个月"
+                }
+                console.log(age)
+                finalarr.push({
+                  age:age,
+                  key:item.time,
+                  list:[]
+                })
+              }
             })
+            console.log(finalarr)
+            ymilist.forEach(item=>{
+              let index=yimarr.indexOf(item.time)
+              finalarr[index].list.push(item)
+            })
+            that.setData({
+              cards:finalarr
+            })
+            console.log(finalarr)
            
           }
         })
@@ -173,5 +293,27 @@ Page({
       }
     })
     
+  },
+  cancelMark(){
+    this.setData({
+      isShow:false
+    })
+  },
+  SelectChild(){
+    if(!this.data.childlist){
+      return
+    }
+    this.setData({
+      isShow:true
+    })
+  },
+  changechild(e){
+    let child=e.detail
+    this.setData({
+      child,
+      isShow:false
+    })
+    this.fetchHospital(child.area_code)
+    this.fetchChildList()
   }
 })

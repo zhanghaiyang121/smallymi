@@ -5,7 +5,7 @@
 }
 .list_box{
   background: rgb(238,238,238);
-  height: calc(100vh - 300rpx);
+  height: calc(100vh - 425rpx);
 }
 .help{
   background: #fff;

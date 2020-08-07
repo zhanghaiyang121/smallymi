@@ -68,4 +68,5 @@
     </view>
   </block>
 </mp-tabs>
+<v-tabbar></v-tabbar>
 </view>

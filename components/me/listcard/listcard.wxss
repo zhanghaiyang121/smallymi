@@ -21,3 +21,8 @@
   right: 0rpx;
   top: 36rpx;
 }
+.list_btn{
+  background: none !important;
+  margin: none !important;
+  width:100% !important;
+}

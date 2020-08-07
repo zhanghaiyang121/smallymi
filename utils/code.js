@@ -8,3 +8,28 @@
 //     console.log(err)
 //   }
 // })
+// "tabBar": {
+//   "color": "#999999",
+//   "selectedColor": "#6e95f4",
+//   "list": [
+//     {
+//       "pagePath": "pages/index/index",
+//       "text": "首页",
+//       "iconPath": "./images/index-normal.png",
+//       "selectedIconPath": "./images/index-select.png"
+//     },
+//     {
+//       "pagePath": "pages/news/news",
+//       "text": "健康资讯",
+//       "iconPath": "./images/news-normal.png",
+//       "selectedIconPath": "./images/news-select.png"
+//     },
+//     {
+//       "pagePath": "pages/me/me",
+//       "text": "个人中心",
+//       "iconPath": "./images/user-normal.png",
+//       "selectedIconPath": "./images/user-select.png"
+//     }
+//   ]
+// },
+

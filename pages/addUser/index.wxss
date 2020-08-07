@@ -1,0 +1,132 @@
+/* pages/parent/parent.wxss */
+page {
+  background: #f7f7f7;
+}
+.face{
+  border-radius: 50%;
+}
+.img{
+  border-radius: 50%;
+}
+.flex{
+  display: flex;
+  align-items: center;
+}
+.parent-item {
+  height: 118rpx;
+  background: #fff;
+  padding-left: 28rpx;
+  padding-right: 28rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.face {
+  width: 90rpx;
+  height: 90rpx;
+  background: #eeeeee;
+  border-radius: 100%;
+}
+.face image {
+  width: 100%;
+  height:100%;
+}
+.arrow {
+  width: 14rpx;
+  height: 26rpx;
+  margin-left: 20rpx;
+}
+.parent-other {
+  background: #fff;
+  margin-top: 38rpx;
+  border-top: 1rpx solid #eeeeee;
+  padding-left:28rpx;
+}
+.parent-other-item {
+  height: 118rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.flex-r {
+  flex: 1;
+}
+.provide-mode {
+  width:100%;
+}
+.provide-mode .tips {
+  color: #d0d0d0;
+}
+.provide-mode image {
+  width:14rpx;
+  height:26rpx;
+  transform:rotate(90deg);
+  margin-left: 20rpx;
+}
+.radio {
+  margin-left: 20rpx;
+  font-size: 28rpx;
+}
+.parent-other-item .flex-r {
+  text-align: right;
+  padding-right:28rpx;
+}
+.mark {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right:0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 99;
+}
+.fix-list {
+  position: absolute;
+  left: 0;
+  top: 360rpx;
+  width: 100%;
+  font-size: 24rpx;
+  color: #999;
+  text-align: center;
+  background: #fff;
+  z-index: 100;
+}
+.fix-list-item {
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.fix-list-item:last-child{
+  border-bottom: none;
+}
+.btn {
+  padding: 20rpx 0;
+  font-size: 30rpx;
+
+  color: #fff;
+
+  margin: 0 auto;
+  width: 500rpx;
+  margin-bottom: 60rpx;
+  margin-top: 60rpx;
+  border-radius: 60rpx;
+
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
+
+  text-align: center;
+  background: rgb(30,204,117);
+}
+.header{
+  height:300rpx;
+  position: relative;
+}
+.content{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+.title{
+  color: #fff;
+  font-weight: bolder;
+  font-size: 40rpx;
+  text-align: center;
+  margin-bottom: 90rpx;
+}

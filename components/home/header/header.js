@@ -4,7 +4,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-      child:Object
+      child:Object,
+      hospital:Object
   },
 
   /**
@@ -13,15 +14,19 @@ Component({
   data: {
 
   },
+  ready(){
+    
+  },
 
   /**
    * 组件的方法列表
    */
   methods: {
     goChildpage(){
-      wx.navigateTo({
-        url: "/pages/babylist/babylist",
-      })
+      // wx.navigateTo({
+      //   url: "/pages/babylist/babylist",
+      // })
+      this.triggerEvent('selecChild')
     }
   }
 })

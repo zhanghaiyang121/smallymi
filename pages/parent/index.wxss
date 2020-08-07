@@ -1,0 +1,42 @@
+/* components/home/header/header.wxss */
+.header{
+   height:300rpx;
+   position: relative;
+ }
+ .content{
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+ }
+ 
+ .arrow{
+   width: 14rpx;
+   height: 27rpx;
+   position: absolute;
+   right: 0rpx;
+   top: 36rpx;
+ }
+ .title{
+   color: #fff;
+   font-weight: bolder;
+   font-size: 40rpx;
+   text-align: center;
+   margin-bottom: 90rpx;
+ }
+ .child_list{
+   padding: 0 40rpx;
+ }
+ .btn{
+   background: rgb(30,204,117);
+   border-radius: 60rpx;
+   padding: 20rpx 0;
+   margin:0 60rpx;
+   text-align: center;
+   color: #fff;
+   font-size: 30rpx;
+   box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
+ }
+ 
+ 
+ 

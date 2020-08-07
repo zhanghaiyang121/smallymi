@@ -5,24 +5,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    childlist:[]
+    childlist:[],
+    openid:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.fetchBabylist()
+    
   },
   fetchBabylist(){
     let that=this
+    let openid=wx.getStorageSync('openid')
+    this.setData({
+      openid
+    })
     wx.request({
-      url: 'http://121.199.7.204:8085/app1/getChildByOpenId',
+      url: 'https://vaccing.51vipsh.com/app1/getChildByOpenId',
       header:{
         "Content-Type":"application/x-www-form-urlencoded;"
       },
       data:{
-        openId:1
+        openId:openid
       },
       method:"POST",
       success(res){
@@ -33,18 +38,22 @@ Page({
     })
   },
   addBabyInfo(){
-    wx.request({
-      url: 'http://121.199.7.204:8085/app1/updateChild',
-      header:{
-        "Content-Type":"application/json"
-      },
-      data:{
-        name:"wangwei"
-      },
-      method:"POST",
-      success(res){
-      }
+    wx.setStorageSync('isaddchild',true)
+    wx.reLaunch({
+      url: '/pages/addbaby/index',
     })
+    // wx.request({
+    //   url: 'http://121.199.7.204:8085/app1/updateChild',
+    //   header:{
+    //     "Content-Type":"application/json"
+    //   },
+    //   data:{
+    //     name:"wangwei"
+    //   },
+    //   method:"POST",
+    //   success(res){
+    //   }
+    // })
   },
 
   /**
@@ -58,7 +67,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.fetchBabylist()
   },
 
   /**
