@@ -22,10 +22,18 @@ Page({
   //保存反馈信息
   bindFormSubmit(e) {
     let content = e.detail.value.textarea
+    if(!content){
+      wx.showToast({
+        title: '内容不能为空',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
     console.log(e)
     let that=this
    wx.request({
-     url: 'http://121.199.7.204:8085/app1/saveAdvice',
+     url: 'https://vaccing.51vipsh.com/app1//saveAdvice',
      header:{
        "Content-Type":"application/json"
      },
@@ -40,9 +48,7 @@ Page({
      },
      method:"POST",
      success(res){
-      wx.reLaunch({
-        url: '/pages/me/me',
-      })
+      wx.navigateBack()
        // that.dealCarsList(res.data.data)
       
      }
@@ -50,17 +56,17 @@ Page({
   },
   fetchParentlist(){
     let that=this
+    let openId = wx.getStorageSync('openid')
     wx.request({
       url: 'http://121.199.7.204:8085/app1/getAdultByOpenid',
       header:{
         "Content-Type":"application/x-www-form-urlencoded;"
       },
       data:{
-        openId:1
+        openId
       },
       method:"POST",
       success(res){
-        console.log(res)
         that.setData({
           userinfo:res.data.data
         })
