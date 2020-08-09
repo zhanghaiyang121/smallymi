@@ -1,21 +1,18 @@
 /* components/home/point/point.wxss */
-.point{
-
-}
 .circle{
   display: inline-block;
   width:22rpx;
   height: 22rpx;
-  border:1px solid rgb(60,176,113);
+  border:1px solid #B7B7B7;
   border-radius: 50%;
   vertical-align: bottom;
 }
 .incircle{
-  width:14rpx;
-  height: 14rpx;
+  width:18rpx;
+  height: 18rpx;
   border-radius: 50%;
-  background: rgb(60,176,113);
-  margin-left: 5rpx;
+  background-color: #B7B7B7;
+  margin-left: 4rpx;
   margin-top: 4rpx;
 }
 .text{
@@ -23,6 +20,7 @@
   vertical-align: bottom;
   padding:0;
   margin:0;
+  color: #7B7B7B;
   font-size: 28rpx;
   line-height: 28rpx;
   margin-left: 10rpx;

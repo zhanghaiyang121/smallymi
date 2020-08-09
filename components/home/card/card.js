@@ -60,8 +60,6 @@ Component({
       wx.reLaunch({
         url: '/pages/sub/index',
       })
-      
-
     },
   }
 })
