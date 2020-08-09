@@ -1,41 +1,32 @@
 /* components/home/header/header.wxss */
-.header{
-  height:300rpx;
-  position: relative;
-}
-.content{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-
-.arrow{
-  width: 14rpx;
-  height: 27rpx;
-  position: absolute;
-  right: 0rpx;
-  top: 36rpx;
-}
-.title{
-  color: #fff;
-  font-weight: bolder;
-  font-size: 40rpx;
-  text-align: center;
-  margin-bottom: 90rpx;
-}
 .child_list{
   padding: 0 40rpx;
 }
 .btn{
-  background: rgb(30,204,117);
-  border-radius: 60rpx;
-  padding: 20rpx 0;
-  margin:0 60rpx;
+  position: fixed;
+  bottom: 100rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width:674rpx;
+  height:100rpx;
+  line-height: 100rpx;
+  background:rgba(78,186,154,1);
+  border-radius:50rpx;
   text-align: center;
   color: #fff;
-  font-size: 30rpx;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
+  font-size: 28rpx;
+}
+.btn image{
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: top;
+  margin-top: 30rpx;
+  margin-right: 18rpx;
+}
+.no-img{
+  width: 470rpx;
+  height: 334rpx;
+  margin-top: 100rpx;
 }
 
 

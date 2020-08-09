@@ -17,17 +17,17 @@
 .avatar_box{
   display: flex;
   justify-content: space-between;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
 }
 .avatar{
-  height: 80rpx;
-  width: 80rpx;
+  height: 120rpx;
+  width: 120rpx;
   border-radius: 50%;
   overflow: hidden;
 }
 .avatarimage{
-  height: 80rpx;
-  width: 80rpx;
+  height: 120rpx;
+  width: 120rpx;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -38,11 +38,14 @@
   width: unset  !important;
   background: none;
   margin: 0 !important;
+  padding-left: 40rpx;
+}
+.left:after{
+  border: none;
 }
 
 .name{
-  margin:0 20rpx;
-  font-weight: bolder;
+  margin:0 40rpx;
 }
 .face{
   border-radius: 50%;

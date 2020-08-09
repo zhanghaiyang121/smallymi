@@ -1,6 +1,7 @@
 // pages/addUser/index.js
 import {getProvide,getTowns,getVillage,saveParent,getParent} from '../../utils/api'
 let ajax = require('../../utils/ajax.js')
+const app = getApp()
 Page({
 
   /**
@@ -9,6 +10,7 @@ Page({
   
   
   data: {
+    totalHeight: 44,
     wxuserInfo:null,
     sex:1,
     userInfo:null,
@@ -30,9 +32,9 @@ Page({
     customItem: '全部',
     isSel:false,
     town:[],
-    cityarry:["石家庄市","张家口市"
-    ],
-    cityindex:0,
+    cityarry:[[{ name: '河北省', code: 13}]],
+    cityindex: [0,0,0],
+    cityarry1: [], //县
     areaindex:0,
     commiIndex:0,
     streetindex:0,
@@ -50,6 +52,7 @@ Page({
   //保存监护人信息
   saveDetail() {
     let reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/
+    let phoneReg = /0?(13|14|15|17|18|19)[0-9]{9}/
     if (this.data.name == '' || this.data.name == null) {
       wx.showToast({
         title: '姓名不能为空',
@@ -59,7 +62,15 @@ Page({
       return;
     }
     
-    if ((this.data.idCard != '' && this.data.idCard != null) && !reg.test(this.data.idCard)) {
+    if (!this.data.mobile || !phoneReg.test(this.data.mobile)) {
+      wx.showToast({
+        title: '手机号格式不正确',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    if (!this.data.idCard || !reg.test(this.data.idCard)) {
       wx.showToast({
         title: '身份证格式不正确',
         icon: 'none',
@@ -67,6 +78,31 @@ Page({
       })
       return;
     }
+    if (!this.data.cityCode || !this.data.areaCode) {
+      wx.showToast({
+        title: '请选择省市区',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    if (!this.data.streetCode || !this.data.street) {
+      wx.showToast({
+        title: '请选择乡镇',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    if (!this.data.committeeCode || !this.data.committee) {
+      wx.showToast({
+        title: '请选择居委会',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    
     
     let parentId=wx.getStorageSync('parentId')
     let data={
@@ -77,7 +113,7 @@ Page({
         provinceCode:13,
         province: "河北省",
         cityCode:this.data.cityCode,
-        city: this.data.region[1],
+        city: this.data.city,
         areaCode:this.data.areaCode,
         area:this.data.area,
         streetCode:this.data.streetCode,
@@ -87,6 +123,9 @@ Page({
         address: this.data.address,
         id:parentId
       }
+      wx.showLoading({
+        title: '',
+      })
       wx.request({
         url: 'https://vaccing.51vipsh.com/app1/updateAdult',
         header:{
@@ -99,6 +138,9 @@ Page({
             url: '/pages/me/me',
           })
           
+        },
+        complete(){
+          wx.hideLoading()
         }
       })
   },
@@ -151,7 +193,7 @@ Page({
           address: parent.address,
           id:parent.id
          })
-         
+         that.getArealist()
       }
     })
   },
@@ -177,12 +219,13 @@ Page({
       idCard: e.detail.value
     })
   },
-  getareaCodeList(cityCode){
+  getareaCodeList(val){
     let arealist=[]
     let sarealist=[]
-    this.data.totalrigion.forEach(item=>{
+    let arr = []
+    this.data.totalrigion[val].forEach(item=>{
       let flag=false
-      if(item.c_code==cityCode){
+      if(item.code==val){
         flag=arealist.includes(item.t_name); 
         if(!flag){
           arealist.push(item.t_name)
@@ -191,6 +234,7 @@ Page({
       }
       
     })
+    arealist.push(arr)
     this.setData({
       arealist,
       sarealist
@@ -201,49 +245,73 @@ Page({
   },
   dealstreetRegion(data){
     let totalstreetrigion=data
-    let commitarry=[]
+    let streetlist=[]
     let scommitarry=[]
-    data.forEach(item=>{
-      let flag=false
-      flag=commitarry.includes(item.c_name); 
-      if(!flag){
-        commitarry.push(item.c_name)
-        scommitarry.push(item)
+    let o = {};
+    let arr = data.reduce(function (item, next) {
+      o[next.c_code] ? '' : o[next.c_code] = true && item.push(next);
+      return item;
+    }, [])
+    arr.forEach(item=>{
+      let obj = {}
+      obj.name = item.c_name
+      obj.code = item.c_code
+      streetlist.push(obj)
+      scommitarry.push(item)
+    })
+    this.setData({
+      streetlist,
+      totalstreetrigion
+    })
+    if(this.data.streetCode){
+      this.dealcommitRegion(this.data.streetCode)
+    }
+  },
+  dealcommitRegion(code){
+    let commitarry=[]
+    this.data.totalstreetrigion.forEach(item=>{
+      if (item.c_code == code){
+        let obj = {}
+        obj.name = item.t_name
+        obj.code = item.t_code
+        commitarry.push(obj)
       }
     })
     this.setData({
-      commitarry,
-      scommitarry,
-      totalstreetrigion
+      commitarry
+    })
+    let streetindex = 0
+    let commiIndex = 0
+    if(this.data.streetCode){
+      streetindex = this.data.streetlist.findIndex(item => item.code == this.data.streetCode) || 0
+    }
+    if(this.data.committeeCode){
+      commiIndex = this.data.commitarry.findIndex(item => item.code == this.data.committeeCode) || 0
+    }
+    this.setData({
+      streetindex,
+      commiIndex
     })
   },
   bindCommitChange(e){
-    let committeeCode
-    let committee=this.data.commitarry[e.detail.value]
-    this.data.scommitarry.forEach(item=>{
-      if(item.c_name==committee){
-        committeeCode=item.c_code
-        //获取县
-        this.getStreetCodeList(committeeCode)
-      }
-    })
+    let committeeCode=this.data.commitarry[e.detail.value].code
+    let committee=this.data.commitarry[e.detail.value].name
     this.setData({
       committee,
       committeeCode
     })
   },
   bindStreetChange(e){
-    let streetCode
-    let street=this.data.streetlist[e.detail.value]
-    this.data.sstreetlist.forEach(item=>{
-      if(item.t_name==street){
-        streetCode=item.t_code
-      }
-    })
+    console.log(e)
+    let streetCode=this.data.streetlist[e.detail.value].code
+    let street=this.data.streetlist[e.detail.value].name
     this.setData({
       street,
-      streetCode
+      streetCode,
+      committee: '',
+      committeeCode: ''
     })
+    this.dealcommitRegion(streetCode)
   },
   getStreetCodeList(commitCode){
     let streetlist=[]
@@ -295,20 +363,44 @@ Page({
     })
   },
   bindCityChange(e){
-    let cityCode
-    let city=this.data.cityarry[e.detail.value]
-    this.data.scityarry.forEach(item=>{
-      if(item.c_name==city){
-        cityCode=item.c_code
-        //获取县
-        this.getareaCodeList(cityCode)
-      }
-    })
+    let arr = e.detail.value
+    let cityarry = this.data.cityarry
+    let cityCode = cityarry[1][arr[1]].code
+    let city=cityarry[1][arr[1]].name
+    let areaCode = cityarry[2][arr[2]].code
+    let area=cityarry[2][arr[2]].name
     this.setData({
       city,
-      cityCode
+      cityCode,
+      area,
+      areaCode,
+      street: '',
+      streetCode: '',
+      committee: '',
+      committeeCode: ''
     })
+    this.getstreetlist(areaCode)
     
+  },
+  bindColumnChange(e){
+    if(e.detail.column == 1){
+      let val = e.detail.value
+      let cityarry1 = this.data.totalrigion[val].addressDtoList
+      let arr = []
+      this.data.totalrigion[val].addressDtoList.forEach(item=>{
+        let obj = {}
+        obj.name = item.name
+        obj.code = item.code
+        arr.push(obj)
+      })
+      let cityarry = this.data.cityarry
+      cityarry[2] = arr
+      this.setData({
+        cityarry,
+        cityarry1
+      })
+    }else if(e.detail.column == 2){
+    }
   },
   bindAddress(e) {
     this.setData({
@@ -348,66 +440,100 @@ bindRegionChange: function (e) {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    let userInfo = wx.getStorageSync('userInfo')
+    if (userInfo) {
+      this.setData({
+        wxuserInfo: userInfo
+      })
+    }
+    this.getparents()
   },
   dealRegion(data){
     let totalrigion=data
-    let cityarry=[]
+    let cityarry=this.data.cityarry
+    let cityarry1=totalrigion[0].addressDtoList
     let scityarry=[]
+    let arr = []
     data.forEach(item=>{
-      let flag=false
-      flag=cityarry.includes(item.c_name); 
-      if(!flag){
-        cityarry.push(item.c_name)
-        scityarry.push(item)
-      }
+      let obj = {}
+      obj.name = item.name
+      obj.code = item.code
+      arr.push(obj)
+      scityarry.push(item)
     })
+    cityarry.push(arr)
+    let arr1 = []
+    if(this.data.cityCode){
+      let index = cityarry[1].findIndex(item => item.code == this.data.cityCode)
+      totalrigion[index].addressDtoList.forEach(item=>{
+        let obj = {}
+        obj.name = item.name
+        obj.code = item.code
+        arr1.push(obj)
+      })
+    }else{
+      totalrigion[0].addressDtoList.forEach(item=>{
+        let obj = {}
+        obj.name = item.name
+        obj.code = item.code
+        arr1.push(obj)
+      })
+    }
+
+    cityarry.push(arr1)
+    
     this.setData({
       cityarry,
+      cityarry1,
       scityarry,
       totalrigion
+    })
+
+    let indexArr = this.data.cityindex
+    if(this.data.cityCode){
+      let index = cityarry[1].findIndex(item => item.code == this.data.cityCode)
+      indexArr[1] = index
+    }
+    if(this.data.areaCode){
+      let index = cityarry[2].findIndex(item => item.code == this.data.areaCode)
+      indexArr[2] = index
+    }
+    this.setData({
+      cityindex: indexArr
     })
   },
   getArealist(){
     let that=this
     wx.request({
-      url: 'http://121.199.7.204:8085/app1/getAddress',
+      url: 'http://121.199.7.204:8085/app1/getAddressByParentCode',
       header:{
         "Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"
       },
       data:{
-        parent_code:13
+        parentCode:13
       },
       method:"POST",
       success(res){
         that.dealRegion(res.data.data)
       }
     })
+    if(this.data.areaCode){
+      this.getstreetlist(this.data.areaCode)
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      totalHeight: app.globalData.statusHeight + app.globalData.navHeight
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let that=this
-    let userInfo = wx.getStorageSync('userInfo')
-    this.setData({
-      userInfo: userInfo
-    })
-    this.getArealist()
-    this.getparents()
-    wx.getUserInfo({
-      success:res=>{
-        that.setData({
-          wxuserInfo: res.userInfo
-        })
-      }
-    })
+    
   },
 })

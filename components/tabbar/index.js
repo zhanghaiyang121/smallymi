@@ -24,7 +24,7 @@ Component({
     topage(e){
       let url=e.currentTarget.dataset.pageurl
       
-      wx.navigateTo({
+      wx.redirectTo({
         url: url,
       })
     

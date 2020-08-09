@@ -1,20 +1,17 @@
 <!--components/home/header/header.wxml-->
 <view>
-  <view class="header">
-    <image src="../../images/baobao_page.png" style="width:750rpx;height:300rpx"/>
-    <view class="content">
-      <view class="hospital">
-        <view class="title" >宝宝列表</view>
-        <image class="arrow" src="../../images/arrow-icon.png"/>
-      </view>
-    </view>
+  <nav-bar navTitle="宝宝列表" showBack="true" />
+  <view wx:if="{{childlist.length == 0}}" class="child_list" style="padding-top: {{totalHeight}}px;text-align:center" >
+    <image class="no-img" src="../../images/no_child.png"></image>
   </view>
-  <view class="child_list" >
+  <view wx:else class="child_list" style="padding-top: {{totalHeight+8}}px;">
     <block  wx:for="{{childlist}}" wx:key="item">
-        <baby-card child="{{item}}" age="6个月零2天"/>
+      <baby-card child="{{item}}"/>
     </block>
-   
   </view>
-  <view class="btn" bind:tap="addBabyInfo">+新增宝宝</view>
+  <view class="btn" bind:tap="addBabyInfo">
+    <image src="../../images/add_icon.png"></image>
+    新增宝宝
+  </view>
 </view>
 

@@ -1,4 +1,5 @@
 // pages/addUser/index.js
+const app = getApp()
 Page({
 
   /**
@@ -12,7 +13,10 @@ Page({
     idCard:null,
     pid:null,
     cid:null,
-    isaddchild:false
+    isaddchild:false,
+    totalHeight: 44,
+    title: '添加宝宝',
+    showDelete: false
 
   },
   getparents(){
@@ -54,11 +58,62 @@ Page({
       birthday: e.detail.value
     })
   },
+  deleteBaby(){
+    let data={
+      id: this.data.cid,
+      status: 0
+    }
+    
+    wx.request({
+      url: 'https://vaccing.51vipsh.com/app1/updateChild',
+      header:{
+        "Content-Type":"application/json"
+      },
+      data:data,
+      method:"POST",
+      success(res){
+        wx.navigateBack()
+      }
+    })
+  },
   addBabyInfo(){
+    let reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/
     let that=this
     let date=that.data.birthday
-    let birthday=date+" "+"00:00:00"
+    let birthday=date
     let id=null
+    if(!this.data.name){
+      wx.showToast({
+        title: '姓名不能为空',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
+    if(!this.data.birthday){
+      wx.showToast({
+        title: '请选择出生日期',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
+    if(!this.data.idCard){
+      wx.showToast({
+        title: '请填写身份证',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
+    if(!reg.test(this.data.idCard)){
+      wx.showToast({
+        title: '身份证格式不对',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
     let data={
       name:that.data.name,
       idCard:that.data.idCard,
@@ -80,9 +135,7 @@ Page({
       data:data,
       method:"POST",
       success(res){
-        wx.reLaunch({
-          url: '/pages/babylist/babylist',
-        })
+        wx.navigateBack()
       }
     })
   },
@@ -134,7 +187,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -148,6 +201,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let isaddchild=wx.getStorageSync('isaddchild')
+    if(!isaddchild){
+      this.setData({
+        title: '修改信息',
+        showDelete: true
+      })
+    }
+    this.setData({
+      totalHeight: app.globalData.statusHeight + app.globalData.navHeight
+    })
       this.getparents()
       this.getchildInfo()
   },
