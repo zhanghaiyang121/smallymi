@@ -16,7 +16,6 @@ Component({
       type:String,
       value:""
     },
-    age:String,
     child:Object
   },
 
@@ -24,7 +23,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    age: 0
   },
 
   /**
@@ -35,9 +34,17 @@ Component({
       //选择儿童
       wx.setStorageSync('childinfo',this.data.child)
       wx.setStorageSync('isaddchild',false)
-      wx.reLaunch({
+      wx.navigateTo({
         url: '/pages/addbaby/index'
       })
     }
+  },
+  ready(){
+    let curYear = new Date().getFullYear()
+    let birth = this.data.child.birthday.split('-')[0]
+    let age = curYear > birth ? curYear - birth : 0
+    this.setData({
+      age
+    })
   }
 })

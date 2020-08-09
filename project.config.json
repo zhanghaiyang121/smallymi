@@ -67,13 +67,6 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "pages/parent/index",
-					"pathName": "pages/parent/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "获取消息",
 					"pathName": "pages/message/index",
 					"query": "",
@@ -83,6 +76,20 @@
 					"id": -1,
 					"name": "pages/addUser/index",
 					"pathName": "pages/addUser/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/babylist/babylist",
+					"pathName": "pages/babylist/babylist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/addbaby/index",
+					"pathName": "pages/addbaby/index",
 					"query": "",
 					"scene": null
 				}

@@ -1,4 +1,5 @@
 // pages/babylist/babylist.js
+const app = getApp()
 Page({
 
   /**
@@ -6,14 +7,17 @@ Page({
    */
   data: {
     childlist:[],
-    openid:null
+    openid:null,
+    totalHeight: 44
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.setData({
+      totalHeight: app.globalData.statusHeight + app.globalData.navHeight
+    })
   },
   fetchBabylist(){
     let that=this
@@ -39,7 +43,7 @@ Page({
   },
   addBabyInfo(){
     wx.setStorageSync('isaddchild',true)
-    wx.reLaunch({
+    wx.navigateTo({
       url: '/pages/addbaby/index',
     })
     // wx.request({
