@@ -2,9 +2,6 @@
 <view class="header">
   <image src="../../../images/timg.png" style="width:750rpx;height:300rpx"/>
   <view class="content">
-    <view class="hospital">
-      <view class="title">个人中心</view>
-    </view>
     <view class="avatar_box">
       <button class="left"  open-type="getUserInfo"   bindgetuserinfo="getUserInfo">
           <view class="avatar">

@@ -7,7 +7,7 @@
       <view class="imgbox" wx:if="{{activeindex==0}}">
          <image class="image" src="../../images/index-select.png"/>
       </view>
-      <view class="text">宝宝疫苗</view>
+      <view class="text {{activeindex == 0 ? 'active' : ''}}">儿童疫苗</view>
    </view>
    <view class="tabitem" bindtap="topage" data-pageurl="/pages/appointment/appointment">
       <view class="imgbox" wx:if="{{activeindex!=1}}">
@@ -16,7 +16,7 @@
       <view class="imgbox" wx:if="{{activeindex==1}}">
          <image class="image" src="../../images/person-select.png"/>
       </view>
-      <view class="text">成人疫苗</view>
+      <view class="text {{activeindex == 1 ? 'active' : ''}}">成人疫苗</view>
    </view>
    <view class="tabitem" bindtap="topage" data-pageurl="/pages/news/news">
       <view class="imgbox" wx:if="{{activeindex!=2}}">
@@ -25,7 +25,7 @@
        <view class="imgbox" wx:if="{{activeindex==2}}">
          <image class="image" src="../../images/news-select.png"/>
       </view>
-      <view class="text">健康咨询</view>
+      <view class="text {{activeindex == 2 ? 'active' : ''}}">消息列表</view>
    </view>
    <view class="tabitem" bindtap="topage" data-pageurl="/pages/me/me">
       <view class="imgbox" wx:if="{{activeindex!=3}}">
@@ -34,7 +34,7 @@
        <view class="imgbox" wx:if="{{activeindex==3}}">
          <image class="image" src="../../images/user-select.png"/>
       </view>
-      <view class="text" >个人中心</view>
+      <view class="text {{activeindex == 3 ? 'active' : ''}}" >我的信息</view>
    </view>
 </view>
   

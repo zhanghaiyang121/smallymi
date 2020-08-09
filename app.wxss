@@ -23,6 +23,9 @@ button{
   margin-top: 10px;
   margin-bottom: 10px;
 }
+button:after{
+  border: none;
+}
 form{
   width: 100%;
 }

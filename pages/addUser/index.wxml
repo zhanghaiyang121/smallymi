@@ -1,22 +1,29 @@
 <!--pages/parent/parent.wxml-->
 <view class="parent">
-    <view class="header">
+    <nav-bar navTitle="监护人信息" showBack="true" />
+    <!-- <view class="header">
         <image src="../../images/baobao_page.png" style="width:750rpx;height:300rpx"/>
         <view class="content">
         <view class="hospital">
             <view class="title" >用户信息</view>
         </view>
         </view>
-    </view>
-    <view class="parent-item flex level">
+    </view> -->
+    <!-- <view class="parent-item flex level">
         <view class="flex-r flex end">
             <view class="face">
                 <image class="img" src="{{wxuserInfo.avatarUrl}}"></image>
             </view>
-            <!-- <image class="arrow" src="../../images/arrow-icon.png"></image> -->
+            <image class="arrow" src="../../images/arrow-icon.png"></image>
         </view>
-    </view>
-    <view class="parent-other">
+    </view> -->
+    <view class="parent-other" style="margin-top: {{totalHeight}}px">
+        <view class="parent-other-item flex level avatar-item">
+            <view class="flex-l">头像</view>
+            <view class="flex-r">
+                <image class="avatar-img" src="{{wxuserInfo.avatarUrl}}"></image>
+            </view>
+        </view>
         <view class="parent-other-item flex level">
             <view class="flex-l">姓名</view>
             <view class="flex-r">
@@ -46,45 +53,34 @@
             </view>
         </view>
         <view class="parent-other-item flex level">
-            <view class="flex-l">所属市</view>
+            <view class="flex-l">所属省市区</view>
             <view class="flex-r">
-                <picker  bindchange="bindCityChange" value="{{cityindex}}" range="{{cityarry}}" class="provide-mode" placeholder="请输选择所属市">
+                <picker bindchange="bindCityChange" mode="multiSelector" bindcolumnchange="bindColumnChange" value="{{cityindex}}" range="{{cityarry}}" range-key="name" class="provide-mode" placeholder="请选择省市区">
                     <view class="picker">
-                        <text class="tips" wx:if="{{city == null||city == ''}}">请选择省市区</text>
-                        <text class="tips" wx:else>{{city}}</text>
+                        <text class="tips" wx:if="{{!city || !area}}">请选择省市区</text>
+                        <text class="tips text" wx:else>河北省{{city}}{{area}}</text>
                     </view>
                   </picker>
             </view>
         </view>
         <view class="parent-other-item flex level">
-            <view class="flex-l">所属地区</view>
+            <view class="flex-l">所属乡镇</view>
             <view class="flex-r">
-                <picker  bindchange="bindAreaChange" value="{{areaindex}}" range="{{arealist}}" class="provide-mode" >
+                <picker  bindchange="bindStreetChange" value="{{streetindex}}" range="{{streetlist}}" range-key="name" class="provide-mode" >
                     <view class="picker">
-                        <text class="tips" wx:if="{{area == null||area == ''}}">请选择所属地区</text>
-                        <text class="tips" wx:else>{{area}}</text>
+                        <text class="tips" wx:if="{{!street}}">请选择所属乡镇</text>
+                        <text class="tips text" wx:else>{{street}}</text>
                     </view>
                   </picker>
             </view>
         </view>
         <view class="parent-other-item flex level">
-            <view class="flex-l">所属居委会</view>
+            <view class="flex-l">所属村(居)委会</view>
             <view class="flex-r">
-                <picker  bindchange="bindCommitChange" value="{{commiIndex}}" range="{{commitarry}}" class="provide-mode">
+                <picker  bindchange="bindCommitChange" value="{{commiIndex}}" range="{{commitarry}}" range-key="name" class="provide-mode">
                     <view class="picker">
-                        <text class="tips" wx:if="{{committee == null||committee == ''}}">请选择所属居委会</text>
-                        <text class="tips" wx:else>{{committee}}</text>
-                    </view>
-                  </picker>
-            </view>
-        </view>
-        <view class="parent-other-item flex level">
-            <view class="flex-l">所属街道</view>
-            <view class="flex-r">
-                <picker  bindchange="bindStreetChange" value="{{streetindex}}" range="{{streetlist}}" class="provide-mode">
-                    <view class="picker">
-                        <text class="tips" wx:if="{{street == null||street == ''}}">请选择所属街道</text>
-                        <text class="tips" wx:else>{{street}}</text>
+                        <text class="tips" wx:if="{{!committee}}">请选择所属居委会</text>
+                        <text class="tips text" wx:else>{{committee}}</text>
                     </view>
                   </picker>
             </view>

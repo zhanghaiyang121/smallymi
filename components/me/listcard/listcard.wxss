@@ -1,28 +1,33 @@
 /* components/me/listcard/listcard.wxss */
 .list_card{
-  padding: 30rpx 0;
+  height: 120rpx;
+  line-height: 120rpx;
   border-bottom: 1px solid #eee;
   position: relative;
   display: flex;
   align-items: center;
 }
 .image{
-  width: 30rpx;
-  height: 30rpx;
+  width: 42rpx;
+  height: 42rpx;
 }
 .name{
   font-size: 28rpx;
-  margin-left: 10rpx;
+  margin-left: 18rpx;
+  color: #777;
 }
 .arrow{
-  width: 14rpx;
-  height: 27rpx;
+  width: 22rpx;
+  height: 36rpx;
   position: absolute;
   right: 0rpx;
-  top: 36rpx;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .list_btn{
   background: none !important;
-  margin: none !important;
+  margin: 0 !important;
   width:100% !important;
+  padding: 0;
+  border-bottom: none;
 }

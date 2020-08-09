@@ -21,40 +21,31 @@ Component({
    * 组件的方法列表
    */
   ready(){
-    const app=getApp()
-    wx.getUserInfo({
-      success: res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true,
-          defaultUser:false
-        })
-      },
-      fail:err=>{
-        //
-      }
-    })
-    
+    if (wx.getStorageSync('userInfo')) {
+      this.setData({
+        userInfo: wx.getStorageSync('userInfo'),
+        hasUserInfo: true
+      })
+    }
   },
   methods: {
     getUserInfo: function(e) {
-      if(this.data.hasUserInfo){
-        return
-      }
-      const app = getApp();
-      app.globalData.userInfo = e.detail.userInfo
-      this.setData({
-        userInfo: e.detail.userInfo,
-        hasUserInfo: true,
-        defaultUser:false
-      })
-      //获取openid
-      wx.login({
-        success:res=>{
-          this.getOpenid(e.detail.userInfo.avatarUrl,e.detail.userInfo.nickName,res.code)
+      if (e.detail.errMsg != 'getUserInfo:fail auth deny') {
+        if (e.detail.userInfo) {
+          wx.setStorageSync('userInfo', e.detail.userInfo)
+          this.setData({
+            userInfo: e.detail.userInfo,
+            hasUserInfo: true,
+            defaultUser:false
+          })
+          //获取openid
+          wx.login({
+            success:res=>{
+              this.getOpenid(e.detail.userInfo.avatarUrl,e.detail.userInfo.nickName,res.code)
+            }
+          })
         }
-      })
-      
+      }
     },
     getOpenid(userHead,userName,code){
       //模拟获取openid

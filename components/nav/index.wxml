@@ -1,0 +1,7 @@
+<!--components/nav/index.wxml-->
+<view class="nav-bar" style="padding-top: {{statusHeight}}px; height: {{navHeight}}px; line-height: {{navHeight}}px; background-color: {{bgColor}}; color: {{textColor}}">
+  <view wx:if="{{showBack}}" class="arrow-wrap" bindtap="goBack" style="top: {{statusHeight}}px; height: {{navHeight}}px;">
+    <view class="arrow"></view>
+  </view>
+  <view class="text">{{navTitle}}</view>
+</view>

@@ -68,5 +68,5 @@
     </view>
   </block>
 </mp-tabs>
-<v-tabbar></v-tabbar>
+<v-tabbar activeindex="1" />
 </view>

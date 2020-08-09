@@ -69,6 +69,7 @@ Page({
       }
     }else{
       //第一次登录或者缓存清空后第一次登录跳转到个人中心进行登录
+      wx.clearStorageSync()
       wx.reLaunch({
         url: '/pages/me/me'
       })
