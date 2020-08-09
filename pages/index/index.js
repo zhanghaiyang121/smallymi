@@ -53,6 +53,7 @@ Page({
     if(openid){
       this.getparents()
       this.fetchchildslist()
+      console.log(this.data.childlist)
       //判断缓存里是否有儿童信息
       let childinfo=wx.getStorageSync('childinfo')
       if(childinfo){
