@@ -1,7 +1,10 @@
 <!--components/home/newsCard/newsCard.wxml-->
 <view class="newscard">
-  <view class="news_card_item" wx:key="index" wx:for="{{list}}">
-      <view  class="num {{item.index==1?'numcolor1':''}} {{item.index==2?'numcolor2':''}} {{item.index==3?'numcolor3':''}} {{item.index==4?'numcolor4':''}}">{{item.num}}</view>
-      <view class="name">{{item.name}}</view>
-  </view>
+	<view class="news_card_title">抗击新冠肺炎</view>
+	<view class="newcard_list">
+		<view class="news_card_item" wx:key="index" wx:for="{{list}}">
+			<view class="num {{item.index==1?'numcolor1':''}} {{item.index==2?'numcolor2':''}} {{item.index==3?'numcolor3':''}} {{item.index==4?'numcolor4':''}}">{{item.num}}</view>
+			<view class="name">{{item.name}}</view>
+		</view>
+	</view>
 </view>

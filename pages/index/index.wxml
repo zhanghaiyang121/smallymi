@@ -7,6 +7,7 @@
     <view class="news_card_box">
       <v-newsCard list="{{list}}"/>
     </view>
+    <view class="list-title">国家免疫规划疫苗儿童免疫程序表</view>
     <view class="list_box age0"  wx:for="{{cards}}" wx:key="item">
         <v-point age="{{item.age}}" isShow="{{item.key==0}}"/>
         <view class="cardlist">
