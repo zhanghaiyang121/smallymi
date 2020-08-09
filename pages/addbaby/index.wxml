@@ -1,14 +1,15 @@
 <!--pages/parent/parent.wxml-->
 <view class="parent">
-    <view class="header">
+    <nav-bar navTitle="{{title}}" showBack="true" />
+    <!-- <view class="header">
         <image src="../../images/baobao_page.png" style="width:750rpx;height:300rpx"/>
         <view class="content">
         <view class="hospital">
             <view class="title" >添加儿童</view>
         </view>
         </view>
-    </view>
-   <view class="box">
+    </view> -->
+   <view class="box" style="padding-top: {{totalHeight}}px;">
      <view class="parent-other-item flex level">
         <view class="flex-l">姓名</view>
         <view class="flex-r">
@@ -28,11 +29,14 @@
     </view>
 
     <view class="parent-other-item flex level">
-        <view class="flex-l">时间选择器</view>
+        <view class="flex-l">出生日期</view>
         <view class="flex-r">
             <picker mode="date" value="{{birthday}}"  bindchange="bindTimeChange">
-                <view class="picker">
-                当前选择: {{birthday}}
+                <view class="picker" wx:if="{{birthday}}">
+                    {{birthday}}
+                </view>
+                <view class="picker" wx:else style="color: #777">
+                    请选择日期
                 </view>
             </picker>
         </view>

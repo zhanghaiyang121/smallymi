@@ -2,7 +2,9 @@
 page {
   background: #f7f7f7;
 }
-
+.box{
+  background-color: #fff;
+}
 .flex{
   display: flex;
   align-items: center;
@@ -60,7 +62,7 @@ page {
 }
 .parent-other-item .flex-r {
   text-align: right;
-  padding-right:28rpx;
+  /* padding-right:28rpx; */
 }
 .mark {
   position: fixed;

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "baby-card":"/components/baby/babycard"
+    "baby-card":"/components/baby/babycard",
+    "nav-bar": "/components/nav/index"
   }
 }
