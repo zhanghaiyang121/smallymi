@@ -8,6 +8,7 @@ Component({
   properties: {
     tabs: {type: Array, value: []},
     tabClass: {type: String, value: ''},
+    clientHeight: {type: String, value: ''},
     swiperClass: {type: String, value: ''},
     activeClass: {type: String, value: ''},
     tabUnderlineColor: {type: String, value: '#07c160'},

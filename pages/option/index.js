@@ -30,7 +30,14 @@ Page({
       })
       return
     }
-    console.log(e)
+    if(!this.data.userinfo.cityCode || !this.data.userinfo.areaCode){
+      wx.showToast({
+        title: '请设置用户信息',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
     let that=this
    wx.request({
      url: 'https://vaccing.51vipsh.com/app1//saveAdvice',

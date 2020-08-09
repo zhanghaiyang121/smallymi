@@ -302,14 +302,14 @@ Page({
     })
   },
   bindStreetChange(e){
-    console.log(e)
     let streetCode=this.data.streetlist[e.detail.value].code
     let street=this.data.streetlist[e.detail.value].name
     this.setData({
       street,
       streetCode,
       committee: '',
-      committeeCode: ''
+      committeeCode: '',
+      commitarry: []
     })
     this.dealcommitRegion(streetCode)
   },
@@ -376,8 +376,10 @@ Page({
       areaCode,
       street: '',
       streetCode: '',
+      streetlist: [],
       committee: '',
-      committeeCode: ''
+      committeeCode: '',
+      commitarry: []
     })
     this.getstreetlist(areaCode)
     

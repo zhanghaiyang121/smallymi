@@ -1,5 +1,6 @@
 /* pages/question/question.wxss */
 .question {
+   padding-top: 20rpx;
    padding-left: 28rpx;
    padding-right: 28rpx;
 }

@@ -1,11 +1,13 @@
 <!--pages/question/question.wxml-->
-<view class="header">
+<view>
+    <nav-bar navTitle="{{title}}" bgColor="transparent" showBack="true" textColor="#fff" navTitle="投诉建议" />
+    <view class="header">
     <image src="../../images/baobao_page.png" style="width:750rpx;height:300rpx"/>
-    <view class="content">
+    <!-- <view class="content">
       <view class="hospital">
         <view class="title" >常见问题</view>
       </view>
-    </view>
+    </view> -->
 </view>
 <view class="question">
 
@@ -28,3 +30,5 @@
         <view class="question-answer">由于疫苗保存条件比较苛刻，库存可能会出现不足的情况，详情可咨询当时当地疾病预防控制中心或基层医疗卫生机构。</view>
     </view>
 </view>
+</view>
+

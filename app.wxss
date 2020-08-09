@@ -12,6 +12,11 @@ page {
   display: flex;
   justify-content: center;
 }
+.text-overflow{
+  overflow: hidden;    
+  text-overflow:ellipsis;    
+  white-space: nowrap;
+}
 page>view {
   width: 100vw;
   max-width: 600px;

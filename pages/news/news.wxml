@@ -1,2 +1,17 @@
 <!--pages/news/news.wxml-->
-<text>pages/news/news.wxml</text>
+<view class="news">
+  <nav-bar navTitle="消息列表"/>
+  <view wx:if="{{newList.length == 0}}" class="news-list" style="padding-top: {{totalHeight + 10}}px;text-align:center">
+    <image class="no-img" src="../../images/no_child.png"></image>
+  </view>
+  <view wx:else class="news-list" style="padding-top: {{totalHeight + 10}}px">
+    <view class="news-item" wx:for="{{newList}}" wx:key="index">
+      <view class="title">
+        <image class="img" src="../../images/news_icon.png"></image>
+        <text>{{item.title}}</text>
+      </view>
+      <view class="content">{{item.disc}}</view>
+    </view>
+  </view>
+  <v-tabbar activeindex="2"/>
+</view>
