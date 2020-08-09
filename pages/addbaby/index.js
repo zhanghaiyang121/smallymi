@@ -15,7 +15,8 @@ Page({
     cid:null,
     isaddchild:false,
     totalHeight: 44,
-    title: '添加儿童'
+    title: '添加宝宝',
+    showDelete: false
 
   },
   getparents(){
@@ -55,6 +56,24 @@ Page({
   bindTimeChange(e){
     this.setData({
       birthday: e.detail.value
+    })
+  },
+  deleteBaby(){
+    let data={
+      id: this.data.cid,
+      status: 0
+    }
+    
+    wx.request({
+      url: 'https://vaccing.51vipsh.com/app1/updateChild',
+      header:{
+        "Content-Type":"application/json"
+      },
+      data:data,
+      method:"POST",
+      success(res){
+        wx.navigateBack()
+      }
     })
   },
   addBabyInfo(){
@@ -116,9 +135,7 @@ Page({
       data:data,
       method:"POST",
       success(res){
-        wx.reLaunch({
-          url: '/pages/babylist/babylist',
-        })
+        wx.navigateBack()
       }
     })
   },
@@ -187,7 +204,8 @@ Page({
     let isaddchild=wx.getStorageSync('isaddchild')
     if(!isaddchild){
       this.setData({
-        title: '修改信息'
+        title: '修改信息',
+        showDelete: true
       })
     }
     this.setData({

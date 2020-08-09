@@ -52,4 +52,5 @@
    
        
     <view class="save btn" catchtap="addBabyInfo">确认</view>
+    <view wx:if="{{showDelete}}" class="save btn delete" catchtap="deleteBaby">删除</view>
 </view>

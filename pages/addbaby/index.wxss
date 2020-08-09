@@ -99,7 +99,6 @@ page {
 
   margin: 0 auto;
   width: 500rpx;
-  margin-bottom: 60rpx;
   margin-top: 60rpx;
   border-radius: 60rpx;
 
@@ -117,6 +116,11 @@ page {
   bottom: 0;
   left: 0;
   width: 100%;
+}
+.delete{
+  margin-top: 40rpx;
+  background-color: #ccc;
+  color: #333;
 }
 
 

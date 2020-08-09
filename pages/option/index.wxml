@@ -1,10 +1,12 @@
 <!--pages/feedback/feedback.wxml-->
-<view class="header">
+<view>
+   <nav-bar navTitle="{{title}}" bgColor="transparent" showBack="true" textColor="#fff" navTitle="投诉建议" />
+   <view class="header">
    <image src="../../images/baobao_page.png" style="width:750rpx;height:300rpx"/>
    <view class="content">
-   <view class="hospital">
+   <!-- <view class="hospital">
       <view class="title" >投诉建议</view>
-   </view>
+   </view> -->
    </view>
 </view>
 <view class="feeback">
@@ -13,3 +15,5 @@
    <button class="btn" form-type="submit"> 提交 </button>
     </form>
 </view>
+</view>
+
