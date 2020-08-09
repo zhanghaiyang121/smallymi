@@ -27,6 +27,10 @@
   padding-top: 1rpx;
   padding-bottom: 1rpx; */
 }
+.list-title{
+  font-size: 28rpx;
+  color: #7B7B7B;
+}
 .list .list_box:last-child{
   border-left-color: #fff;
 }

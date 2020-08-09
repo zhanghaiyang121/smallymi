@@ -1,13 +1,18 @@
 /* components/home/newsCard/newsCard.wxss */
 .newscard{
-  display: flex;
-  justify-content: space-around;
   box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
   border-radius: 10rpx;
   padding: 40rpx 20rpx;
 }
-.news_card_item{
-
+.news_card_title{
+  font-size: 32rpx;
+  color: #4A4A4A;
+  margin-left: 20rpx;
+}
+.newcard_list{
+  display: flex;
+  justify-content: space-around;
+ 
 }
 .num{
   text-align: center;
