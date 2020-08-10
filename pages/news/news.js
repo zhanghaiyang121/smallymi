@@ -61,14 +61,16 @@ Page({
           // })
           let newList = this.data.newList.concat(data.records)
           this.setData({
-            newList,
-            isLoad: true
+            newList
           })
         } else {
           this.setData({
             loadFinish: true
           })
         }
+        this.setData({
+          isLoad: true
+        })
       }
     })
   },
