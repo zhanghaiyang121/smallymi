@@ -47,7 +47,8 @@ Page({
       success(res) {
         let subscribeList = res.data.data.splice(0, 6);
         subscribeList.forEach(i => {
-          let date = new Date(i.createTime);
+          let time = i.createTime.replace(/-/g,'/')
+          let date = new Date(time);
           let month = date.getMonth() > 8 ? date.getMonth()+1 : '0' + (date.getMonth()+1)
           i.monthDay = month + '-' + date.getDate();
           i.week = that.getWeek(date.getDay());
