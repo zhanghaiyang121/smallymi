@@ -3,7 +3,7 @@
   <view class="card-tips {{card.cost == 0 ? 'colorY' : 'colorR'}}">
     {{card.cost == 0 ? "必打":"自费"}}
   </view>
-  <view class="card-info">
+  <view class="card-info" bindtap="toyiminfo">
     <view>
       <text>{{card.name}}</text>
       <text>剂量: {{card.num}}</text>

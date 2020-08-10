@@ -113,6 +113,12 @@
 					"pathName": "pages/appointment/appointment",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "疫苗详情",
+					"pathName": "pages/yiminfo/index",
+					"scene": null
 				}
 			]
 		}
