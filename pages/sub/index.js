@@ -1,3 +1,5 @@
+
+const app = getApp()
 // pages/sub/index.js
 Page({
 
@@ -5,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    totalHeight: 44,
     card: {}, // 疫苗信息
     child: {}, // 儿童信息
     parent: {}, // 父级信息
@@ -122,7 +125,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+      this.setData({
+        totalHeight: app.globalData.statusHeight + app.globalData.navHeight
+      })
   },
 
   /**

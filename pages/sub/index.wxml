@@ -2,7 +2,7 @@
 <view class="home">
 	<view class="header">
 		<nav-bar navTitle="预约疫苗" showBack="true" />
-		<view class="tips">
+		<view class="tips" style="margin-top: {{totalHeight}}px">
 			选择接种日期，为了宝宝安全，请务必正确填写
 		</view>
 		<view class="child-info">

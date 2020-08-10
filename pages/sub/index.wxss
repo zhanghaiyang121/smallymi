@@ -2,7 +2,6 @@
   background-color: #f8f8f8;
 }
 .header{
-  padding-top: 120rpx;
   position: relative;
 }
 .tips{
