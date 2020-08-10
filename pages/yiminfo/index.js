@@ -29,6 +29,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    const app=getApp()
+    console.log(app.globalData)
+    
     let yim=wx.getStorageSync('yiminfo')
     let arr=yim.desc_info.split("|")
     let isFree=true
@@ -38,7 +41,8 @@ Page({
     this.setData({
       yiminfo:arr,
       yim:yim,
-      isFree
+      isFree,
+      totalHeight: app.globalData.statusHeight + app.globalData.navHeight
     })
   },
 

@@ -1,7 +1,7 @@
 <!--pages/yiminfo/index.wxml-->
 <view class="yiminfo">
   <nav-bar navTitle="详情介绍" showBack="true" />
-  <view class="yimtitle" style="margin-top: 60px"> 
+  <view class="yimtitle" style="margin-top: {{totalHeight}}px"> 
     <view class="name">
         {{yim.name}}
     </view>
