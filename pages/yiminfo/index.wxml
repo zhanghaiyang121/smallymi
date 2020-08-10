@@ -1,0 +1,43 @@
+<!--pages/yiminfo/index.wxml-->
+<view class="yiminfo">
+  <nav-bar navTitle="详情介绍" showBack="true" />
+  <view class="yimtitle" style="margin-top: {{totalHeight}}px"> 
+    <view class="name">
+        {{yim.name}}
+    </view>
+    <view class="label" wx:if="{{isFree}}">
+       必打
+    </view>
+    <view class="label" wx:else>
+       自费
+    </view>
+      
+  </view>
+  <view class="infobox time"> 
+    <view class="title">
+        接种时间
+    </view>
+    <view class="content">
+        {{yiminfo[0]}}
+    </view>
+  </view>
+  <view class="infobox reson">
+    <view class="title">
+        接种原因
+    </view>
+    <view class="content">
+        {{yiminfo[1]}}
+    </view>
+  </view>
+  <view class="infobox yl">
+    <view class="title">
+        接种原理
+    </view>
+    <view class="content">
+        {{yiminfo[2]}}
+    </view>
+  </view>
+</view>
+
+  
+  

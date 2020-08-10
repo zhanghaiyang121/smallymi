@@ -13,7 +13,8 @@
     "pages/question/index",
     "pages/addbaby/index",
     "pages/sub/index",
-    "pages/message/index"
+    "pages/message/index",
+    "pages/yiminfo/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
