@@ -28,7 +28,7 @@
 					<text class="name">{{card.name}}</text>
 					<text class="num">剂量: {{card.num}}</text>
 				</view>
-				<view class="desc">{{card.desc}}</view>
+				<view class="desc">{{card.disc}}</view>
 			</view>
 			<view class="price">{{card.cost? '¥'+card.cost: ''}}</view>
 		</view>

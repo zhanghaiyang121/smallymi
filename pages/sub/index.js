@@ -48,7 +48,7 @@ Page({
         let subscribeList = res.data.data.splice(0, 6);
         subscribeList.forEach(i => {
           let date = new Date(i.createTime);
-          let month = date.getMonth() > 8 ? date.getMonth+1 : '0' + (date.getMonth()+1)
+          let month = date.getMonth() > 8 ? date.getMonth()+1 : '0' + (date.getMonth()+1)
           i.monthDay = month + '-' + date.getDate();
           i.week = that.getWeek(date.getDay());
           i.isHaveNum = i.total - i.agreeNum > 0 ? true : false
@@ -91,6 +91,13 @@ Page({
   //预约点击
   subscribe() {
     console.log(123)
+    if(!this.data.subscribeList.length){
+      wx.showToast({
+        title: '没有预约列表',
+        icon: 'none'
+      })
+      return;
+    }
     wx.requestSubscribeMessage({
       tmplIds: ["Kn811deRG2xaXFvXuEiSQYHHyfx4gAje2U4hy-WuThs"],
       success: res => {
