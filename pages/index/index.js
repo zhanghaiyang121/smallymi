@@ -216,7 +216,7 @@ Page({
         if (!childInfo.cid) {
           let ageArr = that.getAge(res.data.data[0].birthday)
           let ageYear = ageArr[0] > 0 ?ageArr[0]+'岁':''
-          let ageMonth =  ageArr[0] > 0 ? ageArr[1] > 0 ? ageArr[1] +'个月':'':'不满1月'
+          let ageMonth =  ageArr[0] > 0 ? ageArr[1] > 0 ? ageArr[1] +'个月':'':ageArr[1] > 0 ? ageArr[1] +'个月': '不满1月'
           res.data.data[0].age = ageYear+ageMonth
           that.setData({
             child: res.data.data[0]
@@ -336,7 +336,7 @@ Page({
     let child = e.detail
     let ageArr = this.getAge(child.birthday)
     let ageYear = ageArr[0] > 0 ?ageArr[0]+'岁':''
-    let ageMonth =  ageArr[0] > 0 ? ageArr[1] > 0 ? ageArr[1] +'个月':'':'不满1月'
+    let ageMonth =  ageArr[0] > 0 ? ageArr[1] > 0 ? ageArr[1] +'个月':'':ageArr[1] > 0 ? ageArr[1] +'个月': '不满1月'
     child.age = ageYear+ageMonth
     this.setData({
       child,
