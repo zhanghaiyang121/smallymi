@@ -122,7 +122,7 @@ Page({
         times: time,
         vname: this.data.card.name,
         vid: this.data.card.id,
-        type: 2
+        type: this.data.card.type
       },
       method: "POST",
       success(res) {}

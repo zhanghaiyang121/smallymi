@@ -64,7 +64,9 @@ Component({
         return
       }
       console.log(this.data.card)
-      wx.setStorageSync('cardInfo', this.data.card)
+      let card = Object.assign({}, this.data.card)
+      card.type = 2
+      wx.setStorageSync('cardInfo', card)
       //跳到预约页面
       wx.navigateTo({
         url: '/pages/sub/index',
