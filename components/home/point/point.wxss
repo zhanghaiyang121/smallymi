@@ -1,4 +1,7 @@
 /* components/home/point/point.wxss */
+.point{
+  display: flex;
+}
 .circle{
   display: inline-block;
   width:22rpx;
