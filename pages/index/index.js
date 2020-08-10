@@ -209,11 +209,16 @@ Page({
       },
       method: "POST",
       success(res) {
+        let childInfo = wx.getStorageSync('childinfo')
         that.setData({
           childlist: res.data.data,
-          child: res.data.data[0]
         })
-        wx.setStorageSync('childinfo', res.data.data[0])
+        if(!childInfo.cid){
+          that.setData({
+            child: res.data.data[0]
+          })
+          wx.setStorageSync('childinfo', res.data.data[0])
+        }
       }
     })
   },
