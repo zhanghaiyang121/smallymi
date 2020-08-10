@@ -469,6 +469,7 @@ bindRegionChange: function (e) {
     let arr1 = []
     if(this.data.cityCode){
       let index = cityarry[1].findIndex(item => item.code == this.data.cityCode)
+      index = index < 0 ? 0 : index
       totalrigion[index].addressDtoList.forEach(item=>{
         let obj = {}
         obj.name = item.name

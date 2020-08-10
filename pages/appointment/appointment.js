@@ -11,6 +11,7 @@ CustomPage({
     tabs: [],
     activeTab: 0,
     totalHeight: 44,
+    isLoad: false
   },
 
   getTypeList(){
@@ -32,14 +33,21 @@ CustomPage({
             return item
           })
           this.setData({
-            tabs
+            tabs,
+            isLoad: true
           })
         }
       }
     })
   },
   goOrder(e){
-    console.log(e.target.dataset)
+    let card = Object.assign({}, e.target.dataset.card)
+    card.type = 1
+    wx.setStorageSync('cardInfo', card)
+    //跳到预约页面
+    wx.navigateTo({
+      url: '/pages/sub/index',
+    })
   },
 
   onLoad() {

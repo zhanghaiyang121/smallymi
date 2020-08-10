@@ -101,22 +101,22 @@ Page({
       })
       return
     }
-    if(!this.data.idCard){
-      wx.showToast({
-        title: '请填写身份证',
-        icon: 'none',
-        duration: 2000
-      })
-      return
-    }
-    if(!reg.test(this.data.idCard)){
-      wx.showToast({
-        title: '身份证格式不对',
-        icon: 'none',
-        duration: 2000
-      })
-      return
-    }
+    // if(!this.data.idCard){
+    //   wx.showToast({
+    //     title: '请填写身份证',
+    //     icon: 'none',
+    //     duration: 2000
+    //   })
+    //   return
+    // }
+    // if(!reg.test(this.data.idCard)){
+    //   wx.showToast({
+    //     title: '身份证格式不对',
+    //     icon: 'none',
+    //     duration: 2000
+    //   })
+    //   return
+    // }
     let data={
       name:that.data.name,
       idCard:that.data.idCard,

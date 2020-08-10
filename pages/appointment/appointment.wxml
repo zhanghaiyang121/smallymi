@@ -1,6 +1,6 @@
 <view class="page" data-weui-theme="{{theme}}" style="padding-top: {{totalHeight}}px;">
   <nav-bar navTitle="成人疫苗"/>
-  <view wx:if="{{tabs.length == 0}}" class="no-data">
+  <view wx:if="{{isLoad && tabs.length == 0}}" class="no-data">
     <image class="no-img" src="../../images/no_child.png"></image>
   </view>
   <mp-tabs 
@@ -28,10 +28,10 @@
             <view class="type">自费</view>
             <view class="more">
               <view class="title">{{item.name}} <text>计量:{{item.num}} </text></view> 
-              <view class="desc text-overflow">{{item.disc}}</view>
+              <view class="desc text-overflow">{{item.desc}}</view>
             </view>
             <view class="price">¥{{item.cost}}</view>
-            <view class="order" bindtap="goOrder" data-id="{{item.id}}">预约</view>
+            <view class="order" bindtap="goOrder" data-card="{{item}}">预约</view>
           </view>
         </view>
       </view>

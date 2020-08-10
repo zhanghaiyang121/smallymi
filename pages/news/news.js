@@ -7,11 +7,12 @@ Page({
    */
   data: {
     totalHeight: 44,
-    pageSize: 0,
-    pageNum: 10,
+    pageSize: 10,
+    pageNum: 1,
     userinfo: {},
     loadFinish: false,
-    newList:  []
+    newList:  [],
+    isLoad: false
   },
   fetchParentlist(){
     let that=this
@@ -60,7 +61,8 @@ Page({
           // })
           let newList = this.data.newList.concat(data.records)
           this.setData({
-            newList
+            newList,
+            isLoad: true
           })
         } else {
           this.setData({
@@ -120,9 +122,9 @@ Page({
    */
   onReachBottom: function () {
     if(!this.data.loadFinish){
-      let pageSize = this.data.pageSize + 1
+      let pageNum = this.data.pageNum + 1
       this.setData({
-        pageSize
+        pageNum
       })
       this.getNews()
     }
