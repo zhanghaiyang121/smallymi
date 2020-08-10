@@ -27,6 +27,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    toyiminfo(){
+      let card=this.data.card
+      wx.setStorageSync('yiminfo', card)
+      wx.navigateTo({
+        url: '/pages/yiminfo/index',
+      })
+    },
     //预约
     subscribe(){
       //先判断用户是否登录
@@ -56,8 +63,10 @@ Component({
         })
         return
       }
+      console.log(this.data.card)
+      wx.setStorageSync('cardInfo', this.data.card)
       //跳到预约页面
-      wx.reLaunch({
+      wx.navigateTo({
         url: '/pages/sub/index',
       })
     },

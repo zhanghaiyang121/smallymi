@@ -1,0 +1,42 @@
+/* pages/yiminfo/index.wxss */
+.yiminfo{
+  background: rgb(247,247,247);
+}
+.infobox{
+  padding:20rpx;
+  margin-bottom: 2rpx;
+  background: #fff;
+}
+.infobox .title{
+  font-size: 32rpx;
+  color: #3F3F3F;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.infobox .content{
+  font-size: 28rpx;
+  color: #777777;
+}
+.yimtitle{
+  margin-top: 100rpx;
+  padding: 36rpx 38rpx;
+  margin-bottom: 40rpx;
+  background: #fff;
+  display: flex;
+}
+.yimtitle .title{
+    font-size: 36rpx;
+    font-weight: bold;
+}
+.yimtitle .name{
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.yimtitle .label{
+  font-size: 24rpx;
+  color: #fff;
+  background: #FFC600;
+  padding: 6rpx 8rpx;
+  border-radius: 12rpx;
+  margin-left: 28rpx;
+}

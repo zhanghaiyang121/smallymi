@@ -1,36 +1,131 @@
+.home{
+  background-color: #f8f8f8;
+}
 .header{
-  height:300rpx;
   position: relative;
 }
-.content{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-
-
-.title{
-  color: #fff;
-  font-weight: bolder;
-  font-size: 40rpx;
+.tips{
+  height: 80rpx;
+  line-height: 80rpx;
   text-align: center;
-  margin-bottom: 90rpx;
+  font-size: 24rpx;
+  color: #fff;
+  background-color: #4EBA9A;
+}
+.child-info{
+  display: flex;
+  align-items: center;
+  height: 132rpx;
+  background-color: #fff;
+}
+.avatar{
+  margin-left: 40rpx;
+}
+.avatar cover-image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.child-info .name{
+  margin: 0 10rpx 0 20rpx;
+  color: #777;
+  font-size: 32rpx;
+}
+.child-info .age{
+  margin-left: 12rpx;
+  color: #777;
+  font-size: 28rpx;
 }
 .btn {
   padding: 20rpx 0;
+  position: fixed;
+  bottom: 100rpx;
+  left: 50%;
+  margin-left: -337rpx;
+  width: 674rpx;
   font-size: 30rpx;
-
   color: #fff;
-
-  margin: 0 auto;
-  width: 500rpx;
-  margin-bottom: 60rpx;
-  margin-top: 60rpx;
   border-radius: 60rpx;
-
   box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
 
   text-align: center;
-  background: rgb(30,204,117);
+  background-color: #4EBA9A;
+}
+.card{
+  display: flex;
+  align-items: center;
+  margin-top: 40rpx;
+  height: 182rpx;
+  border-bottom: 1px solid #f2f2f2;
+  background-color: #fff;
+}
+.card-tips{
+  margin-left: 40rpx;
+  margin-right: 16rpx;
+  width: 60rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 12rpx;
+}
+.card-info{
+  flex: 1;
+}
+.card-info .name{
+  color: #3F3F3F;
+  font-size: 32rpx;
+}
+.card-info .num{
+  color: #3F3F3F;
+  font-size: 28rpx;
+  margin-left: 20rpx;
+}
+.card-info .desc{
+  color: #3F3F3F;
+  font-size: 28rpx;
+}
+.card .price{
+  margin-right: 40rpx;
+  font-size: 28rpx;
+  color: #FF7E00;
+}
+.colorY{
+  background-color: #FFC600;
+}
+.colorR{
+  background-color: #FF7E00;
+}
+.over-box{
+  width: 100%;
+  overflow-x: scroll;
+}
+.date-list{
+  display: flex;
+  padding: 20rpx;
+  justify-content: center;
+  background-color: #fff;
+}
+.date-list .item{
+  margin: 10rpx;
+  padding: 14rpx 5rpx 14rpx;
+  width: 92rpx;
+  flex-shrink: 0;
+  text-align: center;
+  color: #777;
+  border-radius: 20rpx;
+}
+.date-list .item.active{
+  color: #fff;
+  background-color: #4EBA9A;
+}
+.date-list .item .title{
+  font-size: 28rpx;
+}
+.date-list .item .date{
+  font-size: 24rpx;
+ }
+ .date-list .item .choose-tip{
+    font-size: 24rpx;
 }

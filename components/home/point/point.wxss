@@ -12,8 +12,8 @@
   height: 18rpx;
   border-radius: 50%;
   background-color: #B7B7B7;
-  margin-left: 4rpx;
-  margin-top: 4rpx;
+  margin-left: 2rpx;
+  margin-top: 2rpx;
 }
 .text{
   display: inline-block;

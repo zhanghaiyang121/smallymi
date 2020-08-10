@@ -9,7 +9,7 @@
 		<view class="avatar_box">
 			<view class="left">
 				<view class="avatar">
-					<cover-image src="../../../images/baby-head.png"></cover-image>
+					<image src="../../../images/baby-head.png"></image>
 				</view>
 				<view class="name">
 					{{child.name}}
@@ -20,7 +20,7 @@
 			</view>
 			<view class="right">
 				<view class="right_avatar">
-					<cover-image src="../../../images/baby-icon.png"></cover-image>
+					<image src="../../../images/baby-icon.png"></image>
 				</view>
 				<view bindtap="goChildpage" class="text">
 					{{childlist.length ? "切换儿童" : "添加儿童"}}

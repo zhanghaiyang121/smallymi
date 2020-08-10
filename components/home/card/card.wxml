@@ -3,18 +3,19 @@
   <view class="card-tips {{card.cost == 0 ? 'colorY' : 'colorR'}}">
     {{card.cost == 0 ? "必打":"自费"}}
   </view>
-  <view class="card-info">
+  <view class="card-info" bindtap="toyiminfo">
     <view>
-      <text>{{card.name}}</text>
-      <text>剂量: {{card.num}}</text>
+      <text class="name">{{card.name}}</text>
+      <text class="num">剂量: {{card.num}}</text>
     </view>
-    <view>{{card.desc}}</view>
+    <view class="desc">{{card.desc}}</view>
   </view>
-   <view wx:if="{{card.status==0 || !card.status}}" class="btn" bindtap="subscribe">可预约</view>
-    <view wx:if="{{card.status==10}}" class="btn">已申请</view>
-    <view wx:if="{{card.status==20}}" class="btn">预约完成</view>
-    <view wx:if="{{card.status==30}}" class="btn">完成</view>
-    <view wx:if="{{card.status==-1}}" class="btn">不可预约</view>
+   <view wx:if="{{card.status==0 || !card.status}}" class="btn colorBlue" bindtap="subscribe">预约</view>
+   <view wx:if="{{card.status==0 && card.num == 0}}" class="btn colorDone" bindtap="subscribe">无库存</view>
+    <view wx:if="{{card.status==10}}" class="btn colorDone">已申请</view>
+    <view wx:if="{{card.status==20}}" class="btn colorY">预约成功</view>
+    <view wx:if="{{card.status==30}}" class="btn colorY">接种完成</view>
+    <view wx:if="{{card.status==-1}}" class="btn colorDone">不可预约</view>
   <!-- <view class="left">
     {{card.name}}
   </view>

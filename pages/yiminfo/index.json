@@ -1,5 +1,4 @@
 {
-  "navigationBarTitleText": "预约疫苗",
   "usingComponents": {
     "nav-bar": "/components/nav/index"
   }

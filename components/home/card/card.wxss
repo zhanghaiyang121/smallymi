@@ -4,10 +4,38 @@
   margin:20rpx 14rpx 20rpx 35rpx;
   height: 192rpx;
   align-items: center;
-  box-shadow: 0 0 4px 0 rgba(0,0,0,.1);
+  box-shadow: 0 0 6px 0 rgba(0,0,0,.2);
   border-radius: 10rpx;
   font-size: 12px;
   
+}
+.card-tips{
+  margin-left: 40rpx;
+  margin-right: 16rpx;
+  width: 60rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 12rpx;
+}
+.card-info{
+  flex: 1;
+}
+.card-info .name{
+  color: #3F3F3F;
+  font-size: 32rpx;
+}
+.card-info .desc{
+  color: #3F3F3F;
+  font-size: 28rpx;
+}
+.colorY{
+  background-color: #FFC600;
+}
+.colorR{
+  background-color: #FF7E00;
 }
 .left{
   align-self: center;
@@ -20,9 +48,9 @@
   align-self: center;
 }
 .num{
-  color: rgb(60,176,113);
-  margin-right: 20rpx;
-  align-self: center;
+  color: #3F3F3F;
+  font-size: 28rpx;
+  margin-left: 20rpx;
 }
 
 .fee{
@@ -31,9 +59,15 @@
 }
 
 .btn{
-  background: rgb(60,176,113);
+  margin-right: 40rpx;
   border-radius: 10rpx;
   padding: 5rpx 20rpx;
   color: #fff;
-  font-size: 12px;
+  font-size: 28rpx;
+}
+.colorBlue{
+  background-color: #4EBA9A;
+}
+.colorDone{
+  background-color: #BCBCBC;
 }
