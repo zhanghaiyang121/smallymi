@@ -14,7 +14,7 @@
 			</view>
 			<view style="color: #777;">|</view>
 			<view class="age">
-				{{child.birthday}}
+				{{child.age}}
 			</view>
 		</view>
 	</view>

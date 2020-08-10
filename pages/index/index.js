@@ -210,10 +210,14 @@ Page({
       method: "POST",
       success(res) {
         let childInfo = wx.getStorageSync('childinfo')
-        that.setData({
-          childlist: res.data.data,
-        })
-        if(!childInfo.cid){
+          that.setData({
+            childlist: res.data.data,
+          })
+        if (!childInfo.cid) {
+          let ageArr = that.getAge(res.data.data[0].birthday)
+          let ageYear = ageArr[0] > 0 ?ageArr[0]+'岁':''
+          let ageMonth =  ageArr[0] > 0 ? ageArr[1] > 0 ? ageArr[1] +'个月':'':ageArr[1] > 0 ? ageArr[1] +'个月': '不满1月'
+          res.data.data[0].age = ageYear+ageMonth
           that.setData({
             child: res.data.data[0]
           })
@@ -330,10 +334,52 @@ Page({
   },
   changechild(e) {
     let child = e.detail
+    let ageArr = this.getAge(child.birthday)
+    let ageYear = ageArr[0] > 0 ?ageArr[0]+'岁':''
+    let ageMonth =  ageArr[0] > 0 ? ageArr[1] > 0 ? ageArr[1] +'个月':'':ageArr[1] > 0 ? ageArr[1] +'个月': '不满1月'
+    child.age = ageYear+ageMonth
     this.setData({
       child,
       isShow: false
     })
     this.fetchChildList(child.cid)
+    wx.setStorageSync('childinfo', child)
+  },
+  getAge(birthday) {
+    // console.log("根据生日计算年龄&月份",birthday);
+    if (birthday == undefined) return [0, 0];
+    let today = new Date();
+    let birthDate = new Date(birthday);
+    let year = today.getYear() - birthDate.getYear();
+
+
+    let todayMonth = today.getMonth() + 1;
+    let birthDateMonth = birthDate.getMonth() + 1;
+
+    let todayDays = today.getDate();
+    let birthDateDays = birthDate.getDate();
+
+    let month = 0;
+    if (todayMonth < birthDateMonth) {
+      year--;
+      if (todayDays >= birthDateDays) {
+        month = 12 - birthDateMonth + todayMonth;
+      } else {
+        month = 12 - birthDateMonth + todayMonth - 1;
+      }
+    } else if (todayMonth > birthDateMonth) {
+      if (todayDays >= birthDateDays) {
+        month = todayMonth - birthDateMonth;
+      } else {
+        month = todayMonth - birthDateMonth - 1;
+      }
+    } else {
+      //
+      if (todayDays < birthDateDays) {
+        year--;
+        month = 11;
+      }
+    }
+    return [year, month];
   }
 })

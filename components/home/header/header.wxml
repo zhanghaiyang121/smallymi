@@ -15,7 +15,7 @@
 					{{child.name}}
 				</view>
 				<view class="age">
-					{{child.birthday}}
+					{{child.age}}
 				</view>
 			</view>
 			<view class="right">

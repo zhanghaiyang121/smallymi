@@ -1,7 +1,7 @@
 /* components/home/card/card.wxss */
 .card{
   display: flex;
-  margin:20rpx 14rpx 20rpx 35rpx;
+  margin:30rpx 14rpx 30rpx 35rpx;
   height: 192rpx;
   align-items: center;
   box-shadow: 0 0 6px 0 rgba(0,0,0,.2);
