@@ -120,6 +120,7 @@ Page({
           that.setData({
             parent: res.data.data
           })
+          wx.setStorageSync('parentInfo', res.data.data)
           that.fetchHospital(res.data.data.areaCode)
         }
       }
@@ -166,7 +167,8 @@ Page({
             if (month != 0) {
               age += month + "个月"
             }
-
+            console.log('month', month)
+            console.log('item.time', item.time)
             if (item.time == 0) {
               age = "出生时"
             }
@@ -208,8 +210,10 @@ Page({
       method: "POST",
       success(res) {
         that.setData({
-          childlist: res.data.data
+          childlist: res.data.data,
+          child: res.data.data[0]
         })
+        wx.setStorageSync('childinfo', res.data.data[0])
       }
     })
   },
@@ -269,11 +273,9 @@ Page({
                 let year = Math.floor((item.time) / 12)
                 let age = year + "岁"
                 // console.log('month', month)
-                // console.log(item)
+                console.log(item.time)
                 if (month != 0) {
                   age += month + "个月"
-                } else {
-                  age = "出生时"
                 }
 
                 if (item.time == 0) {

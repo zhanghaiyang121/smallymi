@@ -1,10 +1,46 @@
 <!--pages/question/question.wxml-->
-<view class="header">
-    <image src="../../images/baobao_page.png" style="width:750rpx;height:300rpx"/>
-    <view class="content">
-      <view class="hospital">
-        <view class="title" >预约</view>
-      </view>
-    </view>
+<view class="home">
+	<view class="header">
+		<nav-bar navTitle="预约疫苗" showBack="true" />
+		<view class="tips">
+			选择接种日期，为了宝宝安全，请务必正确填写
+		</view>
+		<view class="child-info">
+			<view class="avatar">
+				<cover-image src="../../images/baby-head.png"></cover-image>
+			</view>
+			<view class="name">
+				{{child.name}}
+			</view>
+			<view style="color: #777;">|</view>
+			<view class="age">
+				{{child.birthday}}
+			</view>
+		</view>
+	</view>
+	<view class="main">
+		<view class="card">
+			<view class="card-tips {{card.cost == 0 ? 'colorY' : 'colorR'}}">
+				{{card.cost == 0 ? "必打":"自费"}}
+			</view>
+			<view class="card-info">
+				<view>
+					<text class="name">{{card.name}}</text>
+					<text class="num">剂量: {{card.num}}</text>
+				</view>
+				<view class="desc">{{card.desc}}</view>
+			</view>
+			<view class="price">{{card.cost? '¥'+card.cost: ''}}</view>
+		</view>
+		<view class="over-box">
+			<view class="date-list">
+				<view class="item {{currentTab == index ? 'active': ''}}" data-current="{{index}}" wx:for="{{subscribeList}}" wx:key="index" bindtap="switchList">
+					<view class="title">{{item.week}}</view>
+					<view class="date">{{item.monthDay}}</view>
+					<view class="choose-tip">{{item.isHaveNum ? '有号':'无号'}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="save btn" bindtap="subscribe">确认预约</view>
 </view>
- <view class="save btn" catchtap="subscribe">确认</view>

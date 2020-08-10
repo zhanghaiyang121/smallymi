@@ -56,8 +56,10 @@ Component({
         })
         return
       }
+      console.log(this.data.card)
+      wx.setStorageSync('cardInfo', this.data.card)
       //跳到预约页面
-      wx.reLaunch({
+      wx.navigateTo({
         url: '/pages/sub/index',
       })
     },
