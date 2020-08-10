@@ -8,7 +8,7 @@
       <text class="name">{{card.name}}</text>
       <text class="num">剂量: {{card.num}}</text>
     </view>
-    <view class="desc">{{card.desc}}</view>
+    <view class="desc">{{card.disc}}</view>
   </view>
    <view wx:if="{{card.status==0 || !card.status}}" class="btn colorBlue" bindtap="subscribe">预约</view>
    <view wx:if="{{card.status==0 && card.num == 0}}" class="btn colorDone" bindtap="subscribe">无库存</view>
