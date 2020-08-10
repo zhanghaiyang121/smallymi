@@ -1,6 +1,7 @@
 // pages/addUser/index.js
 import {getProvide,getTowns,getVillage,saveParent,getParent} from '../../utils/api'
-let ajax = require('../../utils/ajax.js')
+import { subscribeMessage } from '../../utils/msg.js'
+
 const app = getApp()
 Page({
 
@@ -51,6 +52,7 @@ Page({
   },
   //保存监护人信息
   saveDetail() {
+    subscribeMessage()
     let reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/
     let phoneReg = /0?(13|14|15|17|18|19)[0-9]{9}/
     if (this.data.name == '' || this.data.name == null) {

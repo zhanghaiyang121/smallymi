@@ -25,14 +25,16 @@ CustomPage({
       data:data,
       method:"POST",
       success: (res) => {
-        let tabs = res.data.data.map(item => {
-          item.title = item.name
-          item.descList = item.desc.split('|')
-          return item
-        })
-        this.setData({
-          tabs
-        })
+        if (res.data.data && res.data.data.length > 0) {
+          let tabs = res.data.data.map(item => {
+            item.title = item.name
+            item.descList = item.desc.split('|')
+            return item
+          })
+          this.setData({
+            tabs
+          })
+        }
       }
     })
   },

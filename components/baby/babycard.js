@@ -39,12 +39,21 @@ Component({
       })
     }
   },
-  ready(){
-    let curYear = new Date().getFullYear()
-    let birth = this.data.child.birthday.split('-')[0]
-    let age = curYear > birth ? curYear - birth : 0
-    this.setData({
-      age
-    })
+  observers: {
+    'child.birthday': function(birthday) {
+      let curYear = new Date().getFullYear()
+      let curMonth = new Date().getMonth() + 1
+      let birthYear = birthday.split('-')[0]
+      let birthMonth = birthday.split('-')[1]
+      let age = '0岁'
+      if(curYear > birthYear){
+        age = curYear - birthYear + '岁'
+      } else if (curYear == birthYear) {
+        age = curMonth - birthMonth + '个月'
+      }
+      this.setData({
+        age
+      })
+    }
   }
 })

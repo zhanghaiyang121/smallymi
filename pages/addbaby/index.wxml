@@ -31,7 +31,7 @@
     <view class="parent-other-item flex level">
         <view class="flex-l">出生日期</view>
         <view class="flex-r">
-            <picker mode="date" value="{{birthday}}"  bindchange="bindTimeChange">
+            <picker mode="date" value="{{birthday}}" start="1950-01-01" end="{{curDate}}" bindchange="bindTimeChange">
                 <view class="picker" wx:if="{{birthday}}">
                     {{birthday}}
                 </view>
