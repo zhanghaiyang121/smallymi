@@ -170,3 +170,11 @@
   color: #FFF;
   background-color: #f18432;
 }
+.no-data{
+  text-align: center;
+}
+.no-img{
+  width: 470rpx;
+  height: 334rpx;
+  margin-top: 100rpx;
+}

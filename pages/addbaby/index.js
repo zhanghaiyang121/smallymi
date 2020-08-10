@@ -1,4 +1,5 @@
 // pages/addUser/index.js
+import { subscribeMessage } from '../../utils/msg.js'
 const app = getApp()
 Page({
 
@@ -16,7 +17,8 @@ Page({
     isaddchild:false,
     totalHeight: 44,
     title: '添加宝宝',
-    showDelete: false
+    showDelete: false,
+    curDate: ''
 
   },
   getparents(){
@@ -77,6 +79,7 @@ Page({
     })
   },
   addBabyInfo(){
+    subscribeMessage()
     let reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/
     let that=this
     let date=that.data.birthday
@@ -201,6 +204,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      totalHeight: app.globalData.statusHeight + app.globalData.navHeight
+    })
     let isaddchild=wx.getStorageSync('isaddchild')
     if(!isaddchild){
       this.setData({
@@ -208,10 +214,15 @@ Page({
         showDelete: true
       })
     }
+    this.getparents()
+    this.getchildInfo()
+    const date = new Date()
+    let year = date.getFullYear()
+    let month = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1); 
+    let day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    let curDate = year + '-' + month + '-' + day
     this.setData({
-      totalHeight: app.globalData.statusHeight + app.globalData.navHeight
+      curDate
     })
-      this.getparents()
-      this.getchildInfo()
   },
 })

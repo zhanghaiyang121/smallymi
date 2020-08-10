@@ -35,9 +35,11 @@ Page({
       },
       method:"POST",
       success(res){
-        that.setData({
-          childlist:res.data.data
-        })
+        if (res.data.data) {
+          that.setData({
+            childlist:res.data.data
+          })
+        }
       }
     })
   },

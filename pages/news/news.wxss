@@ -1,7 +1,7 @@
 /* pages/news/news.wxss */
 .news-list{
   padding: 0 40rpx;
-  padding-bottom: 120rpx;
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
 }
 .news-item{
   padding: 28rpx 38rpx;

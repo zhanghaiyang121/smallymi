@@ -8,7 +8,7 @@
 }
 .list_box{
   /* background: rgb(238,238,238); */
-  height: calc(100vh - 425rpx);
+  height: calc(100vh - 425rpx - env(safe-area-inset-bottom));
 }
 .help{
   background: #fff;
