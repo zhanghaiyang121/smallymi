@@ -14,9 +14,9 @@ CustomPage({
     isLoad: false
   },
 
-  getTypeList(){
+  getTypeList(code){
     let data = {
-      area: 1
+      area: code
     }
     wx.request({
       url: 'https://vaccing.51vipsh.com/app1/getVaccineClass',
@@ -33,10 +33,12 @@ CustomPage({
             return item
           })
           this.setData({
-            tabs,
-            isLoad: true
+            tabs
           })
         }
+        this.setData({
+          isLoad: true
+        })
       }
     })
   },
@@ -49,12 +51,28 @@ CustomPage({
       url: '/pages/sub/index',
     })
   },
+  initData(){
+    let openid=wx.getStorageSync('openid')
+    wx.request({
+      url: 'https://vaccing.51vipsh.com/app1/getAdultByOpenid',
+      header:{
+        "Content-Type":"application/x-www-form-urlencoded;"
+      },
+      data:{
+        openId:openid
+      },
+      method:"POST",
+      success: (res) => {
+        this.getTypeList(res.data.data.areaCode)
+      }
+    })
+  },
 
   onLoad() {
     this.setData({
       totalHeight: app.globalData.statusHeight + app.globalData.navHeight
     })
-    this.getTypeList()
+    this.initData()
   },
 
   onTabClick(e) {
