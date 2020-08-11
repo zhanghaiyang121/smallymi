@@ -259,20 +259,31 @@ Page({
             let ymilist = data.data.data
             console.log(childYmilist)
             ymilist.forEach(item => {
+              let flag=false;
               childYmilist.forEach(citem => {
                 if (citem.vid == item.id) {
-                  if (item.status != 1) {
-                    item.status = citem.status
-                  }
-                } else {
-                  if (item.num > 0) {
-                    item.status = 0
-                  } else {
-                    item.status = -1
-                  }
+                  flag=true
                 }
               })
+              if(flag){
+                childYmilist.forEach(citem => {
+                  if (citem.vid == item.id) {
+                    if (item.status != 1) {
+                      item.status = citem.status
+                    }
+                  }
+                })
+              }else{
+                if (item.num > 0) {
+                  item.status = 0
+                } else {
+                  item.status = -1
+                }
+              }
+                
+              
             })
+            console.log(ymilist)
             let yimarr = []
             let finalarr = []
             ymilist.forEach(item => {
