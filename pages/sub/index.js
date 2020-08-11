@@ -12,7 +12,10 @@ Page({
     child: {}, // 儿童信息
     parent: {}, // 父级信息
     subscribeList: [], // 挂号列表
-    currentTab: 0 // 默认选中挂号列表
+    currentTab: 0, // 默认选中挂号列表
+    isShow:false,
+    subinfo:"很抱歉,预约失败！",
+    subimage:"../../images/dconfirm.png"
   },
 
   /**
@@ -109,6 +112,7 @@ Page({
   },
   // 预约接口
   subscribeData() {
+    let that=this
     let currentTab = this.data.currentTab
     let time = new Date().getFullYear()+ '-' + this.data.subscribeList[currentTab].monthDay
     wx.request({
@@ -126,7 +130,38 @@ Page({
         type: this.data.card.type
       },
       method: "POST",
-      success(res) {}
+      success(res) {
+        //判断flag状态
+        let flag=false
+        if(res.data.code==200){
+          flag=true
+        }else{
+          flag=false
+        }
+        if(flag){
+          that.setData({
+            isShow:true,
+            subinfo:"恭喜您,预约成功！",
+            subimage:"../../images/confirm.png"
+          })
+        }else{
+          that.setData({
+            isShow:true,
+            subinfo:"很抱歉,预约失败！",
+            subimage:"../../images/dconfirm.png"
+          })
+        }
+        setTimeout(() => {
+          wx.navigateTo({
+            url: "/pages/index/index",
+          })
+        }, 1000);
+      }
+    })
+  },
+  cancelMark(){
+    this.setData({
+      isShow:false
     })
   },
   /**
