@@ -51,7 +51,7 @@ Page({
     if (openid) {
       this.getparents()
       this.fetchchildslist()
-      this.fetchList()
+     
       console.log(this.data.childlist)
       //判断缓存里是否有儿童信息
       let childinfo = wx.getStorageSync('childinfo')
@@ -121,6 +121,7 @@ Page({
             parent: res.data.data
           })
           wx.setStorageSync('parentInfo', res.data.data)
+          that.fetchList()
           that.fetchHospital(res.data.data.areaCode)
         }
       }
@@ -138,7 +139,7 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
       },
       data: {
-        area: 1,
+        area: that.data.parent ? that.data.parent.areaCode : '',
         type: 2
       },
       method: "POST",
@@ -210,14 +211,14 @@ Page({
       method: "POST",
       success(res) {
         let childInfo = wx.getStorageSync('childinfo')
-          that.setData({
-            childlist: res.data.data,
-          })
+        that.setData({
+          childlist: res.data.data,
+        })
         if (!childInfo.cid) {
           let ageArr = that.getAge(res.data.data[0].birthday)
-          let ageYear = ageArr[0] > 0 ?ageArr[0]+'岁':''
-          let ageMonth =  ageArr[0] > 0 ? ageArr[1] > 0 ? ageArr[1] +'个月':'':ageArr[1] > 0 ? ageArr[1] +'个月': '不满1月'
-          res.data.data[0].age = ageYear+ageMonth
+          let ageYear = ageArr[0] > 0 ? ageArr[0] + '岁' : ''
+          let ageMonth = ageArr[0] > 0 ? ageArr[1] > 0 ? ageArr[1] + '个月' : '' : ageArr[1] > 0 ? ageArr[1] + '个月' : '不满1月'
+          res.data.data[0].age = ageYear + ageMonth
           that.setData({
             child: res.data.data[0]
           })
@@ -247,8 +248,8 @@ Page({
             "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
           },
           data: {
-            area: 1,
-            // area: that.data.parent.areaCode,
+            // area: 1,
+            area: that.data.parent.areaCode,
             type: 2
           },
           method: "POST",
@@ -335,9 +336,9 @@ Page({
   changechild(e) {
     let child = e.detail
     let ageArr = this.getAge(child.birthday)
-    let ageYear = ageArr[0] > 0 ?ageArr[0]+'岁':''
-    let ageMonth =  ageArr[0] > 0 ? ageArr[1] > 0 ? ageArr[1] +'个月':'':ageArr[1] > 0 ? ageArr[1] +'个月': '不满1月'
-    child.age = ageYear+ageMonth
+    let ageYear = ageArr[0] > 0 ? ageArr[0] + '岁' : ''
+    let ageMonth = ageArr[0] > 0 ? ageArr[1] > 0 ? ageArr[1] + '个月' : '' : ageArr[1] > 0 ? ageArr[1] + '个月' : '不满1月'
+    child.age = ageYear + ageMonth
     this.setData({
       child,
       isShow: false
