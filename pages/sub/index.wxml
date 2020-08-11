@@ -42,5 +42,16 @@
 			</view>
 		</view>
 	</view>
+	<view class="mark" wx:if="{{isShow}}" catchtap="cancelMark"></view>
+	<view class="change-child" wx:if="{{isShow}}">
+		<view class="child_list">
+			<image class="image" src="{{subimage}}"  />
+			 
+		</view>
+		<view class="subinfo">
+			{{subinfo}}
+		</view>
+		  
+	</view>
 	<view class="save btn" bindtap="subscribe">确认预约</view>
 </view>
