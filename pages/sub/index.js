@@ -121,7 +121,7 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
       },
       data: {
-        childId: this.data.child.cid,
+        childId: this.data.child.cid?this.data.child.cid:0,
         adultId: this.data.parent.id,
         recordId: 0,
         times: time,
