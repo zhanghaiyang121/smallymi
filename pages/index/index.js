@@ -54,10 +54,11 @@ Page({
       this.getparents()
     } else {
       // 第一次登录或者缓存清空后第一次登录跳转到个人中心进行登录
-      wx.clearStorageSync()
-      wx.reLaunch({
-        url: '/pages/me/me'
-      })
+      // wx.clearStorageSync()
+      // wx.reLaunch({
+      //   url: '/pages/me/me'
+      // })
+      this.fetchChildList(0,0)
     }
   },
   fetchHospital(code) {
@@ -100,6 +101,7 @@ Page({
             title: '请完善监护人信息',
             icon: 'none'
           })
+          that.fetchChildList(0,0)
         } else {
           that.setData({
             parent: res.data.data

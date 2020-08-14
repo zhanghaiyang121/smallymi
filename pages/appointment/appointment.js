@@ -47,25 +47,41 @@ CustomPage({
     card.type = 1
     wx.setStorageSync('cardInfo', card)
     //跳到预约页面
-    wx.navigateTo({
-      url: '/pages/sub/index',
-    })
+    let openid=wx.getStorageSync('openid')
+    if(openid){
+      wx.navigateTo({
+        url: '/pages/sub/index',
+      })
+    }else{
+      wx.showToast({
+        title: '请登录并完善监护人信息',
+        icon: 'none'
+      })
+    }
+   
+   
   },
   initData(){
     let openid=wx.getStorageSync('openid')
-    wx.request({
-      url: 'https://vaccing.51vipsh.com/app1/getAdultByOpenid',
-      header:{
-        "Content-Type":"application/x-www-form-urlencoded;"
-      },
-      data:{
-        openId:openid
-      },
-      method:"POST",
-      success: (res) => {
-        this.getTypeList(res.data.data.areaCode)
-      }
-    })
+    let that=this
+    if(openid){
+      wx.request({
+        url: 'https://vaccing.51vipsh.com/app1/getAdultByOpenid',
+        header:{
+          "Content-Type":"application/x-www-form-urlencoded;"
+        },
+        data:{
+          openId:openid
+        },
+        method:"POST",
+        success: (res) => {
+          that.getTypeList(res.data.data.areaCode)
+        }
+      })
+    }else{
+      that.getTypeList(0)
+    }
+   
   },
 
   onLoad() {
