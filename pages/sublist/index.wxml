@@ -2,7 +2,12 @@
 <view>
    <nav-bar navTitle="预约列表" showBack="true" />
    <view style="padding-top: {{totalHeight}}px;text-align:center">
-      <view class="cardcontent" wx:for="{{list}}">
+   <view wx:if="{{list.length==0}}">
+      <image class="no-img" src="../../images/no_child.png"></image>
+   </view>
+     
+      
+      <view wx:if="{{list.length>0}}" class="cardcontent" wx:for="{{list}}">
             <view class="subtime">预约时间:{{item.agree_time}}</view>
             <view class="card">
                <view class="card-tips colorY">

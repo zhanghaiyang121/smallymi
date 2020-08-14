@@ -12,10 +12,10 @@
 					<image src="../../../images/baby-head.png"></image>
 				</view>
 				<view class="name">
-					{{child.name}}
-				</view>|
+					{{child?child.name:"暂无儿童"}}
+				</view>{{child?"|":""}}
 				<view class="age">
-					{{child.age}}
+					{{child?child.age:""}}
 				</view>
 			</view>
 			<view class="right">

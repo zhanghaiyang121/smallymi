@@ -12,9 +12,9 @@
 			<view class="name">
 				{{child.name}}
 			</view>
-			<view style="color: #777;">|</view>
+			<view style="color: #777;">{{child?"|":""}}</view>
 			<view class="age">
-				{{child.age}}
+				{{child?child.age:""}}
 			</view>
 		</view>
 	</view>

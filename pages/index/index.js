@@ -193,11 +193,15 @@ Page({
       },
       method: "POST",
       success(res) {
-        let childInfo = res.data.data[0]
-        that.setData({
-          childlist: res.data.data,
-        })
-        if (childInfo.cid) {
+        let childInfo=null
+        if(res.data.data){
+          childInfo = res.data.data[0]
+          that.setData({
+            childlist: res.data.data,
+          })
+        }
+        
+        if (childInfo) {
           let ageArr = that.getAge(res.data.data[0].birthday)
           let ageYear = ageArr[0] > 0 ? ageArr[0] + '岁' : ''
           let ageMonth = ageArr[0] > 0 ? ageArr[1] > 0 ? ageArr[1] + '个月' : '' : ageArr[1] > 0 ? ageArr[1] + '个月' : '不满1月'
