@@ -193,7 +193,7 @@ Page({
       },
       method: "POST",
       success(res) {
-        let childInfo = wx.getStorageSync('childinfo')
+        let childInfo = res.data.data[0]
         that.setData({
           childlist: res.data.data,
         })
@@ -207,10 +207,8 @@ Page({
           })
           wx.setStorageSync('childinfo', res.data.data[0])
             that.fetchChildList(res.data.data[0].cid,areacode)
-         
         }else{
-          that.fetchList()
-          that.fetchHospital(res.data.data.areaCode)
+          that.fetchChildList(0,areacode)
         }
       }
     })
@@ -230,8 +228,15 @@ Page({
       method: "POST",
       success(data) {
         //获取默认列表和已注入疫苗做对比
+        console.log("获取列表的参数")
+        console.log("childId=========="+childId)
+        console.log("area=========="+areaCode)
+        console.log("type======="+2)
         console.log("获取儿童注射疫苗列表")
         console.log(data.data.data)
+        that.setData({
+          hospital: data.data.info
+        })
         // that.dealCarsList(res.data.data)
         let ymilist = data.data.data
         console.log(ymilist)

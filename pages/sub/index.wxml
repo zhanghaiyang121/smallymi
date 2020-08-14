@@ -3,7 +3,7 @@
 	<view class="header">
 		<nav-bar navTitle="预约疫苗" showBack="true" />
 		<view class="tips" style="margin-top: {{totalHeight}}px">
-			选择接种日期，为了宝宝安全，请务必正确填写
+			由于疫苗库存紧张，具体接种时间，请以医院通知为准
 		</view>
 		<view class="child-info">
 			<view class="avatar">
@@ -21,7 +21,7 @@
 	<view class="main">
 		<view class="card">
 			<view class="card-tips {{card.cost == 0 ? 'colorY' : 'colorR'}}">
-				{{card.cost == 0 ? "必打":"自费"}}
+				{{card.cost == 0 ? "免费":"自费"}}
 			</view>
 			<view class="card-info">
 				<view>

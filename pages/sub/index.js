@@ -103,7 +103,7 @@ Page({
       return;
     }
     wx.requestSubscribeMessage({
-      tmplIds: ["Kn811deRG2xaXFvXuEiSQYHHyfx4gAje2U4hy-WuThs"],
+      tmplIds: ["3-dJHDl3xWjbgkuNcuFTWhhUEwWhN_30Z0Ot-FXvArg"],
       success: res => {
         this.subscribeData();
       },
@@ -141,13 +141,13 @@ Page({
         if(flag){
           that.setData({
             isShow:true,
-            subinfo:"恭喜您,预约成功！",
+            subinfo:res.data.msg,
             subimage:"../../images/confirm.png"
           })
         }else{
           that.setData({
             isShow:true,
-            subinfo:"很抱歉,预约失败！",
+            subinfo:res.data.msg,
             subimage:"../../images/dconfirm.png"
           })
         }

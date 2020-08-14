@@ -38,7 +38,7 @@ Component({
         return
       }else if(this.data.pageurl=='sub'){
         wx.requestSubscribeMessage({
-          tmplIds:["0Z3KusrNbNado4gVoFYUF11NAR-hUgHc9pY87HPz_3I","OEFJGcXbyzaABtwBhn0aWbI3BIILC9ikziK2HeRMqaE"],
+          tmplIds:["3-dJHDl3xWjbgkuNcuFTWhhUEwWhN_30Z0Ot-FXvArg"],
           success:res=>{
           },
           fail:err=>{

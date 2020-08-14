@@ -4,8 +4,8 @@
   position: relative;
   display: flex;
   align-items: center;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
-  border-radius: 10rpx;
+  /* box-shadow: 0 2px 12px 0 rgba(0,0,0,.2); */
+  border-radius: 20rpx;
   margin-bottom: 30rpx;
   background: #fff;
 }
@@ -13,7 +13,7 @@
   width: 20rpx;
   height:20rpx;
   position: absolute;
-  right:20rpx;
+  right:40rpx;
   top: 60rpx;
   border:1px solid rgb(78,186,154);
   border-radius: 50%;
@@ -25,11 +25,19 @@
   margin-left:20rpx;
   margin-right: 20rpx;
 }
+.childinfo{
+  display: flex;
+}
 .name{
   font-size: 32rpx;
   margin-left: 10rpx;
+  color:rgba(119,119,119,1);
+  margin-right: 10rpx;
 }
 .age{
-  font-size: 24rpx;
+  font-size: 32rpx;
   margin-left: 10rpx;
+  line-height: 32rpx;
+  color:rgba(119,119,119,1);
+  align-self: center;
 }

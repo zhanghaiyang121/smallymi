@@ -36,6 +36,7 @@ Page({
   },
   fetchlist(){
     let that=this
+    let parentId=wx.getStorageSync('parentId')
     wx.request({
       url: 'https://vaccing.51vipsh.com/app1/getOrderList',
       header: {
@@ -43,7 +44,7 @@ Page({
       },
       method:"POST",
       data: {
-        adultId: 65
+        adultId: parentId
       },
       success(res){
         console.log("预约列表")

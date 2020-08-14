@@ -6,7 +6,7 @@
         {{yim.name}}
     </view>
     <view class="label" wx:if="{{isFree}}">
-       必打
+       免费
     </view>
     <view class="label" wx:else>
        自费

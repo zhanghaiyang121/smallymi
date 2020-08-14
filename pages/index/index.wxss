@@ -51,12 +51,24 @@
   height:100%;
   background: rgba(0,0,0,.5);
 }
+.child_list{
+  border-radius: 20rpx;
+  background: #fff;
+}
+.childtitle{
+  height: 90rpx;
+  font-size: 28rpx;
+  color: #777777;
+  line-height: 90rpx;
+  padding-left: 40rpx;
+  border-bottom:2rpx solid #F4F4F4;
+}
 .change-child {
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
-  width: 642rpx;
+  width: 672rpx;
   border-radius: 10rpx;
   padding-left: 24rpx;
   padding-right: 24rpx;

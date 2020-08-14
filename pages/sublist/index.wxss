@@ -147,6 +147,7 @@
   flex:1;
   border-right: 2rpx solid #F1F1F1;
   line-height: 114rpx;
+  color: #777777
 }
 .rightbtn{
   flex:1;

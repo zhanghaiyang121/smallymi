@@ -21,6 +21,10 @@
 	<view class="mark" wx:if="{{isShow}}" catchtap="cancelMark"></view>
 	<view class="change-child" wx:if="{{isShow}}">
 		<view class="child_list">
+			<view class="childtitle">
+				切换儿童
+			</view>
+			  
 			<block wx:for="{{childlist}}" wx:key="item">
 				<s-card bindchangechild="changechild" child="{{item}}" age="6个月零2天" />
 			</block>

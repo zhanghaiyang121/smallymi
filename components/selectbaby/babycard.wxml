@@ -1,8 +1,8 @@
 <!--components/me/listcard/listcard.wxml-->
 <view class="list_card" bind:tap="selectBaby">
   <image class="image" src="{{imageurl}}"/>
-  <view>
-    <view class="name">{{child.name}}</view>
+  <view class="childinfo">
+    <view class="name">{{child.name}}</view>|
     <view class="age">{{child.birthday}}</view>
   </view>
    <view class="arrow"></view>

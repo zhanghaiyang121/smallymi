@@ -1,7 +1,7 @@
 <!--components/home/card/card.wxml-->
 <view class="card">
   <view class="card-tips {{card.cost == 0 ? 'colorY' : 'colorR'}}">
-    {{card.cost == 0 ? "必打":"自费"}}
+    {{card.cost == 0 ? "免费":"自费"}}
   </view>
   <view class="card-info" bindtap="toyiminfo">
     <view>
