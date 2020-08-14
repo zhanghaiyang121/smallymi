@@ -34,6 +34,10 @@ Component({
         url: '/pages/yiminfo/index',
       })
     },
+    //待确认
+    submit(){
+      this.triggerEvent('submityuyue',this.data.card)
+    },
     //预约
     subscribe(){
       //先判断用户是否登录

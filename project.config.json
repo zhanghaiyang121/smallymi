@@ -122,9 +122,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 8,
 					"name": "预约列表",
-					"pathName": "pages/index/index",
+					"pathName": "pages/sublist/index",
+					"query": "",
 					"scene": null
 				}
 			]

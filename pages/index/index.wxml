@@ -13,7 +13,7 @@
 			<view class="cardlist">
 				<view class="border"></view>
 				<block wx:for="{{item.list}}" wx:key="item">
-					<v-card card="{{item}}" child="{{childlist}}" parent="{{parent}}" />
+					<v-card bindsubmityuyue="submityuyue" card="{{item}}" child="{{childlist}}" parent="{{parent}}" />
 				</block>
 			</view>
 		</view>
@@ -26,6 +26,18 @@
 			</block>
 		</view>
 	</view>
+	<view class="mark" wx:if="{{issubShow}}" catchtap="cancelMark"></view>
+      <view class="change-child" wx:if="{{issubShow}}">
+         <view class="child_list">
+            <view class="markinfo">
+               {{yimstatusinfo.status==25?"是否确认完成接种?":"是否确认取消预约?"}}
+            </view>
+            <view class="btns">
+               <view class="leftbtn" bindtap="cancelupdate">取消</view>
+               <view class="rightbtn" bindtap="updatestatus">确认</view>
+            </view>
+         </view>
+      </view>
 	<v-tabbar />
 
 </view>

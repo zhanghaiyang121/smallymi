@@ -4,6 +4,8 @@ const app = getApp()
 let config = require('../../utils/config.js')
 Page({
   data: {
+    yimstatusinfo:null,
+    issubShow:false,
     isShow: false,
     list: [{
         index: 1,
@@ -50,24 +52,6 @@ Page({
     let openid = wx.getStorageSync('openid');
     if (openid) {
       this.getparents()
-      this.fetchchildslist()
-     
-      console.log(this.data.childlist)
-      //判断缓存里是否有儿童信息
-      let childinfo = wx.getStorageSync('childinfo')
-      if (childinfo) {
-        //如果有获取儿童对应的疫苗信息
-        this.setData({
-          child: childinfo
-        })
-        setTimeout(() => {
-          console.log(this.data.parent)
-          this.fetchChildList(childinfo.cid)
-        })
-
-      } else {
-        // 渲染默认疫苗列表并获取默认区域的医院
-      }
     } else {
       // 第一次登录或者缓存清空后第一次登录跳转到个人中心进行登录
       wx.clearStorageSync()
@@ -121,26 +105,25 @@ Page({
             parent: res.data.data
           })
           wx.setStorageSync('parentInfo', res.data.data)
-          that.fetchList()
-          that.fetchHospital(res.data.data.areaCode)
+          //判断缓存里是否有儿童信息
+          let childinfo = wx.getStorageSync('childinfo')
+          that.fetchchildslist(res.data.data.areaCode)
         }
       }
     })
-  },
-  dealCarsList(data) {
-
   },
 
   fetchList() {
     let that = this
     wx.request({
-      url: 'https://vaccing.51vipsh.com/app1/vaccineList',
+      url: 'https://vaccing.51vipsh.com/app1/vaccineListNew',
       header: {
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
       },
       data: {
         area: that.data.parent ? that.data.parent.areaCode : '',
-        type: 2
+        type: 2,
+        childId:0
       },
       method: "POST",
       success(res) {
@@ -194,7 +177,7 @@ Page({
     })
 
   },
-  fetchchildslist() {
+  fetchchildslist(areacode) {
     let that = this
     let openid = wx.getStorageSync('openid')
     this.setData({
@@ -214,7 +197,7 @@ Page({
         that.setData({
           childlist: res.data.data,
         })
-        if (!childInfo.cid) {
+        if (childInfo.cid) {
           let ageArr = that.getAge(res.data.data[0].birthday)
           let ageYear = ageArr[0] > 0 ? ageArr[0] + '岁' : ''
           let ageMonth = ageArr[0] > 0 ? ageArr[1] > 0 ? ageArr[1] + '个月' : '' : ageArr[1] > 0 ? ageArr[1] + '个月' : '不满1月'
@@ -223,110 +206,75 @@ Page({
             child: res.data.data[0]
           })
           wx.setStorageSync('childinfo', res.data.data[0])
+            that.fetchChildList(res.data.data[0].cid,areacode)
+         
+        }else{
+          that.fetchList()
+          that.fetchHospital(res.data.data.areaCode)
         }
       }
     })
   },
-  fetchChildList(childId) {
+  fetchChildList(childId,areaCode) {
     let that = this
     wx.request({
-      url: 'https://vaccing.51vipsh.com/app1/childRecordList',
+      url: 'https://vaccing.51vipsh.com/app1/vaccineListNew',
       header: {
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
       },
       data: {
-        childId: childId
+        childId: childId,
+        area: areaCode ? areaCode : '',
+        type: 2
       },
       method: "POST",
-      success(res) {
+      success(data) {
         //获取默认列表和已注入疫苗做对比
         console.log("获取儿童注射疫苗列表")
-        let childYmilist = res.data.data ? res.data.data : [];
-        wx.request({
-          url: 'https://vaccing.51vipsh.com/app1/vaccineList',
-          header: {
-            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-          },
-          data: {
-            // area: 1,
-            area: that.data.parent.areaCode,
-            type: 2
-          },
-          method: "POST",
-          success(data) {
-            console.log(data.data.data)
-            // that.dealCarsList(res.data.data)
-            let ymilist = data.data.data
-            console.log(childYmilist)
-            ymilist.forEach(item => {
-              let flag=false;
-              childYmilist.forEach(citem => {
-                if (citem.vid == item.id) {
-                  flag=true
-                }
-              })
-              if(flag){
-                childYmilist.forEach(citem => {
-                  if (citem.vid == item.id) {
-                    if (item.status != 1) {
-                      item.status = citem.status
-                    }
-                  }
-                })
-              }else{
-                if (item.num > 0) {
-                  item.status = 0
-                } else {
-                  item.status = -1
-                }
+        console.log(data.data.data)
+        // that.dealCarsList(res.data.data)
+        let ymilist = data.data.data
+        console.log(ymilist)
+        let yimarr = []
+        let finalarr = []
+        ymilist.forEach(item => {
+          let flag = yimarr.includes(item.time)
+          if (!flag) {
+            yimarr.push(item.time)
+            let month = (item.time) % 12
+            let year = Math.floor((item.time) / 12)
+            let age = year + "岁"
+            // console.log('month', month)
+            console.log(item.time)
+            if (month != 0) {
+              age += month + "个月"
+            }
+
+            if (item.time == 0) {
+              age = "出生时"
+            } else {
+              if (item.time < 12) {
+                age = month + "个月"
               }
-                
-              
-            })
-            console.log(ymilist)
-            let yimarr = []
-            let finalarr = []
-            ymilist.forEach(item => {
-              let flag = yimarr.includes(item.time)
-              if (!flag) {
-                yimarr.push(item.time)
-                let month = (item.time) % 12
-                let year = Math.floor((item.time) / 12)
-                let age = year + "岁"
-                // console.log('month', month)
-                console.log(item.time)
-                if (month != 0) {
-                  age += month + "个月"
-                }
+            }
 
-                if (item.time == 0) {
-                  age = "出生时"
-                } else {
-                  if (item.time < 12) {
-                    age = month + "个月"
-                  }
-                }
-
-                finalarr.push({
-                  age: age,
-                  key: item.time,
-                  list: []
-                })
-              }
+            finalarr.push({
+              age: age,
+              key: item.time,
+              list: []
             })
-            ymilist.forEach(item => {
-              console.log(item)
-              let index = yimarr.indexOf(item.time)
-              finalarr[index].list.push(item)
-            })
-            that.setData({
-              cards: finalarr
-            })
-
           }
         })
-
-
+        ymilist.forEach(item => {
+          console.log(item)
+          let index = yimarr.indexOf(item.time)
+          finalarr[index].list.push(item)
+        })
+        console.log("处理过的的列表")
+        console.log(finalarr)
+        that.setData({
+          cards: finalarr
+        })
       }
     })
 
@@ -354,7 +302,8 @@ Page({
       child,
       isShow: false
     })
-    this.fetchChildList(child.cid)
+    let parent=wx.getStorageSync('parentInfo')
+    this.fetchChildList(child.cid,parent.areaCode)
     wx.setStorageSync('childinfo', child)
   },
   getAge(birthday) {
@@ -393,5 +342,46 @@ Page({
       }
     }
     return [year, month];
-  }
+  },
+  submityuyue(e){
+    console.log(e.detail)
+    this.setData({
+      yimstatusinfo:e.detail,
+      issubShow:true
+    })
+  },
+  //取消
+  cancelupdate(){
+    this.setData({
+      yimstatusinfo:null,
+      issubShow:false,
+    })
+  },
+  //确认
+  updatestatus(){
+    let that=this
+    wx.request({
+      url: 'https://vaccing.51vipsh.com/app1/updateStatus',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded;"
+      },
+      method:"POST",
+      data: {
+        id: that.data.yimstatusinfo.recordId
+      },
+      success(res){
+        that.setData({
+          yimstatusinfo:null,
+          issubShow:false,
+        })
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none'
+        })
+        let child=wx.getStorageSync('childinfo')
+        let parent=wx.getStorageSync('parentInfo')
+        that.fetchChildList(child.cid,parent.areaCode)
+      }
+    })
+  },
 })

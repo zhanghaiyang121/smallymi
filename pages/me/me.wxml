@@ -7,6 +7,7 @@
         <me-card name="监护人" imageurl="../../../images/people_icon.png"  pageurl="/pages/addUser/index" />
         <me-card name="宝宝列表" imageurl="../../../images/baby_icon.png"  pageurl="/pages/babylist/babylist"/>
         <me-card name="投诉建议" imageurl="../../../images/option_icon.png" pageurl="/pages/option/index"/>
+        <me-card name="预约列表" imageurl="../../../images/sublist.png" pageurl="/pages/sublist/index"/>
         <me-card name="常见问题" imageurl="../../../images/question_icon.png" pageurl="/pages/question/index"/>
         <me-card name="在线客服" imageurl="../../../images/help_icon.png" pageurl="help" isbtn="true"/>
     </view>

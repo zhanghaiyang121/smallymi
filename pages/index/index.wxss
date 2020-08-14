@@ -69,3 +69,38 @@
 .change-child-item:last-child {
   border-bottom: none;
 }
+
+.markinfo{
+  text-align: center;
+  height:278rpx;
+  background: #fff;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  line-height: 278rpx;
+  font-size: 36rpx;
+  color: #777777;
+  font-weight: bold;
+  border-bottom: 2rpx solid #F1F1F1;
+
+}
+.btns{
+  height:114rpx;
+  background: #fff;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+  display: flex;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.leftbtn{
+  text-align: center;
+  flex:1;
+  border-right: 2rpx solid #F1F1F1;
+  line-height: 114rpx;
+}
+.rightbtn{
+  flex:1;
+  text-align: center;
+  line-height: 114rpx;
+  color: #4EBA9A;
+}

@@ -5,14 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    totalHeight:44,
+    isShow:false,
+    list:[],
+    currentid:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let app =  getApp();
+    this.setData({
+      totalHeight: app.globalData.statusHeight + app.globalData.navHeight
+    })
   },
 
   /**
@@ -26,9 +32,70 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.fetchlist()
   },
-
+  fetchlist(){
+    let that=this
+    wx.request({
+      url: 'https://vaccing.51vipsh.com/app1/getOrderList',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded;"
+      },
+      method:"POST",
+      data: {
+        adultId: 65
+      },
+      success(res){
+        console.log("预约列表")
+        console.log(res.data.list)
+        that.setData({
+          list:res.data.list
+        })
+      }
+    })
+  },
+  updatestatus(){
+    let that=this
+    wx.request({
+      url: 'https://vaccing.51vipsh.com/app1/updateStatus',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded;"
+      },
+      method:"POST",
+      data: {
+        id: that.data.currentid
+      },
+      success(res){
+        that.setData({
+          isShow:false,
+          currentid:null
+        })
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none'
+        })
+        that.fetchlist()
+      }
+    })
+  },
+  cancelupdate(){
+    this.setData({
+      isShow:false,
+      currentid:null
+    })
+  },
+  cancelsub(e){
+    console.log(e.currentTarget.dataset)
+    this.setData({
+      isShow:true,
+      currentid:e.currentTarget.dataset.info.id
+    })
+  },
+  cancelMark(){
+    this.setData({
+      isShow:false
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

@@ -14,8 +14,9 @@
    <view wx:if="{{card.status==0 && card.num == 0}}" class="btn colorDone" bindtap="subscribe">无库存</view>
     <view wx:if="{{card.status==10}}" class="btn colorY" >预约中</view>
     <view wx:if="{{card.status==20}}" class="btn colorY" >预约成功</view>
-    <view wx:if="{{card.status==30}}" class="btn colorY">接种完成</view>
+    <view wx:if="{{card.status==30}}" class="btn colorY" >接种完成</view>
     <view wx:if="{{card.status==-1}}" class="btn colorDone">不可预约</view>
+    <view wx:if="{{card.status==25}}" class="btn colorY" bindtap="submit">待确认</view>
   <!-- <view class="left">
     {{card.name}}
   </view>
