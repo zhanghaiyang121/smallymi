@@ -27,7 +27,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -118,6 +118,13 @@
 					"id": -1,
 					"name": "疫苗详情",
 					"pathName": "pages/yiminfo/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "预约列表",
+					"pathName": "pages/index/index",
 					"scene": null
 				}
 			]

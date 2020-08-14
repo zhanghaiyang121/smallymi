@@ -14,7 +14,8 @@
     "pages/addbaby/index",
     "pages/sub/index",
     "pages/message/index",
-    "pages/yiminfo/index"
+    "pages/yiminfo/index",
+    "pages/sublist/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
