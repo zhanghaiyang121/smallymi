@@ -5,5 +5,5 @@
     <view class="name">{{child.name}}</view>
     <view class="age">{{child.birthday}}</view>
   </view>
-   <image class="arrow" src="../../images/arrow-icon.png"/>
+   <view class="arrow"></view>
 </view>

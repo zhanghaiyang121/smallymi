@@ -13,7 +13,7 @@
 				</view>
 				<view class="name">
 					{{child.name}}
-				</view>
+				</view>|
 				<view class="age">
 					{{child.age}}
 				</view>

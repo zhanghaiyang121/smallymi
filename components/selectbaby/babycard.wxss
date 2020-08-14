@@ -10,11 +10,13 @@
   background: #fff;
 }
 .arrow{
-  width: 14rpx;
-  height: 27rpx;
+  width: 20rpx;
+  height:20rpx;
   position: absolute;
   right:20rpx;
   top: 60rpx;
+  border:1px solid rgb(78,186,154);
+  border-radius: 50%;
 }
 .image{
   width: 80rpx;

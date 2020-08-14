@@ -15,7 +15,7 @@
                   </view>
                   <view class="desc">{{item.name}}</view>
                </view>
-               <view class="btn colorG" bindtap="cancelsub" data-info="{{item}}">取消预约</view>
+               <view class="btn colorG" bindtap="cancelsub" data-info="{{item}}">{{item.status==25?"待确认":"取消预约"}}</view>
             </view>
       </view>
       <view class="mark" wx:if="{{isShow}}" catchtap="cancelMark"></view>

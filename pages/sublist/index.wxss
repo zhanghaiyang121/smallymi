@@ -12,6 +12,7 @@
  .cardcontent{
    box-shadow: 0 0 6px 0 rgba(0,0,0,.2);
    margin:30rpx 35rpx 30rpx 35rpx;
+   border-radius: 20rpx;
  }
  /* components/home/card/card.wxss */
 .card{
@@ -151,6 +152,10 @@
   flex:1;
   line-height: 114rpx;
   color: #4EBA9A;
+}
+.subtime{
+  font-size: 24rpx;
+  color:#3F3F3F
 }
  
  

@@ -29,7 +29,10 @@
   height: 100%;
 }
 .name{
-  margin:0 20rpx;
+  margin:0 10rpx;
+}
+.age{
+  margin:0 10rpx;
 }
 .right{
   display: flex;
