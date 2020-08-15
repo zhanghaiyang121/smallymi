@@ -71,3 +71,6 @@
 .colorDone{
   background-color: #BCBCBC;
 }
+.active{
+  background: rgb(191,191,191);
+}

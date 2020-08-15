@@ -88,13 +88,7 @@ Page({
   //预约点击
   subscribe() {
     console.log(123)
-    if(!this.data.subscribeList.length){
-      wx.showToast({
-        title: '没有预约列表',
-        icon: 'none'
-      })
-      return;
-    }
+   
     wx.requestSubscribeMessage({
       tmplIds: ["3-dJHDl3xWjbgkuNcuFTWhhUEwWhN_30Z0Ot-FXvArg"],
       success: res => {
@@ -108,6 +102,18 @@ Page({
     let that=this
     let currentTab = this.data.currentTab
     let time = new Date().getFullYear()+ '-' + this.data.subscribeList[currentTab].monthDay
+    let flag=true
+    let num=this.data.subscribeList[currentTab].total-this.data.subscribeList[currentTab].applyNum
+    if(num==0||num<0){
+      flag=false
+    }
+    if(!flag){
+      wx.showToast({
+        title: '暂无号源!',
+        icon: 'none'
+      })
+      return
+    }
     wx.request({
       url: 'https://vaccing.51vipsh.com/app1/updateChildRecord',
       header: {

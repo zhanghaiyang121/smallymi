@@ -34,7 +34,7 @@
 		</view>
 		<view class="over-box">
 			<view class="date-list">
-				<view class="item {{currentTab == index ? 'active': ''}}" data-current="{{index}}" wx:for="{{subscribeList}}" wx:key="index" bindtap="switchList">
+				<view class="item {{currentTab == index ? 'active': ''}}" data-current="{{index}}" wx:for="{{subscribeList}}" wx:key="index" bindtap="switchList" data-item="{{item}}">
 					<view class="title">{{item.week}}</view>
 					<view class="date">{{item.monthDay}}</view>
 					<view class="choose-tip">{{item.isHaveNum ? '有号':'无号'}}</view>

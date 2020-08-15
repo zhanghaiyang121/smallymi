@@ -39,7 +39,16 @@ Component({
       this.triggerEvent('submityuyue',this.data.card)
     },
     //预约
-    subscribe(){
+    subscribe(e){
+      if(e.currentTarget.dataset.stock==0){
+        wx.showToast({
+          title: '暂无库存',
+          icon: 'none',
+          duration: 2000
+        })
+        return
+      }
+
       //先判断用户是否登录
       var openid = wx.getStorageSync('openid')
       if(!openid){
