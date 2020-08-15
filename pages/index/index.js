@@ -228,7 +228,7 @@ Page({
       },
       data: {
         childId: childId,
-        area: areaCode ? areaCode : '',
+        area: areaCode,
         type: 2
       },
       method: "POST",
