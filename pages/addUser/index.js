@@ -22,8 +22,8 @@ Page({
     cityCode:"",
     city:null,
     area:null,
-    areaCode:"",
-    streetCode:"",
+    areaNew:"",
+    streetNew:"",
     committee:null,
     committeeCode:"",
     street:null,
@@ -80,7 +80,7 @@ Page({
       })
       return;
     }
-    if (!this.data.cityCode || !this.data.areaCode) {
+    if (!this.data.cityCode || !this.data.areaNew) {
       wx.showToast({
         title: '请选择省市区',
         icon: 'none',
@@ -88,7 +88,7 @@ Page({
       })
       return;
     }
-    if (!this.data.streetCode || !this.data.street) {
+    if (!this.data.streetNew || !this.data.street) {
       wx.showToast({
         title: '请选择乡镇',
         icon: 'none',
@@ -116,9 +116,9 @@ Page({
         province: "河北省",
         cityCode:this.data.cityCode,
         city: this.data.city,
-        areaCode:this.data.areaCode,
+        areaNew:this.data.areaNew,
         area:this.data.area,
-        streetCode:this.data.streetCode,
+        streetNew:this.data.streetNew,
         street:this.data.street,
         committee:this.data.committee,
         committeeCode:this.data.committeeCode,
@@ -186,9 +186,9 @@ Page({
           province: "河北省",
           cityCode:parent.cityCode,
           city: parent.city,
-          areaCode:parent.areaCode,
+          areaNew:parent.areaNew,
           area:parent.area,
-          streetCode:parent.streetCode,
+          streetNew:parent.streetNew,
           street:parent.street,
           committee:parent.committee,
           committeeCode:parent.committeeCode,
@@ -196,6 +196,10 @@ Page({
           id:parent.id
          })
          that.getArealist()
+         that.getstreetlist(parent.areaNew)
+        //  if(parent.areaCode!=""){
+        //   that.getstreetCodeList(parent.areaCode)
+        //  }
       }
     })
   },
@@ -242,8 +246,8 @@ Page({
       sarealist
     })
   },
-  getstreetCodeList(areaCode){
-    this.getstreetlist(areaCode)
+  getstreetCodeList(areaNew){
+    this.getstreetlist(areaNew)
   },
   dealstreetRegion(data){
     let totalstreetrigion=data
@@ -265,8 +269,8 @@ Page({
       streetlist,
       totalstreetrigion
     })
-    if(this.data.streetCode){
-      this.dealcommitRegion(this.data.streetCode)
+    if(this.data.streetNew){
+      this.dealcommitRegion(this.data.streetNew)
     }
   },
   dealcommitRegion(code){
@@ -284,8 +288,8 @@ Page({
     })
     let streetindex = 0
     let commiIndex = 0
-    if(this.data.streetCode){
-      streetindex = this.data.streetlist.findIndex(item => item.code == this.data.streetCode) || 0
+    if(this.data.streetNew){
+      streetindex = this.data.streetlist.findIndex(item => item.code == this.data.streetNew) || 0
     }
     if(this.data.committeeCode){
       commiIndex = this.data.commitarry.findIndex(item => item.code == this.data.committeeCode) || 0
@@ -304,16 +308,16 @@ Page({
     })
   },
   bindStreetChange(e){
-    let streetCode=this.data.streetlist[e.detail.value].code
+    let streetNew=this.data.streetlist[e.detail.value].code
     let street=this.data.streetlist[e.detail.value].name
     this.setData({
       street,
-      streetCode,
+      streetNew,
       committee: '',
       committeeCode: '',
       commitarry: []
     })
-    this.dealcommitRegion(streetCode)
+    this.dealcommitRegion(streetNew)
   },
   getStreetCodeList(commitCode){
     let streetlist=[]
@@ -334,7 +338,7 @@ Page({
       sstreetlist
     })
   },
-  getstreetlist(areaCode){
+  getstreetlist(areaNew){
     let that=this
     wx.request({
       url: 'http://121.199.7.204:8085/app1/getAddress',
@@ -342,7 +346,7 @@ Page({
         "Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"
       },
       data:{
-        parent_code:areaCode
+        parent_code:areaNew
       },
       method:"POST",
       success(res){
@@ -351,17 +355,17 @@ Page({
     })
   },
   bindAreaChange(e){
-    let areaCode
+    let areaNew
     let area=this.data.arealist[e.detail.value]
     this.data.sarealist.forEach(item=>{
       if(item.t_name==area){
-        areaCode=item.t_code
-        this.getstreetCodeList(areaCode)
+        areaNew=item.t_code
+        this.getstreetCodeList(areaNew)
       }
     })
     this.setData({
       area,
-      areaCode
+      areaNew:areaNew
     })
   },
   bindCityChange(e){
@@ -369,21 +373,21 @@ Page({
     let cityarry = this.data.cityarry
     let cityCode = cityarry[1][arr[1]].code
     let city=cityarry[1][arr[1]].name
-    let areaCode = cityarry[2][arr[2]].code
+    let areaNew = cityarry[2][arr[2]].code
     let area=cityarry[2][arr[2]].name
     this.setData({
       city,
       cityCode,
       area,
-      areaCode,
+      areaNew,
       street: '',
-      streetCode: '',
+      streetNew: '',
       streetlist: [],
       committee: '',
       committeeCode: '',
       commitarry: []
     })
-    this.getstreetlist(areaCode)
+    this.getstreetlist(areaNew)
     
   },
   bindColumnChange(e){
@@ -444,13 +448,7 @@ bindRegionChange: function (e) {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let userInfo = wx.getStorageSync('userInfo')
-    if (userInfo) {
-      this.setData({
-        wxuserInfo: userInfo
-      })
-    }
-    this.getparents()
+    
   },
   dealRegion(data){
     let totalrigion=data
@@ -499,8 +497,8 @@ bindRegionChange: function (e) {
       let index = cityarry[1].findIndex(item => item.code == this.data.cityCode)
       indexArr[1] = index
     }
-    if(this.data.areaCode){
-      let index = cityarry[2].findIndex(item => item.code == this.data.areaCode)
+    if(this.data.areaNew){
+      let index = cityarry[2].findIndex(item => item.code == this.data.areaNew)
       indexArr[2] = index
     }
     this.setData({
@@ -522,9 +520,9 @@ bindRegionChange: function (e) {
         that.dealRegion(res.data.data)
       }
     })
-    if(this.data.areaCode){
-      this.getstreetlist(this.data.areaCode)
-    }
+    // if(this.data.areaCode){
+    //   this.getstreetlist(this.data.areaCode)
+    // }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -539,6 +537,12 @@ bindRegionChange: function (e) {
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    let userInfo = wx.getStorageSync('userInfo')
+    if (userInfo) {
+      this.setData({
+        wxuserInfo: userInfo
+      })
+    }
+    this.getparents()
   },
 })

@@ -22,15 +22,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let card = wx.getStorageSync('cardInfo')
-    let child = wx.getStorageSync('childinfo')
-    let parent = wx.getStorageSync('parentInfo')
-    this.setData({
-      card,
-      child,
-      parent
-    })
-    this.getSubscribeDate();
+    
+    
   },
   getSubscribeDate() {
     let that = this;
@@ -153,7 +146,7 @@ Page({
         }
         setTimeout(() => {
           wx.navigateTo({
-            url: "/pages/index/index",
+            url: "/pages/sublist/index",
           })
         }, 1000);
       }
@@ -177,7 +170,46 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that=this
+    let card = wx.getStorageSync('cardInfo')
+    let child = wx.getStorageSync('childinfo')
+    let parent = wx.getStorageSync('parentInfo')
+ 
+      let openid = wx.getStorageSync('openid')
+      if (!openid) {
+        return
+      }
+      wx.request({
+        url: 'https://vaccing.51vipsh.com/app1/getAdultByOpenid',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded;"
+        },
+        data: {
+          openId: openid
+        },
+        method: "POST",
+        success(res) {
+          console.log(res.data.data.areaCode)
+          if (!res.data.data.areaCode) {
+            wx.showToast({
+              title: '请完善监护人信息',
+              icon: 'none'
+            })
+            that.fetchChildList(0,0)
+          } else {
+            that.setData({
+              parent: res.data.data
+            })
+            wx.setStorageSync('parentInfo', res.data.data)
+            that.setData({
+              card,
+              child,
+              parent
+            })
+            that.getSubscribeDate();
+          }
+        }
+      })
   },
 
   /**
