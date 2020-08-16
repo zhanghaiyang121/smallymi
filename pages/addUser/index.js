@@ -156,7 +156,7 @@ Page({
       return
     }
     wx.request({
-      url: 'http://121.199.7.204:8085/app1/getAdultByOpenid',
+      url: 'https://vaccing.51vipsh.com/app1/getAdultByOpenid',
       header:{
         "Content-Type":"application/x-www-form-urlencoded;"
       },
@@ -341,7 +341,7 @@ Page({
   getstreetlist(areaNew){
     let that=this
     wx.request({
-      url: 'http://121.199.7.204:8085/app1/getAddress',
+      url: 'https://vaccing.51vipsh.com/app1/getAddress',
       header:{
         "Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"
       },
@@ -418,7 +418,7 @@ Page({
   //添加父母资料
 addParentInfo(){
    wx.request({
-     url: 'http://121.199.7.204:8085/app1/updateAdult',
+     url: 'https://vaccing.51vipsh.com/app1/updateAdult',
      header:{
        "Content-Type":"application/json"
      },
@@ -508,7 +508,7 @@ bindRegionChange: function (e) {
   getArealist(){
     let that=this
     wx.request({
-      url: 'http://121.199.7.204:8085/app1/getAddressByParentCode',
+      url: 'https://vaccing.51vipsh.com/app1/getAddressByParentCode',
       header:{
         "Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"
       },

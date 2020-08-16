@@ -2,7 +2,7 @@
 //获取地区列表
 const getAreaList=(parentcode)=>{
   wx.request({
-    url: 'http://121.199.7.204:8085/app1/getAddress',
+    url: 'https://vaccing.51vipsh.com/app1/getAddress',
     header:{
       "Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"
     },

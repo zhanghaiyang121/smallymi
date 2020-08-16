@@ -49,7 +49,7 @@ Page({
       url: '/pages/addbaby/index',
     })
     // wx.request({
-    //   url: 'http://121.199.7.204:8085/app1/updateChild',
+    //   url: 'https://vaccing.51vipsh.com/app1/updateChild',
     //   header:{
     //     "Content-Type":"application/json"
     //   },

@@ -28,7 +28,7 @@ Page({
       return
     }
     wx.request({
-      url: 'http://121.199.7.204:8085/app1/getAdultByOpenid',
+      url: 'https://vaccing.51vipsh.com/app1/getAdultByOpenid',
       header:{
         "Content-Type":"application/x-www-form-urlencoded;"
       },

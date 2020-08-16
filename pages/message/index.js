@@ -10,7 +10,7 @@ Page({
   getmessage(){
     let that=this
     wx.request({
-      url: 'http://121.199.7.204:8085/app/getMessageByPage',
+      url: 'https://vaccing.51vipsh.com/app/getMessageByPage',
       header:{
         "Content-Type":"application/json"
       },
