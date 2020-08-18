@@ -8,7 +8,8 @@ Page({
     totalHeight:44,
     isShow:false,
     list:[],
-    currentid:null
+    currentid:null,
+    currentstatus:null
   },
 
   /**
@@ -69,7 +70,8 @@ Page({
       success(res){
         that.setData({
           isShow:false,
-          currentid:null
+          currentid:null,
+          currentstatus:null
         })
         wx.showToast({
           title: res.data.msg,
@@ -82,14 +84,16 @@ Page({
   cancelupdate(){
     this.setData({
       isShow:false,
-      currentid:null
+      currentid:null,
+      currentstatus:null
     })
   },
   cancelsub(e){
     console.log(e.currentTarget.dataset)
     this.setData({
       isShow:true,
-      currentid:e.currentTarget.dataset.info.id
+      currentid:e.currentTarget.dataset.info.id,
+      currentstatus: e.currentTarget.dataset.info.status
     })
   },
   cancelMark(){

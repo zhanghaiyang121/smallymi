@@ -48,7 +48,7 @@ Page({
           let month = date.getMonth() > 8 ? date.getMonth()+1 : '0' + (date.getMonth()+1)
           i.monthDay = month + '-' + date.getDate();
           i.week = that.getWeek(date.getDay());
-          i.isHaveNum = i.total - i.agreeNum > 0 ? true : false
+          i.isHaveNum = i.total - i.applyNum > 0 ? true : false
         })
         that.setData({
           subscribeList: subscribeList

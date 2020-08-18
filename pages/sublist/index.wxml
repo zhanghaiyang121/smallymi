@@ -20,14 +20,16 @@
                   </view>
                   <view class="desc">{{item.name}}</view>
                </view>
-               <view class="btn colorG" bindtap="cancelsub" data-info="{{item}}">{{item.status==25?"待确认":"取消预约"}}</view>
+               <view class="btn colorG" bindtap="cancelsub" data-info="{{item}}" wx-if="{{item.status==10 || item.status==20}}">取消预约</view>
+               <view class="btn colorY" bindtap="cancelsub" data-info="{{item}}" wx-if="{{item.status==25}}">待确认</view>
+               <view class="btn colorY" data-info="{{item}}" wx-if="{{item.status==30}}">接种完成</view>
             </view>
       </view>
       <view class="mark" wx:if="{{isShow}}" catchtap="cancelMark"></view>
       <view class="change-child" wx:if="{{isShow}}">
          <view class="child_list">
             <view class="markinfo">
-               是否确认已取消预约?
+               {{(currentstatus==10||currentstatus==20)?'是否确认已取消预约':currentstatus==25?'是否确认已接种完成':''}}
             </view>
             <view class="btns">
                <view class="leftbtn" bindtap="cancelupdate">取消</view>
