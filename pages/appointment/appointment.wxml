@@ -27,7 +27,8 @@
           <view class="card" wx:for="{{item.hvaccineMenuList}}">
             <view class="type">自费</view>
             <view class="more">
-              <view class="title">{{item.name}} <text>计量:{{item.num}} </text></view> 
+              <view class="title">{{item.name}}</view> 
+              <view class="desc">剂次:{{item.num}}</view>
               <view class="desc text-overflow">{{item.desc}}</view>
             </view>
             <view class="price">¥{{item.cost}}</view>

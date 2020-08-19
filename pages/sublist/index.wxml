@@ -16,7 +16,7 @@
                <view class="card-info" bindtap="toyiminfo">
                   <view>
                      <text class="name">{{item.vname}}</text>
-                     <text class="num">剂量: 1</text>
+                     <text class="num">剂次: 1</text>
                   </view>
                   <view class="desc">{{item.name}}</view>
                </view>

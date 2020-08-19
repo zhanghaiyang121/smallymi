@@ -92,7 +92,9 @@ Page({
     wx.requestSubscribeMessage({
       tmplIds: ["3-dJHDl3xWjbgkuNcuFTWhhUEwWhN_30Z0Ot-FXvArg"],
       success: res => {
-        this.subscribeData();
+        if(res["3-dJHDl3xWjbgkuNcuFTWhhUEwWhN_30Z0Ot-FXvArg"] == "accept"){
+          this.subscribeData();
+        } 
       },
       fail: err => {}
     })

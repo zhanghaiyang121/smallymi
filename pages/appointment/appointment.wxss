@@ -143,7 +143,7 @@
 }
 
 .card .more .desc{
-  height: 40rpx;
+  /* height: 40rpx; */
   font-size: 24rpx;
   color: #777;
 }
