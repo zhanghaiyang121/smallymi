@@ -90,9 +90,9 @@ Page({
     console.log(123)
    
     wx.requestSubscribeMessage({
-      tmplIds: ["3-dJHDl3xWjbgkuNcuFTWhhUEwWhN_30Z0Ot-FXvArg"],
+      tmplIds: ["3-dJHDl3xWjbgkuNcuFTWhhUEwWhN_30Z0Ot-FXvArg "],
       success: res => {
-        if(res["3-dJHDl3xWjbgkuNcuFTWhhUEwWhN_30Z0Ot-FXvArg"] == "accept"){
+        if(res["3-dJHDl3xWjbgkuNcuFTWhhUEwWhN_30Z0Ot-FXvArg "] == "accept"){
           this.subscribeData();
         } 
       },

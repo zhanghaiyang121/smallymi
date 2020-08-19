@@ -1,7 +1,7 @@
 //消息订阅只能通过点击事件触发
 const subscribeMessage = function () {
   wx.requestSubscribeMessage({
-    tmplIds:["RA71GvREZsfAjGPs0VtpUzY28310R5INLS6xnwttnnY"],
+    tmplIds:["g88cONCdqx62SxzxecFZelZUVhArAQH6UOa4RR13NdY"],
     success:res=>{
       console.log(res)
     },
