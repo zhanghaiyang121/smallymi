@@ -20,9 +20,9 @@
                   </view>
                   <view class="desc">{{item.name}}</view>
                </view>
-               <view class="btn colorG" bindtap="cancelsub" data-info="{{item}}" wx-if="{{item.status==10 || item.status==20}}">取消预约</view>
-               <view class="btn colorY" bindtap="cancelsub" data-info="{{item}}" wx-if="{{item.status==25}}">待确认</view>
-               <view class="btn colorY" data-info="{{item}}" wx-if="{{item.status==30}}">接种完成</view>
+               <view class="btn colorG" bindtap="cancelsub" data-info="{{item}}" wx-if="{{item.status==10 || item.status==20}}">{{item.buttons}}</view>
+               <view class="btn colorY" bindtap="cancelsub" data-info="{{item}}" wx-if="{{item.status==25}}">{{item.buttons}}</view>
+               <view class="btn colorY" data-info="{{item}}" wx-if="{{item.status==30}}">{{item.buttons}}</view>
             </view>
       </view>
       <view class="mark" wx:if="{{isShow}}" catchtap="cancelMark"></view>
