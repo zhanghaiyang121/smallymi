@@ -20,7 +20,7 @@ var config = {
     'getVaccine': `${host}/child/vaccine/`, //疫苗列表
     'getStandard': `${host}/vaccine/wx/standard`, //未登陆首页接种疫苗列表
     'deptList': `${host}/parent/dept`, //接种列表
-    'setAppoint': `${host}/parent/appointment`, //预约申请
+    'setAppoint': `${host}/parent/appointment`, //申请
     'appoint': `${host}/parent/lastdept/` //上次接种地点
     
 }

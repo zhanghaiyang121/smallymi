@@ -8,7 +8,7 @@
      
       
       <view wx:if="{{list.length>0}}" class="cardcontent" wx:for="{{list}}">
-            <view class="subtime">预约时间:{{item.agree_time}}</view>
+            <view class="subtime">行程时间:{{item.agree_time}}</view>
             <view class="card">
                <view class="card-tips colorY">
                   {{item.type}}
@@ -29,7 +29,7 @@
       <view class="change-child" wx:if="{{isShow}}">
          <view class="child_list">
             <view class="markinfo">
-               {{(currentstatus==10||currentstatus==20)?'是否确认已取消预约':currentstatus==25?'是否确认已接种完成':''}}
+               {{(currentstatus==10||currentstatus==20)?'是否确认取消行程':currentstatus==25?'是否确认已接种完成':''}}
             </view>
             <view class="btns">
                <view class="leftbtn" bindtap="cancelupdate">取消</view>

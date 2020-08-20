@@ -34,7 +34,7 @@
       <view class="change-child" wx:if="{{issubShow}}">
          <view class="child_list">
             <view class="markinfo">
-               {{yimstatusinfo.status==25?"是否确认完成接种?":"是否确认取消预约?"}}
+               {{yimstatusinfo.status==25?"是否确认完成接种?":"是否确认取消行程?"}}
             </view>
             <view class="btns">
                <view class="leftbtn" bindtap="cancelupdate">取消</view>

@@ -50,7 +50,7 @@ Component({
     submit(){
       this.triggerEvent('submityuyue',this.data.card)
     },
-    //预约
+    
     subscribe(e){
       let that =this;
       if(e.currentTarget.dataset.stock==0){
@@ -116,7 +116,6 @@ Component({
       let card = Object.assign({}, this.data.card)
       card.type = 2
       wx.setStorageSync('cardInfo', card)
-      //跳到预约页面
       wx.navigateTo({
         url: '/pages/sub/index',
       })

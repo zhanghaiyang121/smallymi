@@ -49,7 +49,6 @@ CustomPage({
     }
     card.type = 1
     wx.setStorageSync('cardInfo', card)
-    //跳到预约页面
     let openid=wx.getStorageSync('openid')
     if(openid){
       wx.navigateTo({

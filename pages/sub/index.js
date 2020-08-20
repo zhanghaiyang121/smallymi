@@ -14,7 +14,7 @@ Page({
     subscribeList: [], // 挂号列表
     currentTab: 0, // 默认选中挂号列表
     isShow:false,
-    subinfo:"很抱歉,预约失败！",
+    subinfo:"很抱歉,操作失败！",
     subimage:"../../images/dconfirm.png",
     textObj:{}
   },
@@ -86,7 +86,7 @@ Page({
       })
     }
   },
-  //预约点击
+  
   subscribe() {
     console.log(123)
    
@@ -100,7 +100,7 @@ Page({
       fail: err => {}
     })
   },
-  // 预约接口
+  
   subscribeData() {
     let that=this
     let currentTab = this.data.currentTab

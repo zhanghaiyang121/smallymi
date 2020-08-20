@@ -5,7 +5,7 @@ let config = require('../../utils/config.js')
 Page({
   data: {
     isShowcard: false,
-    subinfo:"很抱歉,预约失败！",
+    subinfo:"很抱歉,操作失败！",
     subimage:"../../images/dconfirm.png",
     yimstatusinfo:null,
     issubShow:false,
