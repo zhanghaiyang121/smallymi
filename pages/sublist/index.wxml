@@ -1,6 +1,6 @@
 <!--components/home/header/header.wxml-->
 <view>
-   <nav-bar navTitle="预约列表" showBack="true" />
+   <nav-bar navTitle="我的列表" showBack="true" />
    <view style="padding-top: {{totalHeight}}px;text-align:center">
    <view wx:if="{{list.length==0}}">
       <image class="no-img" src="../../images/no_child.png"></image>

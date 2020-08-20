@@ -48,7 +48,7 @@ Page({
         adultId: parentId
       },
       success(res){
-        console.log("预约列表")
+        console.log("列表")
         console.log(res.data.list)
         that.setData({
           list:res.data.list
