@@ -116,3 +116,33 @@
   line-height: 114rpx;
   color: #4EBA9A;
 }
+
+.cardchange-child {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: 10rpx;
+  padding-left: 24rpx;
+  padding-right: 24rpx;
+  z-index: 101;
+  width: 672rpx;
+  height: 394rpx;
+  border-radius: 20rpx;
+  background: #fff;
+}
+.cardchild_list{
+ text-align: center;
+}
+.cardimage{
+  width: 308rpx;
+  height: 208rpx;
+  margin: 0 auto;
+}
+.subinfo{
+  font-size: 36rpx;
+  color: #777777;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 24rpx;
+}

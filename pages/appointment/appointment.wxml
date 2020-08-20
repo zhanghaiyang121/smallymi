@@ -32,7 +32,7 @@
               <view class="desc text-overflow">{{item.desc}}</view>
             </view>
             <view class="price">¥{{item.cost}}</view>
-            <view class="order" bindtap="goOrder" data-card="{{item}}">预约</view>
+            <view class="order" bindtap="goOrder" data-card="{{item}}">{{item.buttons}}</view>
           </view>
         </view>
       </view>

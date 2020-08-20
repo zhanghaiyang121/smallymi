@@ -10,7 +10,7 @@
     </view>
     <view class="desc">{{card.disc}}</view>
   </view>
-   <view wx:if="{{card.status==0 || !card.status}}" class="btn colorBlue {{card.stock == 0 ? 'active' : ''}}" bindtap="subscribe" data-stock="{{card.stock}}">预约</view>
+   <view wx:if="{{card.status==0 || !card.status}}" class="btn colorBlue {{card.stock == 0 ? 'active' : ''}}" bindtap="subscribe" data-stock="{{card.stock}}" data-version="{{card.version}}">{{card.buttons}}</view>
    <!-- <view wx:if="{{card.status==0 && card.num == 0}}" class="btn colorDone" bindtap="subscribe">无库存</view> -->
     <view wx:if="{{card.status==10}}" class="btn colorY" >预约中</view>
     <view wx:if="{{card.status==20}}" class="btn colorY" >预约成功</view>

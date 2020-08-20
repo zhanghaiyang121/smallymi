@@ -4,6 +4,9 @@ const app = getApp()
 let config = require('../../utils/config.js')
 Page({
   data: {
+    isShowcard: false,
+    subinfo:"很抱歉,预约失败！",
+    subimage:"../../images/dconfirm.png",
     yimstatusinfo:null,
     issubShow:false,
     isShow: false,
@@ -289,6 +292,35 @@ Page({
       }
     })
 
+  },
+  submitcard(e){
+    let that = this;
+    console.log(e.detail)
+    //判断flag状态
+    let flag=false
+    if(e.detail.code==200){
+      flag=true
+    }else{
+      flag=false
+    }
+    if(flag){
+      that.setData({
+        isShowcard:true,
+        subinfo:e.detail.msg,
+        subimage:"../../images/confirm.png"
+      })
+    }else{
+      that.setData({
+        isShowcard:true,
+        subinfo:e.detail.msg,
+        subimage:"../../images/dconfirm.png"
+      })
+    }
+  },
+  cancelcardMark(){
+    this.setData({
+      isShowcard: false
+    })
   },
   cancelMark() {
     this.setData({

@@ -44,6 +44,9 @@ CustomPage({
   },
   goOrder(e){
     let card = Object.assign({}, e.target.dataset.card)
+    if(card.version == 0){
+      return;
+    }
     card.type = 1
     wx.setStorageSync('cardInfo', card)
     //跳到预约页面
