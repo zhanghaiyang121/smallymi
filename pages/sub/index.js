@@ -15,7 +15,8 @@ Page({
     currentTab: 0, // 默认选中挂号列表
     isShow:false,
     subinfo:"很抱歉,预约失败！",
-    subimage:"../../images/dconfirm.png"
+    subimage:"../../images/dconfirm.png",
+    textObj:{}
   },
 
   /**
@@ -182,7 +183,7 @@ Page({
     let card = wx.getStorageSync('cardInfo')
     let child = wx.getStorageSync('childinfo')
     let parent = wx.getStorageSync('parentInfo')
- 
+    that.getPageText();
       let openid = wx.getStorageSync('openid')
       if (!openid) {
         return
@@ -218,6 +219,27 @@ Page({
           }
         }
       })
+  },
+
+  /**
+   * 获取页面文案
+  */ 
+  getPageText(){
+    let that = this;
+    wx.request({
+      url: 'https://vaccing.51vipsh.com/app1/getVs',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded;"
+      },
+      data: {
+      },
+      method: "POST",
+      success(res) {
+        that.setData({
+          textObj:res.data
+        })
+      }
+    })
   },
 
   /**
